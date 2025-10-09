@@ -49,7 +49,7 @@
             background: rgba(10, 25, 47, 0.9);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(100, 255, 218, 0.1);
-            padding: 15px 0;
+            padding: 10px 0;
         }
 
         .header-content {
@@ -61,16 +61,16 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .logo img {
-            height: 40px;
+            height: 30px;
             width: auto;
         }
 
         .logo-text {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: var(--white);
             text-shadow: 0 0 10px var(--cyan-glow);
@@ -79,7 +79,7 @@
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
 
         .dropdown {
@@ -90,13 +90,14 @@
             background: rgba(100, 255, 218, 0.1);
             border: 1px solid var(--cyan);
             border-radius: 5px;
-            padding: 8px 15px;
+            padding: 6px 12px;
             color: var(--white);
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             transition: var(--transition);
+            font-size: 0.9rem;
         }
 
         .dropdown-btn:hover {
@@ -112,7 +113,7 @@
             border: 1px solid var(--cyan);
             border-radius: 5px;
             padding: 10px 0;
-            min-width: 180px;
+            min-width: 160px;
             opacity: 0;
             visibility: hidden;
             transform: translateY(-10px);
@@ -127,12 +128,13 @@
         }
 
         .dropdown-item {
-            padding: 10px 20px;
+            padding: 8px 15px;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            font-size: 0.9rem;
         }
 
         .dropdown-item:hover {
@@ -147,16 +149,55 @@
         }
 
         .hamburger span {
-            width: 25px;
-            height: 3px;
+            width: 22px;
+            height: 2px;
             background: var(--cyan);
             border-radius: 2px;
             transition: var(--transition);
         }
 
+        /* Navigation Menu */
+        .nav-menu {
+            position: fixed;
+            top: 52px;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: calc(100vh - 52px);
+            background: var(--navy);
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 30px 20px;
+            transition: var(--transition);
+            border-left: 1px solid rgba(100, 255, 218, 0.1);
+            z-index: 999;
+            overflow-y: auto;
+        }
+
+        .nav-menu.active {
+            right: 0;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 12px 0;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--cyan);
+            padding-left: 10px;
+        }
+
         /* Section Styles */
         section {
-            padding: 100px 0;
+            padding: 80px 0;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -238,13 +279,13 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             background: linear-gradient(90deg, var(--cyan), var(--light-cyan));
             color: var(--navy);
             border: none;
             border-radius: 5px;
-            padding: 12px 25px;
-            font-size: 1rem;
+            padding: 10px 20px;
+            font-size: 0.9rem;
             font-weight: bold;
             cursor: pointer;
             transition: var(--transition);
@@ -271,6 +312,11 @@
             display: flex;
             justify-content: center;
             margin-top: 30px;
+        }
+
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 0.85rem;
         }
 
         /* Wallet Connection */
@@ -317,6 +363,7 @@
             padding: 10px 15px;
             font-family: monospace;
             color: var(--white);
+            font-size: 0.9rem;
         }
 
         /* Form Styles */
@@ -345,6 +392,11 @@
             outline: none;
             border-color: var(--cyan);
             box-shadow: 0 0 10px var(--cyan-glow);
+        }
+
+        .form-control:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
         /* FAQ Styles */
@@ -396,6 +448,8 @@
             padding: 20px;
             text-align: center;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
         .level-box.unlocked {
@@ -406,6 +460,21 @@
         .level-box.locked {
             opacity: 0.7;
             filter: grayscale(0.7);
+        }
+
+        .level-box.locked::after {
+            content: "🔒";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            background: rgba(0, 0, 0, 0.7);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .level-name {
@@ -466,7 +535,7 @@
         }
 
         .footer-logo img {
-            height: 60px;
+            height: 50px;
             width: auto;
         }
 
@@ -479,7 +548,7 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin-bottom: 30px;
         }
 
@@ -489,10 +558,12 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background: rgba(100, 255, 218, 0.1);
+            background: transparent;
             border-radius: 50%;
             color: var(--cyan);
             transition: var(--transition);
+            text-decoration: none;
+            border: 1px solid var(--cyan);
         }
 
         .social-link:hover {
@@ -515,25 +586,6 @@
                 display: flex;
             }
 
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                right: -100%;
-                width: 80%;
-                height: calc(100vh - 70px);
-                background: var(--navy);
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding-top: 50px;
-                transition: var(--transition);
-                border-left: 1px solid rgba(100, 255, 218, 0.1);
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
             .section-title h1 {
                 font-size: 2rem;
             }
@@ -545,15 +597,10 @@
             .box-grid {
                 grid-template-columns: 1fr;
             }
-        }
 
-        /* Hide sections by default */
-        .section {
-            display: none;
-        }
-
-        .section.active {
-            display: block;
+            .level-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
         }
     </style>
 </head>
@@ -570,7 +617,7 @@
                     <div class="dropdown" id="translateDropdown">
                         <button class="dropdown-btn">
                             <i class="fas fa-globe"></i>
-                            <span>English</span>
+                            <span id="currentLang">English</span>
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="dropdown-content">
@@ -608,204 +655,204 @@
 
     <!-- Navigation Menu -->
     <nav class="nav-menu" id="navMenu">
-        <a href="#" class="nav-link" data-section="home">Home</a>
-        <a href="#" class="nav-link" data-section="why-choose">Why Choose</a>
-        <a href="#" class="nav-link" data-section="dashboard">Dashboard</a>
-        <a href="#" class="nav-link" data-section="invest">Invest</a>
-        <a href="#" class="nav-link" data-section="referral">Referral</a>
-        <a href="#" class="nav-link" data-section="salary">Salary</a>
-        <a href="#" class="nav-link" data-section="faq">FAQ</a>
-        <a href="#" class="nav-link" data-section="security">Security</a>
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#why-choose" class="nav-link">Why Choose</a>
+        <a href="#dashboard" class="nav-link">Dashboard</a>
+        <a href="#invest" class="nav-link">Invest</a>
+        <a href="#referral" class="nav-link">Referral</a>
+        <a href="#salary" class="nav-link">Salary</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="#security" class="nav-link">Security</a>
     </nav>
 
     <!-- Notification -->
     <div class="notification" id="notification"></div>
 
     <!-- Home Section -->
-    <section id="home" class="section active">
+    <section id="home">
         <div class="container">
             <div class="section-title">
-                <h1>Smart Investment with VelionAscend</h1>
-                <p>Maximize your returns with our secure and transparent investment platform – Earn daily ROI, referral commissions, and monthly salaries</p>
+                <h1 data-translate="home_title">Smart Investment with VelionAscend</h1>
+                <p data-translate="home_subtitle">Maximize your returns with our secure and transparent investment platform – Earn daily ROI, referral commissions, and monthly salaries</p>
             </div>
             
             <div class="box-grid">
                 <div class="box">
                     <i class="fas fa-chart-line"></i>
-                    <h3>TVL</h3>
+                    <h3 data-translate="tvl">TVL</h3>
                     <div class="box-value" id="tvl">$0</div>
-                    <p>Total Value Locked</p>
+                    <p data-translate="tvl_desc">Total Value Locked</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-users"></i>
-                    <h3>Total Users</h3>
+                    <h3 data-translate="total_users">Total Users</h3>
                     <div class="box-value" id="totalUsers">0</div>
-                    <p>Active Investors</p>
+                    <p data-translate="total_users_desc">Active Investors</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-wallet"></i>
-                    <h3>Total Deposit</h3>
+                    <h3 data-translate="total_deposit">Total Deposit</h3>
                     <div class="box-value" id="totalDeposit">$0</div>
-                    <p>Total Funds Deposited</p>
+                    <p data-translate="total_deposit_desc">Total Funds Deposited</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-money-bill-wave"></i>
-                    <h3>Total Paid Out</h3>
+                    <h3 data-translate="total_paid">Total Paid Out</h3>
                     <div class="box-value" id="totalPaid">$0</div>
-                    <p>Total Rewards Distributed</p>
+                    <p data-translate="total_paid_desc">Total Rewards Distributed</p>
                 </div>
             </div>
             
             <div class="wallet-section">
                 <button class="btn" id="connectWallet">
                     <i class="fas fa-plug"></i>
-                    Connect Wallet
+                    <span data-translate="connect_wallet">Connect Wallet</span>
                 </button>
                 
                 <div class="connected" id="connectedInfo" style="display: none;">
                     <div class="connected-status">
                         <div class="blinking-dot"></div>
-                        <span>Connected</span>
+                        <span data-translate="connected">Connected</span>
                     </div>
                     <div class="wallet-address" id="walletAddress"></div>
                 </div>
                 
                 <button class="btn" id="startInvesting" style="display: none;">
                     <i class="fas fa-rocket"></i>
-                    Start Investing
+                    <span data-translate="start_investing">Start Investing</span>
                 </button>
             </div>
         </div>
     </section>
 
     <!-- Why Choose Section -->
-    <section id="why-choose" class="section">
+    <section id="why-choose">
         <div class="container">
             <div class="section-title">
-                <h1>Why Choose VelionAscend?</h1>
-                <p>Our platform offers multiple ways to grow your investment with security and transparency</p>
+                <h1 data-translate="why_choose_title">Why Choose VelionAscend?</h1>
+                <p data-translate="why_choose_subtitle">Our platform offers multiple ways to grow your investment with security and transparency</p>
             </div>
             
             <div class="box-grid">
                 <div class="box">
                     <i class="fas fa-chart-pie"></i>
-                    <h3>Daily ROI</h3>
-                    <p>Earn between 0.5% to 2.5% daily return on your investment based on TVL growth</p>
+                    <h3 data-translate="daily_roi">Daily ROI</h3>
+                    <p data-translate="daily_roi_desc">Earn between 0.5% to 2.5% daily return on your investment based on TVL growth</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-user-friends"></i>
-                    <h3>Referral Program</h3>
-                    <p>Earn commissions from your 10 levels of referral network with profits up to 40%</p>
+                    <h3 data-translate="referral_program">Referral Program</h3>
+                    <p data-translate="referral_program_desc">Earn commissions from your 10 levels of referral network with profits up to 40%</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-money-check-alt"></i>
-                    <h3>Monthly Salary</h3>
-                    <p>Earn monthly salary from 4 levels with earning potential up to $30 per month</p>
+                    <h3 data-translate="monthly_salary">Monthly Salary</h3>
+                    <p data-translate="monthly_salary_desc">Earn monthly salary from 4 levels with earning potential up to $30 per month</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-shield-alt"></i>
-                    <h3>Secure & Transparent</h3>
-                    <p>Our smart contract is verified on BscScan with no admin withdrawal capabilities</p>
+                    <h3 data-translate="secure_transparent">Secure & Transparent</h3>
+                    <p data-translate="secure_transparent_desc">Our smart contract is verified on BscScan with no admin withdrawal capabilities</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Dashboard Section -->
-    <section id="dashboard" class="section">
+    <section id="dashboard">
         <div class="container">
             <div class="section-title">
-                <h1>Your Dashboard</h1>
-                <p>Monitor your investments, earnings, and referral network in real-time</p>
+                <h1 data-translate="dashboard_title">Your Dashboard</h1>
+                <p data-translate="dashboard_subtitle">Monitor your investments, earnings, and referral network in real-time</p>
             </div>
             
             <div class="box-grid">
                 <div class="box">
                     <i class="fas fa-coins"></i>
-                    <h3>Active Deposit</h3>
+                    <h3 data-translate="active_deposit">Active Deposit</h3>
                     <div class="box-value" id="userDeposit">$0</div>
-                    <p>Your Current Investment</p>
+                    <p data-translate="active_deposit_desc">Your Current Investment</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-percentage"></i>
-                    <h3>Current Daily ROI</h3>
+                    <h3 data-translate="current_roi">Current Daily ROI</h3>
                     <div class="box-value" id="currentROI">0%</div>
-                    <p>Your Daily Return Rate</p>
+                    <p data-translate="current_roi_desc">Your Daily Return Rate</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-hand-holding-usd"></i>
-                    <h3>Pending ROI</h3>
+                    <h3 data-translate="pending_roi">Pending ROI</h3>
                     <div class="box-value" id="pendingROI">$0</div>
-                    <p>Available for Withdrawal</p>
+                    <p data-translate="pending_roi_desc">Available for Withdrawal</p>
                 </div>
             </div>
             
             <div class="btn-center">
-                <button class="btn" id="withdrawROI">
+                <button class="btn btn-small" id="withdrawROI">
                     <i class="fas fa-download"></i>
-                    Withdraw ROI
+                    <span data-translate="withdraw_roi">Withdraw ROI</span>
                 </button>
             </div>
         </div>
     </section>
 
     <!-- Invest Section -->
-    <section id="invest" class="section">
+    <section id="invest">
         <div class="container">
             <div class="section-title">
-                <h1>Start Investing</h1>
-                <p>Deposit USDT and start earning daily returns with our secure investment smart contract</p>
+                <h1 data-translate="invest_title">Start Investing</h1>
+                <p data-translate="invest_subtitle">Deposit USDT and start earning daily returns with our secure investment smart contract</p>
             </div>
             
             <div class="box" style="max-width: 500px; margin: 0 auto;">
-                <h3 style="text-align: center; margin-bottom: 20px;">Investment Amount</h3>
+                <h3 style="text-align: center; margin-bottom: 20px;" data-translate="investment_amount">Investment Amount</h3>
                 <div class="form-group">
-                    <label for="investAmount">Amount (USDT)</label>
+                    <label for="investAmount" data-translate="amount_usdt">Amount (USDT)</label>
                     <input type="number" id="investAmount" class="form-control" placeholder="Minimum 10 USDT" min="10">
                 </div>
                 <div class="form-group">
-                    <label for="uplineAddress">Upline Address (Optional)</label>
-                    <input type="text" id="uplineAddress" class="form-control" placeholder="Enter upline wallet address">
+                    <label for="uplineAddress" data-translate="upline_address">Upline Address</label>
+                    <input type="text" id="uplineAddress" class="form-control" readonly>
                 </div>
-                <button class="btn" id="investNow" style="width: 100%;">
+                <button class="btn btn-small" id="investNow" style="width: 100%;">
                     <i class="fas fa-rocket"></i>
-                    Invest Now
+                    <span data-translate="invest_now">Invest Now</span>
                 </button>
             </div>
         </div>
     </section>
 
     <!-- Referral Section -->
-    <section id="referral" class="section">
+    <section id="referral">
         <div class="container">
             <div class="section-title">
-                <h1>Referral Program</h1>
-                <p>Earn commissions from 10 levels of your referral network with our tier-based system</p>
+                <h1 data-translate="referral_title">Referral Program</h1>
+                <p data-translate="referral_subtitle">Earn commissions from 10 levels of your referral network with our tier-based system</p>
             </div>
             
             <div class="box" style="margin-bottom: 40px;">
-                <h3 style="text-align: center; margin-bottom: 15px;">Your Referral Link</h3>
+                <h3 style="text-align: center; margin-bottom: 15px;" data-translate="your_referral_link">Your Referral Link</h3>
                 <div style="display: flex; gap: 10px; align-items: center;">
                     <input type="text" id="referralLink" class="form-control" readonly>
-                    <button class="btn" id="copyLink">
+                    <button class="btn btn-small" id="copyLink">
                         <i class="fas fa-copy"></i>
-                        Copy
+                        <span data-translate="copy">Copy</span>
                     </button>
                 </div>
             </div>
             
-            <h3 style="text-align: center; margin-bottom: 20px;">Referral Levels</h3>
-            <div class="level-grid">
+            <h3 style="text-align: center; margin-bottom: 20px;" data-translate="referral_levels">Referral Levels</h3>
+            <div class="level-grid" id="referralLevels">
                 <!-- Levels will be dynamically generated -->
             </div>
             
             <div class="box" style="max-width: 400px; margin: 40px auto 0;">
-                <h3 style="text-align: center; margin-bottom: 15px;">Referral Rewards</h3>
+                <h3 style="text-align: center; margin-bottom: 15px;" data-translate="referral_rewards">Referral Rewards</h3>
                 <div class="box-value" id="referralRewards">$0</div>
                 <div class="btn-center">
-                    <button class="btn" id="claimReferral">
+                    <button class="btn btn-small" id="claimReferral">
                         <i class="fas fa-gift"></i>
-                        Claim Bonus
+                        <span data-translate="claim_bonus">Claim Bonus</span>
                     </button>
                 </div>
             </div>
@@ -813,75 +860,69 @@
     </section>
 
     <!-- Salary Section -->
-    <section id="salary" class="section">
+    <section id="salary">
         <div class="container">
             <div class="section-title">
-                <h1>Monthly Salary</h1>
-                <p>Earn monthly salary from 4 levels with earning potential up to $30 per month</p>
+                <h1 data-translate="salary_title">Monthly Salary</h1>
+                <p data-translate="salary_subtitle">Earn monthly salary from 4 levels with earning potential up to $30 per month</p>
             </div>
             
-            <div class="level-grid">
+            <div class="level-grid" id="salaryLevels">
                 <!-- Salary levels will be dynamically generated -->
             </div>
             
             <div class="box" style="max-width: 500px; margin: 40px auto 0;">
-                <h3 style="text-align: center; margin-bottom: 15px;">Current Monthly Salary</h3>
+                <h3 style="text-align: center; margin-bottom: 15px;" data-translate="current_monthly_salary">Current Monthly Salary</h3>
                 <div class="box-value" id="currentSalary">$0</div>
-                <p style="text-align: center; margin-bottom: 20px;" id="salaryLevel">No active salary level</p>
-                <div class="btn-center">
-                    <button class="btn" id="claimSalary">
-                        <i class="fas fa-money-check-alt"></i>
-                        Claim Salary
-                    </button>
-                </div>
+                <p style="text-align: center; margin-bottom: 20px;" id="salaryLevel" data-translate="no_active_salary">No active salary level</p>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="section">
+    <section id="faq">
         <div class="container">
             <div class="section-title">
-                <h1>Frequently Asked Questions</h1>
-                <p>Find answers to common questions about our investment platform</p>
+                <h1 data-translate="faq_title">Frequently Asked Questions</h1>
+                <p data-translate="faq_subtitle">Find answers to common questions about our investment platform</p>
             </div>
             
-            <div class="faq-container">
+            <div class="faq-container" id="faqContainer">
                 <!-- FAQ items will be dynamically generated -->
             </div>
         </div>
     </section>
 
     <!-- Security Section -->
-    <section id="security" class="section">
+    <section id="security">
         <div class="container">
             <div class="section-title">
-                <h1>Security</h1>
-                <p>Your investments are secured by verified smart contracts on the Binance Smart Chain</p>
+                <h1 data-translate="security_title">Security</h1>
+                <p data-translate="security_subtitle">Your investments are secured by verified smart contracts on the Binance Smart Chain</p>
             </div>
             
             <div class="box-grid">
                 <div class="box">
                     <i class="fas fa-check-circle"></i>
-                    <h3>Verified Contract</h3>
-                    <p>Our smart contract is verified on BscScan, ensuring transparency and security</p>
+                    <h3 data-translate="verified_contract">Verified Contract</h3>
+                    <p data-translate="verified_contract_desc">Our smart contract is verified on BscScan, ensuring transparency and security</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-lock"></i>
-                    <h3>No Admin Withdrawals</h3>
-                    <p>Funds are secured in the contract with no ability for admin to withdraw user deposits</p>
+                    <h3 data-translate="no_admin_withdrawals">No Admin Withdrawals</h3>
+                    <p data-translate="no_admin_withdrawals_desc">Funds are secured in the contract with no ability for admin to withdraw user deposits</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-eye"></i>
-                    <h3>Transparent</h3>
-                    <p>All activities can be seen and verified by anyone without exception</p>
+                    <h3 data-translate="transparent">Transparent</h3>
+                    <p data-translate="transparent_desc">All activities can be seen and verified by anyone without exception</p>
                 </div>
             </div>
             
             <div class="btn-center">
-                <a href="https://bscscan.com/address/0xb206d12F8Fe3C00Ddb1B21c57fa6b6080f9690BD#code" target="_blank" class="btn">
+                <a href="https://bscscan.com/address/0xb206d12F8Fe3C00Ddb1B21c57fa6b6080f9690BD#code" target="_blank" class="btn btn-small">
                     <i class="fas fa-external-link-alt"></i>
-                    View on BSCScan
+                    <span data-translate="view_on_bscscan">View on BSCScan</span>
                 </a>
             </div>
         </div>
@@ -893,7 +934,7 @@
             <div class="footer-logo">
                 <img src="https://files.catbox.moe/itr11l.png" alt="VelionAscend Logo">
             </div>
-            <p class="footer-text">Maximize your returns with our secure and transparent investment platform – Earn daily ROI, referral commissions, and monthly salaries</p>
+            <p class="footer-text" data-translate="footer_text">Maximize your returns with our secure and transparent investment platform – Earn daily ROI, referral commissions, and monthly salaries</p>
             
             <div class="social-links">
                 <a href="#" class="social-link">
@@ -920,11 +961,11 @@
     <div id="successModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 10000; justify-content: center; align-items: center;">
         <div class="box" style="max-width: 400px; text-align: center;">
             <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--light-cyan); margin-bottom: 20px;"></i>
-            <h2 style="margin-bottom: 15px;">Investment Successful!</h2>
-            <p style="margin-bottom: 25px;">Your investment has been processed successfully. You can now monitor your earnings in the dashboard.</p>
-            <button class="btn" id="openDashboard">
+            <h2 style="margin-bottom: 15px;" data-translate="investment_successful">Investment Successful!</h2>
+            <p style="margin-bottom: 25px;" data-translate="investment_successful_desc">Your investment has been processed successfully. You can now monitor your earnings in the dashboard.</p>
+            <button class="btn btn-small" id="openDashboard">
                 <i class="fas fa-tachometer-alt"></i>
-                Open Dashboard
+                <span data-translate="open_dashboard">Open Dashboard</span>
             </button>
         </div>
     </div>
@@ -939,6 +980,147 @@
         let web3;
         let contract;
         let userAccount;
+        let currentLanguage = 'en';
+        let referralAddress = null;
+
+        // Language translations
+        const translations = {
+            en: {
+                home_title: "Smart Investment with VelionAscend",
+                home_subtitle: "Maximize your returns with our secure and transparent investment platform – Earn daily ROI, referral commissions, and monthly salaries",
+                tvl: "TVL",
+                tvl_desc: "Total Value Locked",
+                total_users: "Total Users",
+                total_users_desc: "Active Investors",
+                total_deposit: "Total Deposit",
+                total_deposit_desc: "Total Funds Deposited",
+                total_paid: "Total Paid Out",
+                total_paid_desc: "Total Rewards Distributed",
+                connect_wallet: "Connect Wallet",
+                connected: "Connected",
+                start_investing: "Start Investing",
+                why_choose_title: "Why Choose VelionAscend?",
+                why_choose_subtitle: "Our platform offers multiple ways to grow your investment with security and transparency",
+                daily_roi: "Daily ROI",
+                daily_roi_desc: "Earn between 0.5% to 2.5% daily return on your investment based on TVL growth",
+                referral_program: "Referral Program",
+                referral_program_desc: "Earn commissions from your 10 levels of referral network with profits up to 40%",
+                monthly_salary: "Monthly Salary",
+                monthly_salary_desc: "Earn monthly salary from 4 levels with earning potential up to $30 per month",
+                secure_transparent: "Secure & Transparent",
+                secure_transparent_desc: "Our smart contract is verified on BscScan with no admin withdrawal capabilities",
+                dashboard_title: "Your Dashboard",
+                dashboard_subtitle: "Monitor your investments, earnings, and referral network in real-time",
+                active_deposit: "Active Deposit",
+                active_deposit_desc: "Your Current Investment",
+                current_roi: "Current Daily ROI",
+                current_roi_desc: "Your Daily Return Rate",
+                pending_roi: "Pending ROI",
+                pending_roi_desc: "Available for Withdrawal",
+                withdraw_roi: "Withdraw ROI",
+                invest_title: "Start Investing",
+                invest_subtitle: "Deposit USDT and start earning daily returns with our secure investment smart contract",
+                investment_amount: "Investment Amount",
+                amount_usdt: "Amount (USDT)",
+                upline_address: "Upline Address",
+                invest_now: "Invest Now",
+                referral_title: "Referral Program",
+                referral_subtitle: "Earn commissions from 10 levels of your referral network with our tier-based system",
+                your_referral_link: "Your Referral Link",
+                copy: "Copy",
+                referral_levels: "Referral Levels",
+                referral_rewards: "Referral Rewards",
+                claim_bonus: "Claim Bonus",
+                salary_title: "Monthly Salary",
+                salary_subtitle: "Earn monthly salary from 4 levels with earning potential up to $30 per month",
+                current_monthly_salary: "Current Monthly Salary",
+                no_active_salary: "No active salary level",
+                faq_title: "Frequently Asked Questions",
+                faq_subtitle: "Find answers to common questions about our investment platform",
+                security_title: "Security",
+                security_subtitle: "Your investments are secured by verified smart contracts on the Binance Smart Chain",
+                verified_contract: "Verified Contract",
+                verified_contract_desc: "Our smart contract is verified on BscScan, ensuring transparency and security",
+                no_admin_withdrawals: "No Admin Withdrawals",
+                no_admin_withdrawals_desc: "Funds are secured in the contract with no ability for admin to withdraw user deposits",
+                transparent: "Transparent",
+                transparent_desc: "All activities can be seen and verified by anyone without exception",
+                view_on_bscscan: "View on BSCScan",
+                footer_text: "Maximize your returns with our secure and transparent investment platform – Earn daily ROI, referral commissions, and monthly salaries",
+                investment_successful: "Investment Successful!",
+                investment_successful_desc: "Your investment has been processed successfully. You can now monitor your earnings in the dashboard.",
+                open_dashboard: "Open Dashboard",
+                referral_not_detected: "Referral not detected!"
+            },
+            es: {
+                home_title: "Inversión Inteligente con VelionAscend",
+                home_subtitle: "Maximiza tus rendimientos con nuestra plataforma de inversión segura y transparente: Gana ROI diario, comisiones por referidos y salarios mensuales",
+                tvl: "TVL",
+                tvl_desc: "Valor Total Bloqueado",
+                total_users: "Usuarios Totales",
+                total_users_desc: "Inversores Activos",
+                total_deposit: "Depósito Total",
+                total_deposit_desc: "Fondos Totales Depositados",
+                total_paid: "Total Pagado",
+                total_paid_desc: "Recompensas Totales Distribuidas",
+                connect_wallet: "Conectar Cartera",
+                connected: "Conectado",
+                start_investing: "Comenzar a Invertir",
+                why_choose_title: "¿Por Qué Elegir VelionAscend?",
+                why_choose_subtitle: "Nuestra plataforma ofrece múltiples formas de hacer crecer tu inversión con seguridad y transparencia",
+                daily_roi: "ROI Diario",
+                daily_roi_desc: "Gana entre 0.5% y 2.5% de retorno diario en tu inversión basado en el crecimiento del TVL",
+                referral_program: "Programa de Referidos",
+                referral_program_desc: "Gana comisiones de tus 10 niveles de red de referidos con ganancias de hasta 40%",
+                monthly_salary: "Salario Mensual",
+                monthly_salary_desc: "Gana salario mensual de 4 niveles con potencial de ganancia de hasta $30 por mes",
+                secure_transparent: "Seguro y Transparente",
+                secure_transparent_desc: "Nuestro contrato inteligente está verificado en BscScan sin capacidad de retiro de administrador",
+                dashboard_title: "Tu Panel de Control",
+                dashboard_subtitle: "Monitorea tus inversiones, ganancias y red de referidos en tiempo real",
+                active_deposit: "Depósito Activo",
+                active_deposit_desc: "Tu Inversión Actual",
+                current_roi: "ROI Diario Actual",
+                current_roi_desc: "Tu Tasa de Retorno Diaria",
+                pending_roi: "ROI Pendiente",
+                pending_roi_desc: "Disponible para Retiro",
+                withdraw_roi: "Retirar ROI",
+                invest_title: "Comenzar a Invertir",
+                invest_subtitle: "Deposita USDT y comienza a ganar rendimientos diarios con nuestro contrato inteligente de inversión seguro",
+                investment_amount: "Monto de Inversión",
+                amount_usdt: "Monto (USDT)",
+                upline_address: "Dirección del Patrocinador",
+                invest_now: "Invertir Ahora",
+                referral_title: "Programa de Referidos",
+                referral_subtitle: "Gana comisiones de 10 niveles de tu red de referidos con nuestro sistema por niveles",
+                your_referral_link: "Tu Enlace de Referido",
+                copy: "Copiar",
+                referral_levels: "Niveles de Referidos",
+                referral_rewards: "Recompensas de Referidos",
+                claim_bonus: "Reclamar Bono",
+                salary_title: "Salario Mensual",
+                salary_subtitle: "Gana salario mensual de 4 niveles con potencial de ganancia de hasta $30 por mes",
+                current_monthly_salary: "Salario Mensual Actual",
+                no_active_salary: "Sin nivel de salario activo",
+                faq_title: "Preguntas Frecuentes",
+                faq_subtitle: "Encuentra respuestas a preguntas comunes sobre nuestra plataforma de inversión",
+                security_title: "Seguridad",
+                security_subtitle: "Tus inversiones están aseguradas por contratos inteligentes verificados en Binance Smart Chain",
+                verified_contract: "Contrato Verificado",
+                verified_contract_desc: "Nuestro contrato inteligente está verificado en BscScan, garantizando transparencia y seguridad",
+                no_admin_withdrawals: "Sin Retiros de Administrador",
+                no_admin_withdrawals_desc: "Los fondos están asegurados en el contrato sin capacidad de retiro por parte del administrador",
+                transparent: "Transparente",
+                transparent_desc: "Todas las actividades pueden ser vistas y verificadas por cualquiera sin excepción",
+                view_on_bscscan: "Ver en BSCScan",
+                footer_text: "Maximiza tus rendimientos con nuestra plataforma de inversión segura y transparente: Gana ROI diario, comisiones por referidos y salarios mensuales",
+                investment_successful: "¡Inversión Exitosa!",
+                investment_successful_desc: "Tu inversión ha sido procesada exitosamente. Ahora puedes monitorear tus ganancias en el panel de control.",
+                open_dashboard: "Abrir Panel de Control",
+                referral_not_detected: "¡Referido no detectado!"
+            }
+            // Add other languages similarly...
+        };
 
         // DOM Elements
         const connectWalletBtn = document.getElementById('connectWallet');
@@ -949,15 +1131,14 @@
         const withdrawROIBtn = document.getElementById('withdrawROI');
         const copyLinkBtn = document.getElementById('copyLink');
         const claimReferralBtn = document.getElementById('claimReferral');
-        const claimSalaryBtn = document.getElementById('claimSalary');
         const openDashboardBtn = document.getElementById('openDashboard');
         const successModal = document.getElementById('successModal');
         const notification = document.getElementById('notification');
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
         const translateDropdown = document.getElementById('translateDropdown');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('.section');
+        const currentLangElement = document.getElementById('currentLang');
+        const uplineAddressInput = document.getElementById('uplineAddress');
 
         // Initialize the app
         document.addEventListener('DOMContentLoaded', function() {
@@ -966,6 +1147,8 @@
             generateReferralLevels();
             generateSalaryLevels();
             generateFAQ();
+            checkURLForReferral();
+            updateLanguage('en');
         });
 
         // Initialize the application
@@ -975,6 +1158,14 @@
                 web3 = new Web3(window.ethereum);
                 contract = new web3.eth.Contract(contractABI, contractAddress);
                 console.log('Web3 and contract initialized');
+                
+                // Check if wallet is already connected
+                if (window.ethereum.selectedAddress) {
+                    userAccount = window.ethereum.selectedAddress;
+                    updateWalletUI();
+                    loadContractData();
+                    loadUserData();
+                }
             } else {
                 showNotification('Please install MetaMask to use this dApp!', 'error');
                 console.error('Web3 not found');
@@ -987,9 +1178,11 @@
             connectWalletBtn.addEventListener('click', connectWallet);
             
             // Navigation
-            startInvestingBtn.addEventListener('click', () => showSection('invest'));
+            startInvestingBtn.addEventListener('click', () => {
+                document.getElementById('invest').scrollIntoView({ behavior: 'smooth' });
+            });
             openDashboardBtn.addEventListener('click', () => {
-                showSection('dashboard');
+                document.getElementById('dashboard').scrollIntoView({ behavior: 'smooth' });
                 successModal.style.display = 'none';
             });
             
@@ -1003,22 +1196,25 @@
             copyLinkBtn.addEventListener('click', copyReferralLink);
             claimReferralBtn.addEventListener('click', claimReferralBonus);
             
-            // Salary
-            claimSalaryBtn.addEventListener('click', claimMonthlySalary);
-            
             // Navigation menu
             hamburger.addEventListener('click', toggleNavMenu);
+            
+            // Close nav menu when clicking on a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            });
             
             // Dropdown menus
             translateDropdown.addEventListener('click', toggleTranslateDropdown);
             
-            // Navigation links
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const sectionId = this.getAttribute('data-section');
-                    showSection(sectionId);
-                    navMenu.classList.remove('active');
+            // Language selection
+            document.querySelectorAll('.dropdown-item[data-lang]').forEach(item => {
+                item.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    updateLanguage(lang);
+                    translateDropdown.classList.remove('active');
                 });
             });
             
@@ -1027,7 +1223,29 @@
                 if (!translateDropdown.contains(e.target)) {
                     translateDropdown.classList.remove('active');
                 }
+                if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                }
             });
+            
+            // Update upline address when wallet connects
+            if (window.ethereum) {
+                window.ethereum.on('accountsChanged', function(accounts) {
+                    if (accounts.length === 0) {
+                        // User disconnected their wallet
+                        userAccount = null;
+                        connectWalletBtn.style.display = 'block';
+                        connectedInfo.style.display = 'none';
+                        startInvestingBtn.style.display = 'none';
+                    } else {
+                        // User switched accounts
+                        userAccount = accounts[0];
+                        updateWalletUI();
+                        loadContractData();
+                        loadUserData();
+                    }
+                });
+            }
         }
 
         // Connect wallet function
@@ -1038,15 +1256,10 @@
                     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
                     userAccount = accounts[0];
                     
-                    // Update UI
-                    connectWalletBtn.style.display = 'none';
-                    connectedInfo.style.display = 'flex';
-                    startInvestingBtn.style.display = 'block';
-                    walletAddress.textContent = `${userAccount.substring(0, 6)}...${userAccount.substring(userAccount.length - 4)}`;
-                    
+                    updateWalletUI();
                     showNotification('Wallet connected successfully!', 'success');
                     
-                    // Load user data
+                    // Load contract and user data
                     loadContractData();
                     loadUserData();
                     
@@ -1057,6 +1270,17 @@
             } else {
                 showNotification('Please install MetaMask to use this dApp!', 'error');
             }
+        }
+
+        // Update wallet UI after connection
+        function updateWalletUI() {
+            connectWalletBtn.style.display = 'none';
+            connectedInfo.style.display = 'flex';
+            startInvestingBtn.style.display = 'block';
+            walletAddress.textContent = `${userAccount.substring(0, 6)}...${userAccount.substring(userAccount.length - 4)}`;
+            
+            // Update referral link
+            document.getElementById('referralLink').value = `${window.location.origin}${window.location.pathname}?ref=${userAccount}`;
         }
 
         // Load contract data
@@ -1093,15 +1317,18 @@
                 
                 document.getElementById('referralRewards').textContent = `$${(userInfo.userReferralBonus / 1e18).toFixed(2)}`;
                 
-                // Update referral link
-                document.getElementById('referralLink').value = `${window.location.origin}?ref=${userAccount}`;
+                // Update referral levels status
+                updateReferralLevelsStatus(userInfo.userDeposit);
                 
                 // Load salary info
                 const salaryInfo = await contract.methods.getCurrentSalaryInfo(userAccount).call();
                 document.getElementById('currentSalary').textContent = `$${(salaryInfo.salary / 1e18).toFixed(2)}`;
                 
                 const salaryLevel = await contract.methods.getSalaryLevelName(userAccount).call();
-                document.getElementById('salaryLevel').textContent = salaryLevel || 'No active salary level';
+                document.getElementById('salaryLevel').textContent = salaryLevel || translations[currentLanguage].no_active_salary;
+                
+                // Update salary levels status
+                updateSalaryLevelsStatus(userInfo.teamCount);
                 
             } catch (error) {
                 console.error('Error loading user data:', error);
@@ -1116,7 +1343,6 @@
             }
             
             const amount = document.getElementById('investAmount').value;
-            const upline = document.getElementById('uplineAddress').value;
             
             if (!amount || amount < 10) {
                 showNotification('Minimum investment is 10 USDT!', 'error');
@@ -1127,16 +1353,17 @@
                 // Convert amount to wei (assuming USDT has 18 decimals)
                 const amountWei = web3.utils.toWei(amount.toString(), 'ether');
                 
-                // For demo purposes, we'll simulate a successful transaction
+                // Get the upline address (from URL parameter or zero address)
+                const upline = referralAddress || '0x0000000000000000000000000000000000000000';
+                
+                // Call the contract deposit method
+                await contract.methods.deposit(amountWei, upline).send({ from: userAccount });
+                
                 showNotification('Investment successful!', 'success');
                 successModal.style.display = 'flex';
                 
-                // In a real implementation, you would call the contract method:
-                // await contract.methods.deposit(amountWei, upline || '0x0000000000000000000000000000000000000000').send({ from: userAccount });
-                
                 // Reset form
                 document.getElementById('investAmount').value = '';
-                document.getElementById('uplineAddress').value = '';
                 
                 // Reload user data
                 loadUserData();
@@ -1155,11 +1382,8 @@
             }
             
             try {
-                // For demo purposes, we'll simulate a successful withdrawal
+                await contract.methods.claimProfit().send({ from: userAccount });
                 showNotification('ROI withdrawn successfully!', 'success');
-                
-                // In a real implementation, you would call:
-                // await contract.methods.claimProfit().send({ from: userAccount });
                 
                 // Reload user data
                 loadUserData();
@@ -1178,40 +1402,14 @@
             }
             
             try {
-                // For demo purposes, we'll simulate a successful claim
+                await contract.methods.claimReferralBonus().send({ from: userAccount });
                 showNotification('Referral bonus claimed successfully!', 'success');
-                
-                // In a real implementation, you would call:
-                // await contract.methods.claimReferralBonus().send({ from: userAccount });
                 
                 // Reload user data
                 loadUserData();
                 
             } catch (error) {
                 console.error('Error claiming referral bonus:', error);
-                showNotification('Claim failed!', 'error');
-            }
-        }
-
-        // Claim monthly salary
-        async function claimMonthlySalary() {
-            if (!contract || !userAccount) {
-                showNotification('Please connect your wallet first!', 'error');
-                return;
-            }
-            
-            try {
-                // For demo purposes, we'll simulate a successful claim
-                showNotification('Monthly salary claimed successfully!', 'success');
-                
-                // In a real implementation, you would call:
-                // await contract.methods.claimMonthlySalary().send({ from: userAccount });
-                
-                // Reload user data
-                loadUserData();
-                
-            } catch (error) {
-                console.error('Error claiming monthly salary:', error);
                 showNotification('Claim failed!', 'error');
             }
         }
@@ -1246,21 +1444,23 @@
             translateDropdown.classList.toggle('active');
         }
 
-        // Show section
-        function showSection(sectionId) {
-            sections.forEach(section => {
-                section.classList.remove('active');
+        // Update language
+        function updateLanguage(lang) {
+            currentLanguage = lang;
+            currentLangElement.textContent = document.querySelector(`.dropdown-item[data-lang="${lang}"] span:last-child`).textContent;
+            
+            // Update all elements with data-translate attribute
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
             });
-            
-            document.getElementById(sectionId).classList.add('active');
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
         }
 
         // Generate referral levels
         function generateReferralLevels() {
-            const levelGrid = document.querySelector('#referral .level-grid');
+            const levelGrid = document.getElementById('referralLevels');
             const levels = [
                 { level: 1, percentage: '10%', requirement: 'Minimal deposit $50' },
                 { level: 2, percentage: '5%', requirement: 'Minimal deposit $150' },
@@ -1278,7 +1478,7 @@
             
             levels.forEach(level => {
                 const levelBox = document.createElement('div');
-                levelBox.className = 'level-box';
+                levelBox.className = 'level-box locked';
                 levelBox.innerHTML = `
                     <div class="level-name">Level ${level.level}</div>
                     <div class="level-percentage">${level.percentage}</div>
@@ -1288,21 +1488,39 @@
             });
         }
 
+        // Update referral levels status based on user deposit
+        function updateReferralLevelsStatus(userDeposit) {
+            const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
+            const depositAmount = userDeposit / 1e18; // Convert from wei
+            
+            const levelRequirements = [50, 150, 250, 350, 450, 550, 650, 750, 950, 1000];
+            
+            levelBoxes.forEach((box, index) => {
+                if (depositAmount >= levelRequirements[index]) {
+                    box.classList.remove('locked');
+                    box.classList.add('unlocked');
+                } else {
+                    box.classList.remove('unlocked');
+                    box.classList.add('locked');
+                }
+            });
+        }
+
         // Generate salary levels
         function generateSalaryLevels() {
-            const levelGrid = document.querySelector('#salary .level-grid');
+            const levelGrid = document.getElementById('salaryLevels');
             const levels = [
-                { name: 'Pionir', team: '100 orang', salary: '$5', requirement: 'Build team 100 member' },
-                { name: 'Visioner', team: '350 orang', salary: '$10', requirement: 'Build team 350 member' },
-                { name: 'Arsitek', team: '750 orang', salary: '$20', requirement: 'Build team 750 member' },
-                { name: 'Maverick', team: '1000 orang', salary: '$30', requirement: 'Build team 1000 member' }
+                { name: 'Pionir', team: '100 orang', salary: '$5', requirement: 'Build team 100 member', minTeam: 100 },
+                { name: 'Visioner', team: '350 orang', salary: '$10', requirement: 'Build team 350 member', minTeam: 350 },
+                { name: 'Arsitek', team: '750 orang', salary: '$20', requirement: 'Build team 750 member', minTeam: 750 },
+                { name: 'Maverick', team: '1000 orang', salary: '$30', requirement: 'Build team 1000 member', minTeam: 1000 }
             ];
             
             levelGrid.innerHTML = '';
             
             levels.forEach(level => {
                 const levelBox = document.createElement('div');
-                levelBox.className = 'level-box';
+                levelBox.className = 'level-box locked';
                 levelBox.innerHTML = `
                     <div class="level-name">${level.name}</div>
                     <div class="level-percentage">${level.salary}</div>
@@ -1313,9 +1531,27 @@
             });
         }
 
+        // Update salary levels status based on team count
+        function updateSalaryLevelsStatus(teamCount) {
+            const levelBoxes = document.querySelectorAll('#salaryLevels .level-box');
+            const teamCountValue = parseInt(teamCount);
+            
+            const levelRequirements = [100, 350, 750, 1000];
+            
+            levelBoxes.forEach((box, index) => {
+                if (teamCountValue >= levelRequirements[index]) {
+                    box.classList.remove('locked');
+                    box.classList.add('unlocked');
+                } else {
+                    box.classList.remove('unlocked');
+                    box.classList.add('locked');
+                }
+            });
+        }
+
         // Generate FAQ
         function generateFAQ() {
-            const faqContainer = document.querySelector('.faq-container');
+            const faqContainer = document.getElementById('faqContainer');
             const faqs = [
                 {
                     question: 'What is the minimum deposit?',
@@ -1356,6 +1592,20 @@
                 
                 faqContainer.appendChild(faqItem);
             });
+        }
+
+        // Check URL for referral parameter
+        function checkURLForReferral() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const refAddress = urlParams.get('ref');
+            
+            if (refAddress && web3.utils.isAddress(refAddress)) {
+                referralAddress = refAddress;
+                uplineAddressInput.value = refAddress;
+                showNotification('Referral address detected from URL!', 'success');
+            } else {
+                uplineAddressInput.value = translations[currentLanguage].referral_not_detected;
+            }
         }
     </script>
 </body>
