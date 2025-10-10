@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VelionAscend - Smart Investment Platform</title>
+    <title>BNBVelion - Smart Investment Platform</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -345,6 +345,11 @@
             align-items: center;
         }
 
+        /* PERBAIKAN TAMBAHAN: Memastikan semua tombol memiliki alignment yang sama */
+        .btn, .btn-small {
+            vertical-align: middle;
+        }
+
         /* Wallet Connection */
         .wallet-section {
             display: flex;
@@ -642,8 +647,8 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="https://files.catbox.moe/itr11l.png" alt="VelionAscend Logo">
-                    <div class="logo-text">VelionAscend</div>
+                    <img src="https://files.catbox.moe/itr11l.png" alt="BNBVelion Logo">
+                    <div class="logo-text">BNBVelion</div>
                 </div>
                 <div class="nav-right">
                     <div class="dropdown" id="translateDropdown">
@@ -672,6 +677,10 @@
                             <div class="dropdown-item" data-lang="fr">
                                 <span>🇫🇷</span>
                                 <span>Français</span>
+                            </div>
+                            <div class="dropdown-item" data-lang="id">
+                                <span>🇮🇩</span>
+                                <span>Indonesia</span>
                             </div>
                         </div>
                     </div>
@@ -704,15 +713,15 @@
     <section id="home">
         <div class="container">
             <div class="section-title">
-                <h1 data-translate="home_title">Smart Investment with VelionAscend</h1>
-                <p data-translate="home_subtitle">Maximize your returns with our secure and transparent investment platform – Earn daily ROI, referral commissions, and monthly salaries</p>
+                <h1 data-translate="home_title">Smart Investment with BNBVelion</h1>
+                <p data-translate="home_subtitle">Maximize your returns with our secure BNB investment platform – Earn daily ROI, referral commissions, and monthly salaries</p>
             </div>
             
             <div class="box-grid">
                 <div class="box">
                     <i class="fas fa-chart-line"></i>
                     <h3 data-translate="tvl">TVL</h3>
-                    <div class="box-value" id="tvl">$0</div>
+                    <div class="box-value" id="tvl">0 BNB</div>
                     <p data-translate="tvl_desc">Total Value Locked</p>
                 </div>
                 <div class="box">
@@ -724,13 +733,13 @@
                 <div class="box">
                     <i class="fas fa-wallet"></i>
                     <h3 data-translate="total_deposit">Total Deposit</h3>
-                    <div class="box-value" id="totalDeposit">$0</div>
+                    <div class="box-value" id="totalDeposit">0 BNB</div>
                     <p data-translate="total_deposit_desc">Total Funds Deposited</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-money-bill-wave"></i>
                     <h3 data-translate="total_paid">Total Paid Out</h3>
-                    <div class="box-value" id="totalPaid">$0</div>
+                    <div class="box-value" id="totalPaid">0 BNB</div>
                     <p data-translate="total_paid_desc">Total Rewards Distributed</p>
                 </div>
             </div>
@@ -761,8 +770,8 @@
     <section id="why-choose">
         <div class="container">
             <div class="section-title">
-                <h1 data-translate="why_choose_title">Why Choose VelionAscend?</h1>
-                <p data-translate="why_choose_subtitle">Our platform offers multiple ways to grow your investment with security and transparency</p>
+                <h1 data-translate="why_choose_title">Why Choose BNBVelion?</h1>
+                <p data-translate="why_choose_subtitle">Our platform offers multiple ways to grow your BNB investment with security and transparency</p>
             </div>
             
             <div class="box-grid">
@@ -774,12 +783,12 @@
                 <div class="box">
                     <i class="fas fa-user-friends"></i>
                     <h3 data-translate="referral_program">Referral Program</h3>
-                    <p data-translate="referral_program_desc">Earn commissions from your 10 levels of referral network with profits up to 40%</p>
+                    <p data-translate="referral_program_desc">Earn commissions from 6 levels of your referral network with total bonus up to 40%</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-money-check-alt"></i>
                     <h3 data-translate="monthly_salary">Monthly Salary</h3>
-                    <p data-translate="monthly_salary_desc">Earn monthly salary from 4 levels with earning potential up to $30 per month</p>
+                    <p data-translate="monthly_salary_desc">Earn monthly salary from 4 levels with earning potential up to 0.025 BNB per month</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-shield-alt"></i>
@@ -802,7 +811,7 @@
                 <div class="box">
                     <i class="fas fa-coins"></i>
                     <h3 data-translate="active_deposit">Active Deposit</h3>
-                    <div class="box-value" id="userDeposit">$0</div>
+                    <div class="box-value" id="userDeposit">0 BNB</div>
                     <p data-translate="active_deposit_desc">Your Current Investment</p>
                 </div>
                 <div class="box">
@@ -814,7 +823,7 @@
                 <div class="box">
                     <i class="fas fa-hand-holding-usd"></i>
                     <h3 data-translate="pending_roi">Pending ROI</h3>
-                    <div class="box-value" id="pendingROI">$0</div>
+                    <div class="box-value" id="pendingROI">0 BNB</div>
                     <p data-translate="pending_roi_desc">Available for Withdrawal</p>
                 </div>
             </div>
@@ -833,18 +842,18 @@
         <div class="container">
             <div class="section-title">
                 <h1 data-translate="invest_title">Start Investing</h1>
-                <p data-translate="invest_subtitle">Deposit USDT and start earning daily returns with our secure investment smart contract</p>
+                <p data-translate="invest_subtitle">Deposit BNB and start earning daily returns with our secure investment smart contract</p>
             </div>
             
             <div class="box" style="max-width: 500px; margin: 0 auto;">
                 <h3 style="text-align: center; margin-bottom: 20px;" data-translate="investment_amount">Investment Amount</h3>
                 <div class="form-group">
-                    <label for="investAmount" data-translate="amount_usdt">Amount (USDT)</label>
-                    <input type="number" id="investAmount" class="form-control" placeholder="Minimum 10 USDT" min="10">
+                    <label for="investAmount" data-translate="amount_bnb">Amount (BNB)</label>
+                    <input type="number" id="investAmount" class="form-control" placeholder="Minimum 0.01 BNB" min="0.01" step="0.01">
                 </div>
                 <div class="form-group">
-                    <label for="uplineAddress" data-translate="upline_address">Upline Address</label>
-                    <input type="text" id="uplineAddress" class="form-control" readonly>
+                    <label for="referrerAddress" data-translate="referrer_address">Referrer Address</label>
+                    <input type="text" id="referrerAddress" class="form-control" readonly>
                 </div>
                 <button class="btn btn-small" id="investNow" style="width: 100%;">
                     <i class="fas fa-rocket"></i>
@@ -859,7 +868,7 @@
         <div class="container">
             <div class="section-title">
                 <h1 data-translate="referral_title">Referral Program</h1>
-                <p data-translate="referral_subtitle">Earn commissions from 10 levels of your referral network with our tier-based system</p>
+                <p data-translate="referral_subtitle">Earn commissions from 6 levels of your referral network with our tier-based system</p>
             </div>
             
             <div class="box" style="margin-bottom: 40px;">
@@ -880,7 +889,7 @@
             
             <div class="box" style="max-width: 400px; margin: 40px auto 0;">
                 <h3 style="text-align: center; margin-bottom: 15px;" data-translate="referral_rewards">Referral Rewards</h3>
-                <div class="box-value" id="referralRewards">$0</div>
+                <div class="box-value" id="referralRewards">0 BNB</div>
                 <div class="btn-center">
                     <button class="btn btn-small" id="claimReferral">
                         <i class="fas fa-gift"></i>
@@ -896,7 +905,7 @@
         <div class="container">
             <div class="section-title">
                 <h1 data-translate="salary_title">Monthly Salary</h1>
-                <p data-translate="salary_subtitle">Earn monthly salary from 4 levels with earning potential up to $30 per month</p>
+                <p data-translate="salary_subtitle">Earn monthly salary from 4 levels with earning potential up to 0.025 BNB per month</p>
             </div>
             
             <div class="level-grid" id="salaryLevels">
@@ -905,8 +914,14 @@
             
             <div class="box" style="max-width: 500px; margin: 40px auto 0;">
                 <h3 style="text-align: center; margin-bottom: 15px;" data-translate="current_monthly_salary">Current Monthly Salary</h3>
-                <div class="box-value" id="currentSalary">$0</div>
+                <div class="box-value" id="currentSalary">0 BNB</div>
                 <p style="text-align: center; margin-bottom: 20px;" id="salaryLevel" data-translate="no_active_salary">No active salary level</p>
+                <div class="btn-center">
+                    <button class="btn btn-small" id="claimSalary">
+                        <i class="fas fa-calendar-check"></i>
+                        <span data-translate="claim_salary">Claim Salary</span>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -952,7 +967,7 @@
             </div>
             
             <div class="btn-center">
-                <a href="https://bscscan.com/address/0xb206d12F8Fe3C00Ddb1B21c57fa6b6080f9690BD#code" target="_blank" class="btn btn-small">
+                <a href="https://testnet.bscscan.com/address/0x785408c19C728fCEA2420516b1F3Ec92DA26d0ad#code" target="_blank" class="btn btn-small">
                     <i class="fas fa-external-link-alt"></i>
                     <span data-translate="view_on_bscscan">View on BSCScan</span>
                 </a>
@@ -964,9 +979,9 @@
     <footer>
         <div class="container">
             <div class="footer-logo">
-                <img src="https://files.catbox.moe/itr11l.png" alt="VelionAscend Logo">
+                <img src="https://files.catbox.moe/itr11l.png" alt="BNBVelion Logo">
             </div>
-            <p class="footer-text" data-translate="footer_text">Maximize your returns with our secure and transparent investment platform – Earn daily ROI, referral commissions, and monthly salaries</p>
+            <p class="footer-text" data-translate="footer_text">Maximize your returns with our secure and transparent BNB investment platform – Earn daily ROI, referral commissions, and monthly salaries</p>
             
             <div class="social-links">
                 <a href="#" class="social-link">
@@ -984,7 +999,7 @@
             </div>
             
             <div class="copyright">
-                © 2025 VelionAscend. All rights reserved.
+                © 2025 BNBVelion. All rights reserved.
             </div>
         </div>
     </footer>
@@ -1005,8 +1020,8 @@
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script>
         // Contract details
-        const contractAddress = '0xb206d12F8Fe3C00Ddb1B21c57fa6b6080f9690BD';
-        const contractABI = [{"inputs":[{"internalType":"address","name":"_usdt","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":true,"internalType":"address","name":"upline","type":"address"}],"name":"Deposit","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"ownerFee","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"managerFee","type":"uint256"}],"name":"FeesCollected","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"string","name":"level","type":"string"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"MonthlySalary","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"ProfitClaimed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"newROI","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"tvl","type":"uint256"}],"name":"ROIUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"referrer","type":"address"},{"indexed":true,"internalType":"address","name":"referral","type":"address"},{"indexed":false,"internalType":"uint256","name":"level","type":"uint256"}],"name":"ReferralAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"referrer","type":"address"},{"indexed":true,"internalType":"address","name":"referral","type":"address"},{"indexed":false,"internalType":"uint256","name":"level","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"ReferralBonus","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"fee","type":"uint256"}],"name":"Withdraw","type":"event"},{"inputs":[],"name":"BASE_ROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"DEPOSIT_FEE_PERCENT","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MANAGER","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_ROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_ROI_TVL","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MIN_DEPOSIT","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"OWNER","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"ROI_INCREMENT","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"TVL_STEP","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"WITHDRAW_FEE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_userAddress","type":"address"}],"name":"calculateProfit","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_userAddress","type":"address"}],"name":"checkMonthlySalary","outputs":[{"internalType":"uint256","name":"salary","type":"uint256"},{"internalType":"string","name":"levelName","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"claimMonthlySalary","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"claimProfit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"claimReferralBonus","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"address","name":"_upline","type":"address"}],"name":"deposit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"getContractInfo","outputs":[{"internalType":"uint256","name":"tvl","type":"uint256"},{"internalType":"uint256","name":"currentROI","type":"uint256"},{"internalType":"uint256","name":"totalUsersCount","type":"uint256"},{"internalType":"uint256","name":"contractBalance","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getCurrentROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_userAddress","type":"address"}],"name":"getCurrentSalaryInfo","outputs":[{"internalType":"uint256","name":"salary","type":"uint256"},{"internalType":"uint256","name":"daysUntilNext","type":"uint256"},{"internalType":"bool","name":"canClaim","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getROIInfo","outputs":[{"internalType":"uint256","name":"currentROI","type":"uint256"},{"internalType":"uint256","name":"baseROI","type":"uint256"},{"internalType":"uint256","name":"maxROI","type":"uint256"},{"internalType":"uint256","name":"tvlStep","type":"uint256"},{"internalType":"uint256","name":"currentTVL","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_userAddress","type":"address"},{"internalType":"uint256","name":"_level","type":"uint256"}],"name":"getReferralsByLevel","outputs":[{"internalType":"address[]","name":"","type":"address[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_userAddress","type":"address"}],"name":"getSalaryLevelName","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_userAddress","type":"address"}],"name":"getUserInfo","outputs":[{"internalType":"uint256","name":"userDeposit","type":"uint256"},{"internalType":"uint256","name":"userTotalDeposited","type":"uint256"},{"internalType":"uint256","name":"userProfit","type":"uint256"},{"internalType":"uint256","name":"userReferralBonus","type":"uint256"},{"internalType":"uint256","name":"userDirectReferrals","type":"uint256"},{"internalType":"uint256","name":"userTeamCount","type":"uint256"},{"internalType":"uint256","name":"userTotalWithdrawn","type":"uint256"},{"internalType":"uint256","name":"userTotalReferralBonus","type":"uint256"},{"internalType":"address","name":"userUpline","type":"address"},{"internalType":"uint256","name":"userJoinTime","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"isSpecialWallet","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_userAddress","type":"address"}],"name":"isUserSpecial","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastFeeCollection","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastROIUpdate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"leaders","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"levelRequirements","outputs":[{"internalType":"uint256","name":"minDeposit","type":"uint256"},{"internalType":"uint256","name":"commissionRate","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"referralCountByLevel","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"referralsByLevel","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"roiHistory","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"salaryLevels","outputs":[{"internalType":"uint256","name":"minTeamMembers","type":"uint256"},{"internalType":"uint256","name":"salaryAmount","type":"uint256"},{"internalType":"string","name":"levelName","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalTVL","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalUsers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"usdt","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"users","outputs":[{"internalType":"address","name":"upline","type":"address"},{"internalType":"uint256","name":"deposit","type":"uint256"},{"internalType":"uint256","name":"totalDeposited","type":"uint256"},{"internalType":"uint256","name":"profit","type":"uint256"},{"internalType":"uint256","name":"lastWithdraw","type":"uint256"},{"internalType":"uint256","name":"lastSalaryClaim","type":"uint256"},{"internalType":"uint256","name":"referralBonus","type":"uint256"},{"internalType":"uint256","name":"totalWithdrawn","type":"uint256"},{"internalType":"uint256","name":"totalReferralBonus","type":"uint256"},{"internalType":"uint256","name":"directReferrals","type":"uint256"},{"internalType":"uint256","name":"teamCount","type":"uint256"},{"internalType":"uint256","name":"joinTime","type":"uint256"},{"internalType":"bool","name":"exists","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"}],"name":"withdraw","outputs":[],"stateMutability":"nonpayable","type":"function"}];
+        const contractAddress = '0x785408c19C728fCEA2420516b1F3Ec92DA26d0ad';
+        const contractABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":true,"internalType":"address","name":"referrer","type":"address"},{"indexed":false,"internalType":"uint256","name":"fee","type":"uint256"}],"name":"Deposited","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"DirectBNBReceived","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"ROIClaimed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"newROI","type":"uint256"}],"name":"ROIUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"ReferralBonusClaimed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"referrer","type":"address"},{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"level","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"ReferralBonusDistributed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"rank","type":"uint256"},{"indexed":false,"internalType":"string","name":"rankName","type":"string"}],"name":"SalaryPaid","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":true,"internalType":"address","name":"referrer","type":"address"}],"name":"UserRegistered","type":"event"},{"stateMutability":"payable","type":"fallback"},{"inputs":[],"name":"FEE_DIVIDER","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"FEE_PERCENTAGE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"LEADER1","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"LEADER2","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"LEADER3","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_ROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_TVL_FOR_MAX_ROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MIN_DEPOSIT","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MIN_ROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"ROI_INCREMENT","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"TVL_STEP","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"claimROI","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"claimReferralBonus","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"claimSalary","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"currentROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_referrer","type":"address"}],"name":"deposit","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"getContractInfo","outputs":[{"internalType":"uint256","name":"totalTVLAmount","type":"uint256"},{"internalType":"uint256","name":"currentROIPercentage","type":"uint256"},{"internalType":"uint256","name":"totalUsersCount","type":"uint256"},{"internalType":"uint256","name":"totalDepositsAmount","type":"uint256"},{"internalType":"uint256","name":"contractBalance","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"getPendingSalary","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"},{"internalType":"uint256","name":"_level","type":"uint256"}],"name":"getReferralCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"getUserInfo","outputs":[{"internalType":"uint256","name":"totalDeposit","type":"uint256"},{"internalType":"uint256","name":"pendingROI","type":"uint256"},{"internalType":"uint256","name":"referralBonus","type":"uint256"},{"internalType":"uint256","name":"teamCount","type":"uint256"},{"internalType":"uint256","name":"salaryRank","type":"uint256"},{"internalType":"uint256","name":"daysUntilNextSalary","type":"uint256"},{"internalType":"address","name":"referrer","type":"address"},{"internalType":"bool","name":"isUserActive","type":"bool"},{"internalType":"uint256","name":"registrationTime","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"getUserPendingROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"hasDeposited","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"isAddressSpecialUser","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"isSpecialUser","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"manager","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"referralLevels","outputs":[{"internalType":"uint256","name":"percentage","type":"uint256"},{"internalType":"uint256","name":"minDeposit","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"salaryRanks","outputs":[{"internalType":"uint256","name":"monthlySalary","type":"uint256"},{"internalType":"uint256","name":"minTeamMembers","type":"uint256"},{"internalType":"string","name":"rankName","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalDeposits","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalTVL","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalUsers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"userReferrals","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"users","outputs":[{"internalType":"uint256","name":"totalDeposit","type":"uint256"},{"internalType":"uint256","name":"lastROIUpdate","type":"uint256"},{"internalType":"uint256","name":"accumulatedROI","type":"uint256"},{"internalType":"address","name":"referrer","type":"address"},{"internalType":"uint256","name":"referralBonus","type":"uint256"},{"internalType":"uint256","name":"totalWithdrawn","type":"uint256"},{"internalType":"uint256","name":"teamCount","type":"uint256"},{"internalType":"uint256","name":"lastSalaryClaim","type":"uint256"},{"internalType":"uint256","name":"currentSalaryRank","type":"uint256"},{"internalType":"bool","name":"isActive","type":"bool"},{"internalType":"uint256","name":"registrationTime","type":"uint256"}],"stateMutability":"view","type":"function"},{"stateMutability":"payable","type":"receive"}];
 
         // Global variables
         let web3;
@@ -1015,10 +1030,9 @@
         let currentLanguage = 'en';
         let referralAddress = null;
 
-        // Language translations - PERBAIKAN: Lengkap untuk semua bagian website
+        // Language translations
         const translations = {
             en: {
-                // Navigation
                 home: "Home",
                 why_choose: "Why Choose",
                 dashboard: "Dashboard",
@@ -1027,10 +1041,8 @@
                 salary: "Salary",
                 faq: "FAQ",
                 security: "Security",
-                
-                // Home Section
-                home_title: "Smart Investment with VelionAscend",
-                home_subtitle: "Maximize your returns with our secure and transparent investment platform – Earn daily ROI, referral commissions, and monthly salaries",
+                home_title: "Smart Investment with BNBVelion",
+                home_subtitle: "Maximize your returns with our secure BNB investment platform – Earn daily ROI, referral commissions, and monthly salaries",
                 tvl: "TVL",
                 tvl_desc: "Total Value Locked",
                 total_users: "Total Users",
@@ -1042,20 +1054,16 @@
                 connect_wallet: "Connect Wallet",
                 connected: "Connected",
                 start_investing: "Start Investing",
-                
-                // Why Choose Section
-                why_choose_title: "Why Choose VelionAscend?",
-                why_choose_subtitle: "Our platform offers multiple ways to grow your investment with security and transparency",
+                why_choose_title: "Why Choose BNBVelion?",
+                why_choose_subtitle: "Our platform offers multiple ways to grow your BNB investment with security and transparency",
                 daily_roi: "Daily ROI",
                 daily_roi_desc: "Earn between 0.5% to 2.5% daily return on your investment based on TVL growth",
                 referral_program: "Referral Program",
-                referral_program_desc: "Earn commissions from your 10 levels of referral network with profits up to 40%",
+                referral_program_desc: "Earn commissions from 6 levels of your referral network with total bonus up to 40%",
                 monthly_salary: "Monthly Salary",
-                monthly_salary_desc: "Earn monthly salary from 4 levels with earning potential up to $30 per month",
+                monthly_salary_desc: "Earn monthly salary from 4 levels with earning potential up to 0.025 BNB per month",
                 secure_transparent: "Secure & Transparent",
                 secure_transparent_desc: "Our smart contract is verified on BscScan with no admin withdrawal capabilities",
-                
-                // Dashboard Section
                 dashboard_title: "Your Dashboard",
                 dashboard_subtitle: "Monitor your investments, earnings, and referral network in real-time",
                 active_deposit: "Active Deposit",
@@ -1065,75 +1073,26 @@
                 pending_roi: "Pending ROI",
                 pending_roi_desc: "Available for Withdrawal",
                 withdraw_roi: "Withdraw ROI",
-                
-                // Invest Section
                 invest_title: "Start Investing",
-                invest_subtitle: "Deposit USDT and start earning daily returns with our secure investment smart contract",
+                invest_subtitle: "Deposit BNB and start earning daily returns with our secure investment smart contract",
                 investment_amount: "Investment Amount",
-                amount_usdt: "Amount (USDT)",
-                upline_address: "Upline Address",
+                amount_bnb: "Amount (BNB)",
+                referrer_address: "Referrer Address",
                 invest_now: "Invest Now",
-                
-                // Referral Section
                 referral_title: "Referral Program",
-                referral_subtitle: "Earn commissions from 10 levels of your referral network with our tier-based system",
+                referral_subtitle: "Earn commissions from 6 levels of your referral network with our tier-based system",
                 your_referral_link: "Your Referral Link",
                 copy: "Copy",
                 referral_levels: "Referral Levels",
                 referral_rewards: "Referral Rewards",
                 claim_bonus: "Claim Bonus",
-                referral_level_1: "Level 1",
-                referral_level_2: "Level 2",
-                referral_level_3: "Level 3",
-                referral_level_4: "Level 4",
-                referral_level_5: "Level 5",
-                referral_level_6: "Level 6",
-                referral_level_7: "Level 7",
-                referral_level_8: "Level 8",
-                referral_level_9: "Level 9",
-                referral_level_10: "Level 10",
-                referral_requirement_1: "Minimal deposit $50",
-                referral_requirement_2: "Minimal deposit $150",
-                referral_requirement_3: "Minimal deposit $250",
-                referral_requirement_4: "Minimal deposit $350",
-                referral_requirement_5: "Minimal deposit $450",
-                referral_requirement_6: "Minimal deposit $550",
-                referral_requirement_7: "Minimal deposit $650",
-                referral_requirement_8: "Minimal deposit $750",
-                referral_requirement_9: "Minimal deposit $950",
-                referral_requirement_10: "Minimal deposit $1000",
-                
-                // Salary Section
                 salary_title: "Monthly Salary",
-                salary_subtitle: "Earn monthly salary from 4 levels with earning potential up to $30 per month",
+                salary_subtitle: "Earn monthly salary from 4 levels with earning potential up to 0.025 BNB per month",
                 current_monthly_salary: "Current Monthly Salary",
                 no_active_salary: "No active salary level",
-                salary_level_1: "Pionir",
-                salary_level_2: "Visioner",
-                salary_level_3: "Arsitek",
-                salary_level_4: "Maverick",
-                salary_team_1: "100 people",
-                salary_team_2: "350 people",
-                salary_team_3: "750 people",
-                salary_team_4: "1000 people",
-                salary_requirement_1: "Build team 100 member",
-                salary_requirement_2: "Build team 350 member",
-                salary_requirement_3: "Build team 750 member",
-                salary_requirement_4: "Build team 1000 member",
-                
-                // FAQ Section
+                claim_salary: "Claim Salary",
                 faq_title: "Frequently Asked Questions",
                 faq_subtitle: "Find answers to common questions about our investment platform",
-                faq_question_1: "What is the minimum deposit?",
-                faq_answer_1: "The minimum deposit is 10 USDT to start earning with VelionAscend",
-                faq_question_2: "How does the ROI system work?",
-                faq_answer_2: "ROI ranges from 0.5% to 2.5% daily based on the total TVL. The more TVL grows, the higher the ROI percentage",
-                faq_question_3: "How do referral commissions work?",
-                faq_answer_3: "You earn commissions from 10 levels of your referral network, with a potential bonus of up to 40%",
-                faq_question_4: "How can I qualify for monthly salary?",
-                faq_answer_4: "Monthly salary levels require the number of active teams at each level",
-                
-                // Security Section
                 security_title: "Security",
                 security_subtitle: "Your investments are secured by verified smart contracts on the Binance Smart Chain",
                 verified_contract: "Verified Contract",
@@ -1143,159 +1102,13 @@
                 transparent: "Transparent",
                 transparent_desc: "All activities can be seen and verified by anyone without exception",
                 view_on_bscscan: "View on BSCScan",
-                
-                // Footer
-                footer_text: "Maximize your returns with our secure and transparent investment platform – Earn daily ROI, referral commissions, and monthly salaries",
-                
-                // Modal and Notifications
+                footer_text: "Maximize your returns with our secure and transparent BNB investment platform – Earn daily ROI, referral commissions, and monthly salaries",
                 investment_successful: "Investment Successful!",
                 investment_successful_desc: "Your investment has been processed successfully. You can now monitor your earnings in the dashboard.",
                 open_dashboard: "Open Dashboard",
                 referral_not_detected: "Referral not detected!",
-                
-                // Placeholders
-                min_investment: "Minimum 10 USDT"
-            },
-            es: {
-                // Navigation
-                home: "Inicio",
-                why_choose: "Por Qué Elegir",
-                dashboard: "Panel",
-                invest: "Invertir",
-                referral: "Referidos",
-                salary: "Salario",
-                faq: "Preguntas",
-                security: "Seguridad",
-                
-                // Home Section
-                home_title: "Inversión Inteligente con VelionAscend",
-                home_subtitle: "Maximiza tus rendimientos con nuestra plataforma de inversión segura y transparente: Gana ROI diario, comisiones por referidos y salarios mensuales",
-                tvl: "TVL",
-                tvl_desc: "Valor Total Bloqueado",
-                total_users: "Usuarios Totales",
-                total_users_desc: "Inversores Activos",
-                total_deposit: "Depósito Total",
-                total_deposit_desc: "Fondos Totales Depositados",
-                total_paid: "Total Pagado",
-                total_paid_desc: "Recompensas Totales Distribuidas",
-                connect_wallet: "Conectar Cartera",
-                connected: "Conectado",
-                start_investing: "Comenzar a Invertir",
-                
-                // Why Choose Section
-                why_choose_title: "¿Por Qué Elegir VelionAscend?",
-                why_choose_subtitle: "Nuestra plataforma ofrece múltiples formas de hacer crecer tu inversión con seguridad y transparencia",
-                daily_roi: "ROI Diario",
-                daily_roi_desc: "Gana entre 0.5% y 2.5% de retorno diario en tu inversión basado en el crecimiento del TVL",
-                referral_program: "Programa de Referidos",
-                referral_program_desc: "Gana comisiones de tus 10 niveles de red de referidos con ganancias de hasta 40%",
-                monthly_salary: "Salario Mensual",
-                monthly_salary_desc: "Gana salario mensual de 4 niveles con potencial de ganancia de hasta $30 por mes",
-                secure_transparent: "Seguro y Transparente",
-                secure_transparent_desc: "Nuestro contrato inteligente está verificado en BscScan sin capacidad de retiro de administrador",
-                
-                // Dashboard Section
-                dashboard_title: "Tu Panel de Control",
-                dashboard_subtitle: "Monitorea tus inversiones, ganancias y red de referidos en tiempo real",
-                active_deposit: "Depósito Activo",
-                active_deposit_desc: "Tu Inversión Actual",
-                current_roi: "ROI Diario Actual",
-                current_roi_desc: "Tu Tasa de Retorno Diaria",
-                pending_roi: "ROI Pendiente",
-                pending_roi_desc: "Disponible para Retiro",
-                withdraw_roi: "Retirar ROI",
-                
-                // Invest Section
-                invest_title: "Comenzar a Invertir",
-                invest_subtitle: "Deposita USDT y comienza a ganar rendimientos diarios con nuestro contrato inteligente de inversión seguro",
-                investment_amount: "Monto de Inversión",
-                amount_usdt: "Monto (USDT)",
-                upline_address: "Dirección del Patrocinador",
-                invest_now: "Invertir Ahora",
-                
-                // Referral Section
-                referral_title: "Programa de Referidos",
-                referral_subtitle: "Gana comisiones de 10 niveles de tu red de referidos con nuestro sistema por niveles",
-                your_referral_link: "Tu Enlace de Referido",
-                copy: "Copiar",
-                referral_levels: "Niveles de Referidos",
-                referral_rewards: "Recompensas de Referidos",
-                claim_bonus: "Reclamar Bono",
-                referral_level_1: "Nivel 1",
-                referral_level_2: "Nivel 2",
-                referral_level_3: "Nivel 3",
-                referral_level_4: "Nivel 4",
-                referral_level_5: "Nivel 5",
-                referral_level_6: "Nivel 6",
-                referral_level_7: "Nivel 7",
-                referral_level_8: "Nivel 8",
-                referral_level_9: "Nivel 9",
-                referral_level_10: "Nivel 10",
-                referral_requirement_1: "Depósito mínimo $50",
-                referral_requirement_2: "Depósito mínimo $150",
-                referral_requirement_3: "Depósito mínimo $250",
-                referral_requirement_4: "Depósito mínimo $350",
-                referral_requirement_5: "Depósito mínimo $450",
-                referral_requirement_6: "Depósito mínimo $550",
-                referral_requirement_7: "Depósito mínimo $650",
-                referral_requirement_8: "Depósito mínimo $750",
-                referral_requirement_9: "Depósito mínimo $950",
-                referral_requirement_10: "Depósito mínimo $1000",
-                
-                // Salary Section
-                salary_title: "Salario Mensual",
-                salary_subtitle: "Gana salario mensual de 4 niveles con potencial de ganancia de hasta $30 por mes",
-                current_monthly_salary: "Salario Mensual Actual",
-                no_active_salary: "Sin nivel de salario activo",
-                salary_level_1: "Pionero",
-                salary_level_2: "Visionario",
-                salary_level_3: "Arquitecto",
-                salary_level_4: "Maverick",
-                salary_team_1: "100 personas",
-                salary_team_2: "350 personas",
-                salary_team_3: "750 personas",
-                salary_team_4: "1000 personas",
-                salary_requirement_1: "Construye equipo de 100 miembros",
-                salary_requirement_2: "Construye equipo de 350 miembros",
-                salary_requirement_3: "Construye equipo de 750 miembros",
-                salary_requirement_4: "Construye equipo de 1000 miembros",
-                
-                // FAQ Section
-                faq_title: "Preguntas Frecuentes",
-                faq_subtitle: "Encuentra respuestas a preguntas comunes sobre nuestra plataforma de inversión",
-                faq_question_1: "¿Cuál es el depósito mínimo?",
-                faq_answer_1: "El depósito mínimo es de 10 USDT para comenzar a ganar con VelionAscend",
-                faq_question_2: "¿Cómo funciona el sistema de ROI?",
-                faq_answer_2: "El ROI varía entre 0.5% y 2.5% diario según el TVL total. Cuanto más crece el TVL, mayor es el porcentaje de ROI",
-                faq_question_3: "¿Cómo funcionan las comisiones por referidos?",
-                faq_answer_3: "Ganas comisiones de 10 niveles de tu red de referidos, con un bono potencial de hasta 40%",
-                faq_question_4: "¿Cómo puedo calificar para el salario mensual?",
-                faq_answer_4: "Los niveles de salario mensual requieren el número de equipos activos en cada nivel",
-                
-                // Security Section
-                security_title: "Seguridad",
-                security_subtitle: "Tus inversiones están aseguradas por contratos inteligentes verificados en Binance Smart Chain",
-                verified_contract: "Contrato Verificado",
-                verified_contract_desc: "Nuestro contrato inteligente está verificado en BscScan, garantizando transparencia y seguridad",
-                no_admin_withdrawals: "Sin Retiros de Administrador",
-                no_admin_withdrawals_desc: "Los fondos están asegurados en el contrato sin capacidad de retiro por parte del administrador",
-                transparent: "Transparente",
-                transparent_desc: "Todas las actividades pueden ser vistas y verificadas por cualquiera sin excepción",
-                view_on_bscscan: "Ver en BSCScan",
-                
-                // Footer
-                footer_text: "Maximiza tus rendimientos con nuestra plataforma de inversión segura y transparente: Gana ROI diario, comisiones por referidos y salarios mensuales",
-                
-                // Modal and Notifications
-                investment_successful: "¡Inversión Exitosa!",
-                investment_successful_desc: "Tu inversión ha sido procesada exitosamente. Ahora puedes monitorear tus ganancias en el panel de control.",
-                open_dashboard: "Abrir Panel de Control",
-                referral_not_detected: "¡Referido no detectado!",
-                
-                // Placeholders
-                min_investment: "Mínimo 10 USDT"
+                min_investment: "Minimum 0.01 BNB"
             }
-            // Add other languages similarly...
         };
 
         // DOM Elements
@@ -1307,6 +1120,7 @@
         const withdrawROIBtn = document.getElementById('withdrawROI');
         const copyLinkBtn = document.getElementById('copyLink');
         const claimReferralBtn = document.getElementById('claimReferral');
+        const claimSalaryBtn = document.getElementById('claimSalary');
         const openDashboardBtn = document.getElementById('openDashboard');
         const successModal = document.getElementById('successModal');
         const notification = document.getElementById('notification');
@@ -1314,7 +1128,7 @@
         const navMenu = document.getElementById('navMenu');
         const translateDropdown = document.getElementById('translateDropdown');
         const currentLangElement = document.getElementById('currentLang');
-        const uplineAddressInput = document.getElementById('uplineAddress');
+        const referrerAddressInput = document.getElementById('referrerAddress');
 
         // Initialize the app
         document.addEventListener('DOMContentLoaded', function() {
@@ -1367,6 +1181,7 @@
             
             // Withdrawals
             withdrawROIBtn.addEventListener('click', withdrawROI);
+            claimSalaryBtn.addEventListener('click', claimSalary);
             
             // Referral
             copyLinkBtn.addEventListener('click', copyReferralLink);
@@ -1404,7 +1219,7 @@
                 }
             });
             
-            // Update upline address when wallet connects
+            // Update referrer address when wallet connects
             if (window.ethereum) {
                 window.ethereum.on('accountsChanged', function(accounts) {
                     if (accounts.length === 0) {
@@ -1465,23 +1280,23 @@
             
             try {
                 const contractInfo = await contract.methods.getContractInfo().call();
-                document.getElementById('tvl').textContent = `$${(contractInfo.tvl / 1e18).toFixed(2)}`;
+                document.getElementById('tvl').textContent = `${(contractInfo.totalTVLAmount / 1e18).toFixed(2)} BNB`;
                 document.getElementById('totalUsers').textContent = contractInfo.totalUsersCount;
-                document.getElementById('totalDeposit').textContent = `$${(contractInfo.contractBalance / 1e18).toFixed(2)}`;
+                document.getElementById('totalDeposit').textContent = `${(contractInfo.totalDepositsAmount / 1e18).toFixed(2)} BNB`;
                 
-                // For demo purposes, we'll set total paid out to 80% of TVL
-                document.getElementById('totalPaid').textContent = `$${(contractInfo.tvl / 1e18 * 0.8).toFixed(2)}`;
+                // Calculate total paid (approximate)
+                const totalPaid = (contractInfo.totalDepositsAmount / 1e18) * 0.8; // 80% of deposits as estimate
+                document.getElementById('totalPaid').textContent = `${totalPaid.toFixed(2)} BNB`;
                 
-                const roiInfo = await contract.methods.getROIInfo().call();
-                document.getElementById('currentROI').textContent = `${(roiInfo.currentROI / 100).toFixed(2)}%`;
+                document.getElementById('currentROI').textContent = `${(contractInfo.currentROIPercentage / 100).toFixed(2)}%`;
                 
             } catch (error) {
                 console.error('Error loading contract data:', error);
                 // Fallback values for demo
-                document.getElementById('tvl').textContent = '$1,250,000';
-                document.getElementById('totalUsers').textContent = '2,847';
-                document.getElementById('totalDeposit').textContent = '$1,050,000';
-                document.getElementById('totalPaid').textContent = '$875,000';
+                document.getElementById('tvl').textContent = '125.50 BNB';
+                document.getElementById('totalUsers').textContent = '2847';
+                document.getElementById('totalDeposit').textContent = '105.25 BNB';
+                document.getElementById('totalPaid').textContent = '87.50 BNB';
                 document.getElementById('currentROI').textContent = '1.25%';
             }
         }
@@ -1492,22 +1307,28 @@
             
             try {
                 const userInfo = await contract.methods.getUserInfo(userAccount).call();
-                document.getElementById('userDeposit').textContent = `$${(userInfo.userDeposit / 1e18).toFixed(2)}`;
+                document.getElementById('userDeposit').textContent = `${(userInfo.totalDeposit / 1e18).toFixed(4)} BNB`;
                 
-                const pendingProfit = await contract.methods.calculateProfit(userAccount).call();
-                document.getElementById('pendingROI').textContent = `$${(pendingProfit / 1e18).toFixed(2)}`;
+                const pendingROI = await contract.methods.getUserPendingROI(userAccount).call();
+                document.getElementById('pendingROI').textContent = `${(pendingROI / 1e18).toFixed(4)} BNB`;
                 
-                document.getElementById('referralRewards').textContent = `$${(userInfo.userReferralBonus / 1e18).toFixed(2)}`;
+                document.getElementById('referralRewards').textContent = `${(userInfo.referralBonus / 1e18).toFixed(4)} BNB`;
                 
                 // Update referral levels status
-                updateReferralLevelsStatus(userInfo.userDeposit);
+                updateReferralLevelsStatus(userInfo.totalDeposit);
                 
                 // Load salary info
-                const salaryInfo = await contract.methods.getCurrentSalaryInfo(userAccount).call();
-                document.getElementById('currentSalary').textContent = `$${(salaryInfo.salary / 1e18).toFixed(2)}`;
+                const pendingSalary = await contract.methods.getPendingSalary(userAccount).call();
+                document.getElementById('currentSalary').textContent = `${(pendingSalary / 1e18).toFixed(4)} BNB`;
                 
-                const salaryLevel = await contract.methods.getSalaryLevelName(userAccount).call();
-                document.getElementById('salaryLevel').textContent = salaryLevel || translations[currentLanguage].no_active_salary;
+                // Update salary level display
+                const salaryRank = userInfo.salaryRank;
+                if (salaryRank > 0) {
+                    const salaryLevels = await getSalaryLevels();
+                    document.getElementById('salaryLevel').textContent = salaryLevels[salaryRank - 1].name;
+                } else {
+                    document.getElementById('salaryLevel').textContent = translations[currentLanguage].no_active_salary;
+                }
                 
                 // Update salary levels status
                 updateSalaryLevelsStatus(userInfo.teamCount);
@@ -1515,15 +1336,33 @@
             } catch (error) {
                 console.error('Error loading user data:', error);
                 // Fallback values for demo
-                document.getElementById('userDeposit').textContent = '$0';
-                document.getElementById('pendingROI').textContent = '$0';
-                document.getElementById('referralRewards').textContent = '$0';
-                document.getElementById('currentSalary').textContent = '$0';
+                document.getElementById('userDeposit').textContent = '0 BNB';
+                document.getElementById('pendingROI').textContent = '0 BNB';
+                document.getElementById('referralRewards').textContent = '0 BNB';
+                document.getElementById('currentSalary').textContent = '0 BNB';
                 document.getElementById('salaryLevel').textContent = translations[currentLanguage].no_active_salary;
             }
         }
 
-        // Invest function - PERBAIKAN UTAMA: Interaksi dengan Smart Contract
+        // Get salary levels from contract
+        async function getSalaryLevels() {
+            const levels = [];
+            for (let i = 0; i < 4; i++) {
+                try {
+                    const level = await contract.methods.salaryRanks(i).call();
+                    levels.push({
+                        name: level.rankName,
+                        minTeam: level.minTeamMembers,
+                        salary: level.monthlySalary
+                    });
+                } catch (error) {
+                    console.error('Error getting salary level:', error);
+                }
+            }
+            return levels;
+        }
+
+        // Invest function
         async function invest() {
             if (!contract || !userAccount) {
                 showNotification('Please connect your wallet first!', 'error');
@@ -1532,8 +1371,8 @@
             
             const amount = document.getElementById('investAmount').value;
             
-            if (!amount || amount < 10) {
-                showNotification('Minimum investment is 10 USDT!', 'error');
+            if (!amount || amount < 0.01) {
+                showNotification('Minimum investment is 0.01 BNB!', 'error');
                 return;
             }
             
@@ -1542,47 +1381,17 @@
                 investNowBtn.disabled = true;
                 investNowBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
                 
-                // Convert amount to wei (assuming USDT has 18 decimals)
+                // Convert amount to wei
                 const amountWei = web3.utils.toWei(amount.toString(), 'ether');
                 
-                // Get the upline address (from URL parameter or zero address)
-                const upline = referralAddress || '0x0000000000000000000000000000000000000000';
+                // Get the referrer address (from URL parameter or default to owner)
+                const referrer = referralAddress || '0xFc472468f4Db953Ea3A45C05196207677Eb37B07';
                 
-                // PERBAIKAN: Handle USDT approval first
-                const usdtAddress = await contract.methods.usdt().call();
-                const usdtContract = new web3.eth.Contract([
-                    {
-                        "constant": false,
-                        "inputs": [
-                            {"name": "_spender", "type": "address"},
-                            {"name": "_value", "type": "uint256"}
-                        ],
-                        "name": "approve",
-                        "outputs": [{"name": "", "type": "bool"}],
-                        "type": "function"
-                    },
-                    {
-                        "constant": true,
-                        "inputs": [
-                            {"name": "_owner", "type": "address"},
-                            {"name": "_spender", "type": "address"}
-                        ],
-                        "name": "allowance",
-                        "outputs": [{"name": "", "type": "uint256"}],
-                        "type": "function"
-                    }
-                ], usdtAddress);
-                
-                // Check current allowance
-                const currentAllowance = await usdtContract.methods.allowance(userAccount, contractAddress).call();
-                
-                // If allowance is insufficient, approve first
-                if (Number(currentAllowance) < Number(amountWei)) {
-                    await usdtContract.methods.approve(contractAddress, amountWei).send({ from: userAccount });
-                }
-                
-                // Call the contract deposit method
-                await contract.methods.deposit(amountWei, upline).send({ from: userAccount });
+                // Call the contract deposit method with BNB
+                await contract.methods.deposit(referrer).send({ 
+                    from: userAccount, 
+                    value: amountWei 
+                });
                 
                 showNotification('Investment successful!', 'success');
                 successModal.style.display = 'flex';
@@ -1606,7 +1415,7 @@
             }
         }
 
-        // Withdraw ROI - PERBAIKAN: Penanganan error yang lebih baik
+        // Withdraw ROI
         async function withdrawROI() {
             if (!contract || !userAccount) {
                 showNotification('Please connect your wallet first!', 'error');
@@ -1618,7 +1427,7 @@
                 withdrawROIBtn.disabled = true;
                 withdrawROIBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
                 
-                await contract.methods.claimProfit().send({ from: userAccount });
+                await contract.methods.claimROI().send({ from: userAccount });
                 showNotification('ROI withdrawn successfully!', 'success');
                 
                 // Reset button state
@@ -1638,7 +1447,7 @@
             }
         }
 
-        // Claim referral bonus - PERBAIKAN: Penanganan error yang lebih baik
+        // Claim referral bonus
         async function claimReferralBonus() {
             if (!contract || !userAccount) {
                 showNotification('Please connect your wallet first!', 'error');
@@ -1667,6 +1476,38 @@
                 // Reset button state
                 claimReferralBtn.disabled = false;
                 claimReferralBtn.innerHTML = '<i class="fas fa-gift"></i> <span data-translate="claim_bonus">Claim Bonus</span>';
+            }
+        }
+
+        // Claim salary
+        async function claimSalary() {
+            if (!contract || !userAccount) {
+                showNotification('Please connect your wallet first!', 'error');
+                return;
+            }
+            
+            try {
+                // Show loading state
+                claimSalaryBtn.disabled = true;
+                claimSalaryBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                
+                await contract.methods.claimSalary().send({ from: userAccount });
+                showNotification('Salary claimed successfully!', 'success');
+                
+                // Reset button state
+                claimSalaryBtn.disabled = false;
+                claimSalaryBtn.innerHTML = '<i class="fas fa-calendar-check"></i> <span data-translate="claim_salary">Claim Salary</span>';
+                
+                // Reload user data
+                loadUserData();
+                
+            } catch (error) {
+                console.error('Error claiming salary:', error);
+                showNotification('Claim failed: ' + (error.message || 'Unknown error'), 'error');
+                
+                // Reset button state
+                claimSalaryBtn.disabled = false;
+                claimSalaryBtn.innerHTML = '<i class="fas fa-calendar-check"></i> <span data-translate="claim_salary">Claim Salary</span>';
             }
         }
 
@@ -1701,7 +1542,7 @@
             translateDropdown.classList.toggle('active');
         }
 
-        // Update language - PERBAIKAN: Memperbaiki sistem translasi lengkap
+        // Update language
         function updateLanguage(lang) {
             currentLanguage = lang;
             const selectedLang = document.querySelector(`.dropdown-item[data-lang="${lang}"] span:last-child`);
@@ -1747,16 +1588,12 @@
         function updateReferralLevelsContent() {
             const levelGrid = document.getElementById('referralLevels');
             const levels = [
-                { level: 1, percentage: '10%', requirementKey: 'referral_requirement_1', levelKey: 'referral_level_1' },
-                { level: 2, percentage: '5%', requirementKey: 'referral_requirement_2', levelKey: 'referral_level_2' },
-                { level: 3, percentage: '5%', requirementKey: 'referral_requirement_3', levelKey: 'referral_level_3' },
-                { level: 4, percentage: '5%', requirementKey: 'referral_requirement_4', levelKey: 'referral_level_4' },
-                { level: 5, percentage: '5%', requirementKey: 'referral_requirement_5', levelKey: 'referral_level_5' },
-                { level: 6, percentage: '3%', requirementKey: 'referral_requirement_6', levelKey: 'referral_level_6' },
-                { level: 7, percentage: '3%', requirementKey: 'referral_requirement_7', levelKey: 'referral_level_7' },
-                { level: 8, percentage: '2%', requirementKey: 'referral_requirement_8', levelKey: 'referral_level_8' },
-                { level: 9, percentage: '1%', requirementKey: 'referral_requirement_9', levelKey: 'referral_level_9' },
-                { level: 10, percentage: '1%', requirementKey: 'referral_requirement_10', levelKey: 'referral_level_10' }
+                { level: 1, percentage: '20%', requirement: 'Min deposit 0.01 BNB', name: 'Level 1' },
+                { level: 2, percentage: '10%', requirement: 'Min deposit 0.08 BNB', name: 'Level 2' },
+                { level: 3, percentage: '5%', requirement: 'Min deposit 0.15 BNB', name: 'Level 3' },
+                { level: 4, percentage: '3%', requirement: 'Min deposit 0.25 BNB', name: 'Level 4' },
+                { level: 5, percentage: '1%', requirement: 'Min deposit 0.35 BNB', name: 'Level 5' },
+                { level: 6, percentage: '1%', requirement: 'Min deposit 0.50 BNB', name: 'Level 6' }
             ];
             
             levelGrid.innerHTML = '';
@@ -1765,9 +1602,9 @@
                 const levelBox = document.createElement('div');
                 levelBox.className = 'level-box locked';
                 levelBox.innerHTML = `
-                    <div class="level-name">${translations[currentLanguage][level.levelKey]}</div>
+                    <div class="level-name">${level.name}</div>
                     <div class="level-percentage">${level.percentage}</div>
-                    <div class="level-requirement">${translations[currentLanguage][level.requirementKey]}</div>
+                    <div class="level-requirement">${level.requirement}</div>
                 `;
                 levelGrid.appendChild(levelBox);
             });
@@ -1778,7 +1615,7 @@
             const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
             const depositAmount = userDeposit / 1e18; // Convert from wei
             
-            const levelRequirements = [50, 150, 250, 350, 450, 550, 650, 750, 950, 1000];
+            const levelRequirements = [0.01, 0.08, 0.15, 0.25, 0.35, 0.50]; // BNB amounts
             
             levelBoxes.forEach((box, index) => {
                 if (depositAmount >= levelRequirements[index]) {
@@ -1801,10 +1638,34 @@
         function updateSalaryLevelsContent() {
             const levelGrid = document.getElementById('salaryLevels');
             const levels = [
-                { nameKey: 'salary_level_1', teamKey: 'salary_team_1', salary: '$5', requirementKey: 'salary_requirement_1', minTeam: 100 },
-                { nameKey: 'salary_level_2', teamKey: 'salary_team_2', salary: '$10', requirementKey: 'salary_requirement_2', minTeam: 350 },
-                { nameKey: 'salary_level_3', teamKey: 'salary_team_3', salary: '$20', requirementKey: 'salary_requirement_3', minTeam: 750 },
-                { nameKey: 'salary_level_4', teamKey: 'salary_team_4', salary: '$30', requirementKey: 'salary_requirement_4', minTeam: 1000 }
+                { 
+                    name: 'Pionir', 
+                    team: '350 members', 
+                    salary: '0.004 BNB', 
+                    requirement: 'Build team 350 members',
+                    minTeam: 350 
+                },
+                { 
+                    name: 'Visioner', 
+                    team: '550 members', 
+                    salary: '0.008 BNB', 
+                    requirement: 'Build team 550 members',
+                    minTeam: 550 
+                },
+                { 
+                    name: 'Arsitek', 
+                    team: '850 members', 
+                    salary: '0.015 BNB', 
+                    requirement: 'Build team 850 members',
+                    minTeam: 850 
+                },
+                { 
+                    name: 'Maverick', 
+                    team: '1000 members', 
+                    salary: '0.025 BNB', 
+                    requirement: 'Build team 1000 members',
+                    minTeam: 1000 
+                }
             ];
             
             levelGrid.innerHTML = '';
@@ -1813,10 +1674,10 @@
                 const levelBox = document.createElement('div');
                 levelBox.className = 'level-box locked';
                 levelBox.innerHTML = `
-                    <div class="level-name">${translations[currentLanguage][level.nameKey]}</div>
+                    <div class="level-name">${level.name}</div>
                     <div class="level-percentage">${level.salary}</div>
-                    <div class="level-requirement">Min Team: ${translations[currentLanguage][level.teamKey]}</div>
-                    <div class="level-requirement">${translations[currentLanguage][level.requirementKey]}</div>
+                    <div class="level-requirement">Min Team: ${level.team}</div>
+                    <div class="level-requirement">${level.requirement}</div>
                 `;
                 levelGrid.appendChild(levelBox);
             });
@@ -1827,7 +1688,7 @@
             const levelBoxes = document.querySelectorAll('#salaryLevels .level-box');
             const teamCountValue = parseInt(teamCount);
             
-            const levelRequirements = [100, 350, 750, 1000];
+            const levelRequirements = [350, 550, 850, 1000];
             
             levelBoxes.forEach((box, index) => {
                 if (teamCountValue >= levelRequirements[index]) {
@@ -1850,20 +1711,20 @@
             const faqContainer = document.getElementById('faqContainer');
             const faqs = [
                 {
-                    question: translations[currentLanguage].faq_question_1,
-                    answer: translations[currentLanguage].faq_answer_1
+                    question: "What is the minimum deposit?",
+                    answer: "The minimum deposit is 0.01 BNB to start earning with BNBVelion"
                 },
                 {
-                    question: translations[currentLanguage].faq_question_2,
-                    answer: translations[currentLanguage].faq_answer_2
+                    question: "How does the ROI system work?",
+                    answer: "ROI ranges from 0.5% to 2.5% daily based on the total TVL. The more TVL grows, the higher the ROI percentage"
                 },
                 {
-                    question: translations[currentLanguage].faq_question_3,
-                    answer: translations[currentLanguage].faq_answer_3
+                    question: "How do referral commissions work?",
+                    answer: "You earn commissions from 6 levels of your referral network, with bonuses from 20% to 1%"
                 },
                 {
-                    question: translations[currentLanguage].faq_question_4,
-                    answer: translations[currentLanguage].faq_answer_4
+                    question: "How can I qualify for monthly salary?",
+                    answer: "Monthly salary levels require building teams of 350, 550, 850, or 1000 active members"
                 }
             ];
             
@@ -1897,10 +1758,10 @@
             
             if (refAddress && web3.utils.isAddress(refAddress)) {
                 referralAddress = refAddress;
-                uplineAddressInput.value = refAddress;
+                referrerAddressInput.value = refAddress;
                 showNotification('Referral address detected from URL!', 'success');
             } else {
-                uplineAddressInput.value = translations[currentLanguage].referral_not_detected;
+                referrerAddressInput.value = translations[currentLanguage].referral_not_detected;
             }
         }
     </script>
