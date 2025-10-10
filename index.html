@@ -274,7 +274,7 @@
             text-shadow: 0 0 10px var(--cyan-glow);
         }
 
-        /* PERBAIKAN UTAMA: Button Styles dengan icon yang konsisten */
+        /* PERBAIKAN UTAMA: Button Styles dengan icon yang sejajar sempurna */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -323,16 +323,26 @@
             height: 44px;
         }
 
-        /* PERBAIKAN: Menyamakan semua icon button dengan ukuran dan warna yang konsisten */
+        /* PERBAIKAN: Menyamakan semua icon button dengan alignment yang sempurna */
         .btn i, .btn-small i {
             font-size: 1rem;
             color: var(--navy);
             width: 16px;
-            text-align: center;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .btn-secondary i {
             color: var(--cyan);
+        }
+
+        /* PERBAIKAN: Memastikan semua button memiliki alignment yang konsisten */
+        .btn span, .btn-small span {
+            line-height: 1;
+            display: flex;
+            align-items: center;
         }
 
         /* Wallet Connection */
@@ -1072,16 +1082,56 @@
                 referral_levels: "Referral Levels",
                 referral_rewards: "Referral Rewards",
                 claim_bonus: "Claim Bonus",
+                referral_level_1: "Level 1",
+                referral_level_2: "Level 2",
+                referral_level_3: "Level 3",
+                referral_level_4: "Level 4",
+                referral_level_5: "Level 5",
+                referral_level_6: "Level 6",
+                referral_level_7: "Level 7",
+                referral_level_8: "Level 8",
+                referral_level_9: "Level 9",
+                referral_level_10: "Level 10",
+                referral_requirement_1: "Minimal deposit $50",
+                referral_requirement_2: "Minimal deposit $150",
+                referral_requirement_3: "Minimal deposit $250",
+                referral_requirement_4: "Minimal deposit $350",
+                referral_requirement_5: "Minimal deposit $450",
+                referral_requirement_6: "Minimal deposit $550",
+                referral_requirement_7: "Minimal deposit $650",
+                referral_requirement_8: "Minimal deposit $750",
+                referral_requirement_9: "Minimal deposit $950",
+                referral_requirement_10: "Minimal deposit $1000",
                 
                 // Salary Section
                 salary_title: "Monthly Salary",
                 salary_subtitle: "Earn monthly salary from 4 levels with earning potential up to $30 per month",
                 current_monthly_salary: "Current Monthly Salary",
                 no_active_salary: "No active salary level",
+                salary_level_1: "Pionir",
+                salary_level_2: "Visioner",
+                salary_level_3: "Arsitek",
+                salary_level_4: "Maverick",
+                salary_team_1: "100 people",
+                salary_team_2: "350 people",
+                salary_team_3: "750 people",
+                salary_team_4: "1000 people",
+                salary_requirement_1: "Build team 100 member",
+                salary_requirement_2: "Build team 350 member",
+                salary_requirement_3: "Build team 750 member",
+                salary_requirement_4: "Build team 1000 member",
                 
                 // FAQ Section
                 faq_title: "Frequently Asked Questions",
                 faq_subtitle: "Find answers to common questions about our investment platform",
+                faq_question_1: "What is the minimum deposit?",
+                faq_answer_1: "The minimum deposit is 10 USDT to start earning with VelionAscend",
+                faq_question_2: "How does the ROI system work?",
+                faq_answer_2: "ROI ranges from 0.5% to 2.5% daily based on the total TVL. The more TVL grows, the higher the ROI percentage",
+                faq_question_3: "How do referral commissions work?",
+                faq_answer_3: "You earn commissions from 10 levels of your referral network, with a potential bonus of up to 40%",
+                faq_question_4: "How can I qualify for monthly salary?",
+                faq_answer_4: "Monthly salary levels require the number of active teams at each level",
                 
                 // Security Section
                 security_title: "Security",
@@ -1103,15 +1153,8 @@
                 open_dashboard: "Open Dashboard",
                 referral_not_detected: "Referral not detected!",
                 
-                // FAQ Content
-                faq_question_1: "What is the minimum deposit?",
-                faq_answer_1: "The minimum deposit is 10 USDT to start earning with VelionAscend",
-                faq_question_2: "How does the ROI system work?",
-                faq_answer_2: "ROI ranges from 0.5% to 2.5% daily based on the total TVL. The more TVL grows, the higher the ROI percentage",
-                faq_question_3: "How do referral commissions work?",
-                faq_answer_3: "You earn commissions from 10 levels of your referral network, with a potential bonus of up to 40%",
-                faq_question_4: "How can I qualify for monthly salary?",
-                faq_answer_4: "Monthly salary levels require the number of active teams at each level"
+                // Placeholders
+                min_investment: "Minimum 10 USDT"
             },
             es: {
                 // Navigation
@@ -1178,16 +1221,56 @@
                 referral_levels: "Niveles de Referidos",
                 referral_rewards: "Recompensas de Referidos",
                 claim_bonus: "Reclamar Bono",
+                referral_level_1: "Nivel 1",
+                referral_level_2: "Nivel 2",
+                referral_level_3: "Nivel 3",
+                referral_level_4: "Nivel 4",
+                referral_level_5: "Nivel 5",
+                referral_level_6: "Nivel 6",
+                referral_level_7: "Nivel 7",
+                referral_level_8: "Nivel 8",
+                referral_level_9: "Nivel 9",
+                referral_level_10: "Nivel 10",
+                referral_requirement_1: "Depósito mínimo $50",
+                referral_requirement_2: "Depósito mínimo $150",
+                referral_requirement_3: "Depósito mínimo $250",
+                referral_requirement_4: "Depósito mínimo $350",
+                referral_requirement_5: "Depósito mínimo $450",
+                referral_requirement_6: "Depósito mínimo $550",
+                referral_requirement_7: "Depósito mínimo $650",
+                referral_requirement_8: "Depósito mínimo $750",
+                referral_requirement_9: "Depósito mínimo $950",
+                referral_requirement_10: "Depósito mínimo $1000",
                 
                 // Salary Section
                 salary_title: "Salario Mensual",
                 salary_subtitle: "Gana salario mensual de 4 niveles con potencial de ganancia de hasta $30 por mes",
                 current_monthly_salary: "Salario Mensual Actual",
                 no_active_salary: "Sin nivel de salario activo",
+                salary_level_1: "Pionero",
+                salary_level_2: "Visionario",
+                salary_level_3: "Arquitecto",
+                salary_level_4: "Maverick",
+                salary_team_1: "100 personas",
+                salary_team_2: "350 personas",
+                salary_team_3: "750 personas",
+                salary_team_4: "1000 personas",
+                salary_requirement_1: "Construye equipo de 100 miembros",
+                salary_requirement_2: "Construye equipo de 350 miembros",
+                salary_requirement_3: "Construye equipo de 750 miembros",
+                salary_requirement_4: "Construye equipo de 1000 miembros",
                 
                 // FAQ Section
                 faq_title: "Preguntas Frecuentes",
                 faq_subtitle: "Encuentra respuestas a preguntas comunes sobre nuestra plataforma de inversión",
+                faq_question_1: "¿Cuál es el depósito mínimo?",
+                faq_answer_1: "El depósito mínimo es de 10 USDT para comenzar a ganar con VelionAscend",
+                faq_question_2: "¿Cómo funciona el sistema de ROI?",
+                faq_answer_2: "El ROI varía entre 0.5% y 2.5% diario según el TVL total. Cuanto más crece el TVL, mayor es el porcentaje de ROI",
+                faq_question_3: "¿Cómo funcionan las comisiones por referidos?",
+                faq_answer_3: "Ganas comisiones de 10 niveles de tu red de referidos, con un bono potencial de hasta 40%",
+                faq_question_4: "¿Cómo puedo calificar para el salario mensual?",
+                faq_answer_4: "Los niveles de salario mensual requieren el número de equipos activos en cada nivel",
                 
                 // Security Section
                 security_title: "Seguridad",
@@ -1209,15 +1292,8 @@
                 open_dashboard: "Abrir Panel de Control",
                 referral_not_detected: "¡Referido no detectado!",
                 
-                // FAQ Content
-                faq_question_1: "¿Cuál es el depósito mínimo?",
-                faq_answer_1: "El depósito mínimo es de 10 USDT para comenzar a ganar con VelionAscend",
-                faq_question_2: "¿Cómo funciona el sistema de ROI?",
-                faq_answer_2: "El ROI varía entre 0.5% y 2.5% diario según el TVL total. Cuanto más crece el TVL, mayor es el porcentaje de ROI",
-                faq_question_3: "¿Cómo funcionan las comisiones por referidos?",
-                faq_answer_3: "Ganas comisiones de 10 niveles de tu red de referidos, con un bono potencial de hasta 40%",
-                faq_question_4: "¿Cómo puedo calificar para el salario mensual?",
-                faq_answer_4: "Los niveles de salario mensual requieren el número de equipos activos en cada nivel"
+                // Placeholders
+                min_investment: "Mínimo 10 USDT"
             }
             // Add other languages similarly...
         };
@@ -1484,11 +1560,26 @@
                         "name": "approve",
                         "outputs": [{"name": "", "type": "bool"}],
                         "type": "function"
+                    },
+                    {
+                        "constant": true,
+                        "inputs": [
+                            {"name": "_owner", "type": "address"},
+                            {"name": "_spender", "type": "address"}
+                        ],
+                        "name": "allowance",
+                        "outputs": [{"name": "", "type": "uint256"}],
+                        "type": "function"
                     }
                 ], usdtAddress);
                 
-                // Approve USDT spending
-                await usdtContract.methods.approve(contractAddress, amountWei).send({ from: userAccount });
+                // Check current allowance
+                const currentAllowance = await usdtContract.methods.allowance(userAccount, contractAddress).call();
+                
+                // If allowance is insufficient, approve first
+                if (Number(currentAllowance) < Number(amountWei)) {
+                    await usdtContract.methods.approve(contractAddress, amountWei).send({ from: userAccount });
+                }
                 
                 // Call the contract deposit method
                 await contract.methods.deposit(amountWei, upline).send({ from: userAccount });
@@ -1633,24 +1724,39 @@
             // Update placeholder text
             const investAmountInput = document.getElementById('investAmount');
             if (investAmountInput) {
-                investAmountInput.placeholder = translations[lang].amount_usdt + ' (Minimum 10 USDT)';
+                investAmountInput.placeholder = translations[lang].min_investment;
             }
+            
+            // Update referral levels
+            updateReferralLevelsContent();
+            
+            // Update salary levels
+            updateSalaryLevelsContent();
+            
+            // Update FAQ
+            updateFAQContent();
         }
 
         // Generate referral levels
         function generateReferralLevels() {
             const levelGrid = document.getElementById('referralLevels');
+            updateReferralLevelsContent();
+        }
+
+        // Update referral levels content based on current language
+        function updateReferralLevelsContent() {
+            const levelGrid = document.getElementById('referralLevels');
             const levels = [
-                { level: 1, percentage: '10%', requirement: 'Minimal deposit $50' },
-                { level: 2, percentage: '5%', requirement: 'Minimal deposit $150' },
-                { level: 3, percentage: '5%', requirement: 'Minimal deposit $250' },
-                { level: 4, percentage: '5%', requirement: 'Minimal deposit $350' },
-                { level: 5, percentage: '5%', requirement: 'Minimal deposit $450' },
-                { level: 6, percentage: '3%', requirement: 'Minimal deposit $550' },
-                { level: 7, percentage: '3%', requirement: 'Minimal deposit $650' },
-                { level: 8, percentage: '2%', requirement: 'Minimal deposit $750' },
-                { level: 9, percentage: '1%', requirement: 'Minimal deposit $950' },
-                { level: 10, percentage: '1%', requirement: 'Minimal deposit $1000' }
+                { level: 1, percentage: '10%', requirementKey: 'referral_requirement_1', levelKey: 'referral_level_1' },
+                { level: 2, percentage: '5%', requirementKey: 'referral_requirement_2', levelKey: 'referral_level_2' },
+                { level: 3, percentage: '5%', requirementKey: 'referral_requirement_3', levelKey: 'referral_level_3' },
+                { level: 4, percentage: '5%', requirementKey: 'referral_requirement_4', levelKey: 'referral_level_4' },
+                { level: 5, percentage: '5%', requirementKey: 'referral_requirement_5', levelKey: 'referral_level_5' },
+                { level: 6, percentage: '3%', requirementKey: 'referral_requirement_6', levelKey: 'referral_level_6' },
+                { level: 7, percentage: '3%', requirementKey: 'referral_requirement_7', levelKey: 'referral_level_7' },
+                { level: 8, percentage: '2%', requirementKey: 'referral_requirement_8', levelKey: 'referral_level_8' },
+                { level: 9, percentage: '1%', requirementKey: 'referral_requirement_9', levelKey: 'referral_level_9' },
+                { level: 10, percentage: '1%', requirementKey: 'referral_requirement_10', levelKey: 'referral_level_10' }
             ];
             
             levelGrid.innerHTML = '';
@@ -1659,9 +1765,9 @@
                 const levelBox = document.createElement('div');
                 levelBox.className = 'level-box locked';
                 levelBox.innerHTML = `
-                    <div class="level-name">Level ${level.level}</div>
+                    <div class="level-name">${translations[currentLanguage][level.levelKey]}</div>
                     <div class="level-percentage">${level.percentage}</div>
-                    <div class="level-requirement">${level.requirement}</div>
+                    <div class="level-requirement">${translations[currentLanguage][level.requirementKey]}</div>
                 `;
                 levelGrid.appendChild(levelBox);
             });
@@ -1688,11 +1794,17 @@
         // Generate salary levels
         function generateSalaryLevels() {
             const levelGrid = document.getElementById('salaryLevels');
+            updateSalaryLevelsContent();
+        }
+
+        // Update salary levels content based on current language
+        function updateSalaryLevelsContent() {
+            const levelGrid = document.getElementById('salaryLevels');
             const levels = [
-                { name: 'Pionir', team: '100 orang', salary: '$5', requirement: 'Build team 100 member', minTeam: 100 },
-                { name: 'Visioner', team: '350 orang', salary: '$10', requirement: 'Build team 350 member', minTeam: 350 },
-                { name: 'Arsitek', team: '750 orang', salary: '$20', requirement: 'Build team 750 member', minTeam: 750 },
-                { name: 'Maverick', team: '1000 orang', salary: '$30', requirement: 'Build team 1000 member', minTeam: 1000 }
+                { nameKey: 'salary_level_1', teamKey: 'salary_team_1', salary: '$5', requirementKey: 'salary_requirement_1', minTeam: 100 },
+                { nameKey: 'salary_level_2', teamKey: 'salary_team_2', salary: '$10', requirementKey: 'salary_requirement_2', minTeam: 350 },
+                { nameKey: 'salary_level_3', teamKey: 'salary_team_3', salary: '$20', requirementKey: 'salary_requirement_3', minTeam: 750 },
+                { nameKey: 'salary_level_4', teamKey: 'salary_team_4', salary: '$30', requirementKey: 'salary_requirement_4', minTeam: 1000 }
             ];
             
             levelGrid.innerHTML = '';
@@ -1701,10 +1813,10 @@
                 const levelBox = document.createElement('div');
                 levelBox.className = 'level-box locked';
                 levelBox.innerHTML = `
-                    <div class="level-name">${level.name}</div>
+                    <div class="level-name">${translations[currentLanguage][level.nameKey]}</div>
                     <div class="level-percentage">${level.salary}</div>
-                    <div class="level-requirement">Min Team: ${level.team}</div>
-                    <div class="level-requirement">${level.requirement}</div>
+                    <div class="level-requirement">Min Team: ${translations[currentLanguage][level.teamKey]}</div>
+                    <div class="level-requirement">${translations[currentLanguage][level.requirementKey]}</div>
                 `;
                 levelGrid.appendChild(levelBox);
             });
@@ -1728,11 +1840,8 @@
             });
         }
 
-        // Generate FAQ - PERBAIKAN: FAQ dengan translasi
+        // Generate FAQ
         function generateFAQ() {
-            const faqContainer = document.getElementById('faqContainer');
-            
-            // FAQ items will be generated based on current language
             updateFAQContent();
         }
 
