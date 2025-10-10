@@ -293,6 +293,7 @@
             box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
             min-width: 140px;
             height: 44px;
+            line-height: 1;
         }
 
         .btn:hover {
@@ -332,6 +333,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            line-height: 1;
+            margin: 0;
+            padding: 0;
         }
 
         .btn-secondary i {
@@ -343,6 +347,81 @@
             line-height: 1;
             display: flex;
             align-items: center;
+            height: 100%;
+        }
+
+        /* PERBAIKAN TAMBAHAN: Untuk button yang spesifik */
+        #investNow i,
+        #copyLink i,
+        #claimReferral i,
+        #claimSalary i {
+            font-size: 1rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+        }
+
+        /* PERBAIKAN KHUSUS: Button Invest Now dengan icon roket */
+        #investNow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        #investNow i {
+            font-size: 1rem;
+            line-height: 1;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* PERBAIKAN KHUSUS: Button Copy di menu referral */
+        #copyLink {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        #copyLink i {
+            font-size: 1rem;
+            line-height: 1;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* PERBAIKAN KHUSUS: Button Claim Bonus di menu referral */
+        #claimReferral {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        #claimReferral i {
+            font-size: 1rem;
+            line-height: 1;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* PERBAIKAN KHUSUS: Button Claim Salary di menu salary */
+        #claimSalary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        #claimSalary i {
+            font-size: 1rem;
+            line-height: 1;
+            margin: 0;
+            padding: 0;
         }
 
         /* Wallet Connection */
@@ -1378,7 +1457,7 @@
                 referral_requirement_6: "Mín. depósito 0.50 BNB",
                 
                 // Salary Section
-                salary_title: "Salário Mensal",
+                salary_title: "Salário Mensual",
                 salary_subtitle: "Ganhe salário mensual de 4 níveis com potencial de ganho de até 0.025 BNB por mês",
                 current_monthly_salary: "Salário Mensal Atual",
                 no_active_salary: "Nenhum nível de salário ativo",
