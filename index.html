@@ -274,12 +274,12 @@
             text-shadow: 0 0 10px var(--cyan-glow);
         }
 
-        /* Button Styles - PERBAIKAN UTAMA: Membuat semua button ukuran sama */
+        /* PERBAIKAN UTAMA: Button Styles dengan icon yang konsisten */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
             background: linear-gradient(90deg, var(--cyan), var(--light-cyan));
             color: var(--navy);
             border: none;
@@ -323,9 +323,16 @@
             height: 44px;
         }
 
-        /* PERBAIKAN: Menyamakan ukuran icon di semua button */
+        /* PERBAIKAN: Menyamakan semua icon button dengan ukuran dan warna yang konsisten */
         .btn i, .btn-small i {
-            font-size: 1rem; /* Ukuran icon yang sama untuk semua button */
+            font-size: 1rem;
+            color: var(--navy);
+            width: 16px;
+            text-align: center;
+        }
+
+        .btn-secondary i {
+            color: var(--cyan);
         }
 
         /* Wallet Connection */
@@ -670,14 +677,14 @@
 
     <!-- Navigation Menu -->
     <nav class="nav-menu" id="navMenu">
-        <a href="#home" class="nav-link">Home</a>
-        <a href="#why-choose" class="nav-link">Why Choose</a>
-        <a href="#dashboard" class="nav-link">Dashboard</a>
-        <a href="#invest" class="nav-link">Invest</a>
-        <a href="#referral" class="nav-link">Referral</a>
-        <a href="#salary" class="nav-link">Salary</a>
-        <a href="#faq" class="nav-link">FAQ</a>
-        <a href="#security" class="nav-link">Security</a>
+        <a href="#home" class="nav-link" data-translate="home">Home</a>
+        <a href="#why-choose" class="nav-link" data-translate="why_choose">Why Choose</a>
+        <a href="#dashboard" class="nav-link" data-translate="dashboard">Dashboard</a>
+        <a href="#invest" class="nav-link" data-translate="invest">Invest</a>
+        <a href="#referral" class="nav-link" data-translate="referral">Referral</a>
+        <a href="#salary" class="nav-link" data-translate="salary">Salary</a>
+        <a href="#faq" class="nav-link" data-translate="faq">FAQ</a>
+        <a href="#security" class="nav-link" data-translate="security">Security</a>
     </nav>
 
     <!-- Notification -->
@@ -998,9 +1005,20 @@
         let currentLanguage = 'en';
         let referralAddress = null;
 
-        // Language translations - PERBAIKAN: Menambahkan semua bahasa
+        // Language translations - PERBAIKAN: Lengkap untuk semua bagian website
         const translations = {
             en: {
+                // Navigation
+                home: "Home",
+                why_choose: "Why Choose",
+                dashboard: "Dashboard",
+                invest: "Invest",
+                referral: "Referral",
+                salary: "Salary",
+                faq: "FAQ",
+                security: "Security",
+                
+                // Home Section
                 home_title: "Smart Investment with VelionAscend",
                 home_subtitle: "Maximize your returns with our secure and transparent investment platform – Earn daily ROI, referral commissions, and monthly salaries",
                 tvl: "TVL",
@@ -1014,6 +1032,8 @@
                 connect_wallet: "Connect Wallet",
                 connected: "Connected",
                 start_investing: "Start Investing",
+                
+                // Why Choose Section
                 why_choose_title: "Why Choose VelionAscend?",
                 why_choose_subtitle: "Our platform offers multiple ways to grow your investment with security and transparency",
                 daily_roi: "Daily ROI",
@@ -1024,6 +1044,8 @@
                 monthly_salary_desc: "Earn monthly salary from 4 levels with earning potential up to $30 per month",
                 secure_transparent: "Secure & Transparent",
                 secure_transparent_desc: "Our smart contract is verified on BscScan with no admin withdrawal capabilities",
+                
+                // Dashboard Section
                 dashboard_title: "Your Dashboard",
                 dashboard_subtitle: "Monitor your investments, earnings, and referral network in real-time",
                 active_deposit: "Active Deposit",
@@ -1033,12 +1055,16 @@
                 pending_roi: "Pending ROI",
                 pending_roi_desc: "Available for Withdrawal",
                 withdraw_roi: "Withdraw ROI",
+                
+                // Invest Section
                 invest_title: "Start Investing",
                 invest_subtitle: "Deposit USDT and start earning daily returns with our secure investment smart contract",
                 investment_amount: "Investment Amount",
                 amount_usdt: "Amount (USDT)",
                 upline_address: "Upline Address",
                 invest_now: "Invest Now",
+                
+                // Referral Section
                 referral_title: "Referral Program",
                 referral_subtitle: "Earn commissions from 10 levels of your referral network with our tier-based system",
                 your_referral_link: "Your Referral Link",
@@ -1046,12 +1072,18 @@
                 referral_levels: "Referral Levels",
                 referral_rewards: "Referral Rewards",
                 claim_bonus: "Claim Bonus",
+                
+                // Salary Section
                 salary_title: "Monthly Salary",
                 salary_subtitle: "Earn monthly salary from 4 levels with earning potential up to $30 per month",
                 current_monthly_salary: "Current Monthly Salary",
                 no_active_salary: "No active salary level",
+                
+                // FAQ Section
                 faq_title: "Frequently Asked Questions",
                 faq_subtitle: "Find answers to common questions about our investment platform",
+                
+                // Security Section
                 security_title: "Security",
                 security_subtitle: "Your investments are secured by verified smart contracts on the Binance Smart Chain",
                 verified_contract: "Verified Contract",
@@ -1061,13 +1093,38 @@
                 transparent: "Transparent",
                 transparent_desc: "All activities can be seen and verified by anyone without exception",
                 view_on_bscscan: "View on BSCScan",
+                
+                // Footer
                 footer_text: "Maximize your returns with our secure and transparent investment platform – Earn daily ROI, referral commissions, and monthly salaries",
+                
+                // Modal and Notifications
                 investment_successful: "Investment Successful!",
                 investment_successful_desc: "Your investment has been processed successfully. You can now monitor your earnings in the dashboard.",
                 open_dashboard: "Open Dashboard",
-                referral_not_detected: "Referral not detected!"
+                referral_not_detected: "Referral not detected!",
+                
+                // FAQ Content
+                faq_question_1: "What is the minimum deposit?",
+                faq_answer_1: "The minimum deposit is 10 USDT to start earning with VelionAscend",
+                faq_question_2: "How does the ROI system work?",
+                faq_answer_2: "ROI ranges from 0.5% to 2.5% daily based on the total TVL. The more TVL grows, the higher the ROI percentage",
+                faq_question_3: "How do referral commissions work?",
+                faq_answer_3: "You earn commissions from 10 levels of your referral network, with a potential bonus of up to 40%",
+                faq_question_4: "How can I qualify for monthly salary?",
+                faq_answer_4: "Monthly salary levels require the number of active teams at each level"
             },
             es: {
+                // Navigation
+                home: "Inicio",
+                why_choose: "Por Qué Elegir",
+                dashboard: "Panel",
+                invest: "Invertir",
+                referral: "Referidos",
+                salary: "Salario",
+                faq: "Preguntas",
+                security: "Seguridad",
+                
+                // Home Section
                 home_title: "Inversión Inteligente con VelionAscend",
                 home_subtitle: "Maximiza tus rendimientos con nuestra plataforma de inversión segura y transparente: Gana ROI diario, comisiones por referidos y salarios mensuales",
                 tvl: "TVL",
@@ -1081,6 +1138,8 @@
                 connect_wallet: "Conectar Cartera",
                 connected: "Conectado",
                 start_investing: "Comenzar a Invertir",
+                
+                // Why Choose Section
                 why_choose_title: "¿Por Qué Elegir VelionAscend?",
                 why_choose_subtitle: "Nuestra plataforma ofrece múltiples formas de hacer crecer tu inversión con seguridad y transparencia",
                 daily_roi: "ROI Diario",
@@ -1091,6 +1150,8 @@
                 monthly_salary_desc: "Gana salario mensual de 4 niveles con potencial de ganancia de hasta $30 por mes",
                 secure_transparent: "Seguro y Transparente",
                 secure_transparent_desc: "Nuestro contrato inteligente está verificado en BscScan sin capacidad de retiro de administrador",
+                
+                // Dashboard Section
                 dashboard_title: "Tu Panel de Control",
                 dashboard_subtitle: "Monitorea tus inversiones, ganancias y red de referidos en tiempo real",
                 active_deposit: "Depósito Activo",
@@ -1100,12 +1161,16 @@
                 pending_roi: "ROI Pendiente",
                 pending_roi_desc: "Disponible para Retiro",
                 withdraw_roi: "Retirar ROI",
+                
+                // Invest Section
                 invest_title: "Comenzar a Invertir",
                 invest_subtitle: "Deposita USDT y comienza a ganar rendimientos diarios con nuestro contrato inteligente de inversión seguro",
                 investment_amount: "Monto de Inversión",
                 amount_usdt: "Monto (USDT)",
                 upline_address: "Dirección del Patrocinador",
                 invest_now: "Invertir Ahora",
+                
+                // Referral Section
                 referral_title: "Programa de Referidos",
                 referral_subtitle: "Gana comisiones de 10 niveles de tu red de referidos con nuestro sistema por niveles",
                 your_referral_link: "Tu Enlace de Referido",
@@ -1113,12 +1178,18 @@
                 referral_levels: "Niveles de Referidos",
                 referral_rewards: "Recompensas de Referidos",
                 claim_bonus: "Reclamar Bono",
+                
+                // Salary Section
                 salary_title: "Salario Mensual",
                 salary_subtitle: "Gana salario mensual de 4 niveles con potencial de ganancia de hasta $30 por mes",
                 current_monthly_salary: "Salario Mensual Actual",
                 no_active_salary: "Sin nivel de salario activo",
+                
+                // FAQ Section
                 faq_title: "Preguntas Frecuentes",
                 faq_subtitle: "Encuentra respuestas a preguntas comunes sobre nuestra plataforma de inversión",
+                
+                // Security Section
                 security_title: "Seguridad",
                 security_subtitle: "Tus inversiones están aseguradas por contratos inteligentes verificados en Binance Smart Chain",
                 verified_contract: "Contrato Verificado",
@@ -1128,213 +1199,27 @@
                 transparent: "Transparente",
                 transparent_desc: "Todas las actividades pueden ser vistas y verificadas por cualquiera sin excepción",
                 view_on_bscscan: "Ver en BSCScan",
+                
+                // Footer
                 footer_text: "Maximiza tus rendimientos con nuestra plataforma de inversión segura y transparente: Gana ROI diario, comisiones por referidos y salarios mensuales",
+                
+                // Modal and Notifications
                 investment_successful: "¡Inversión Exitosa!",
                 investment_successful_desc: "Tu inversión ha sido procesada exitosamente. Ahora puedes monitorear tus ganancias en el panel de control.",
                 open_dashboard: "Abrir Panel de Control",
-                referral_not_detected: "¡Referido no detectado!"
-            },
-            pt: {
-                home_title: "Investimento Inteligente com VelionAscend",
-                home_subtitle: "Maximize seus retornos com nossa plataforma de investimento segura e transparente - Ganhe ROI diário, comissões de indicação e salários mensais",
-                tvl: "TVL",
-                tvl_desc: "Valor Total Bloqueado",
-                total_users: "Total de Usuários",
-                total_users_desc: "Investidores Ativos",
-                total_deposit: "Depósito Total",
-                total_deposit_desc: "Fundos Totais Depositados",
-                total_paid: "Total Pago",
-                total_paid_desc: "Recompensas Totais Distribuídas",
-                connect_wallet: "Conectar Carteira",
-                connected: "Conectado",
-                start_investing: "Começar a Investir",
-                why_choose_title: "Por Que Escolher VelionAscend?",
-                why_choose_subtitle: "Nossa plataforma oferece múltiplas formas de crescer seu investimento com segurança e transparência",
-                daily_roi: "ROI Diário",
-                daily_roi_desc: "Ganhe entre 0,5% a 2,5% de retorno diário no seu investimento baseado no crescimento do TVL",
-                referral_program: "Programa de Indicação",
-                referral_program_desc: "Ganhe comissões de seus 10 níveis de rede de indicação com lucros de até 40%",
-                monthly_salary: "Salário Mensal",
-                monthly_salary_desc: "Ganhe salário mensal de 4 níveis com potencial de ganho de até $30 por mês",
-                secure_transparent: "Seguro e Transparente",
-                secure_transparent_desc: "Nosso contrato inteligente é verificado no BscScan sem capacidade de saque do administrador",
-                dashboard_title: "Seu Painel de Controle",
-                dashboard_subtitle: "Monitore seus investimentos, ganhos e rede de indicação em tempo real",
-                active_deposit: "Depósito Ativo",
-                active_deposit_desc: "Seu Investimento Atual",
-                current_roi: "ROI Diário Atual",
-                current_roi_desc: "Sua Taxa de Retorno Diária",
-                pending_roi: "ROI Pendente",
-                pending_roi_desc: "Disponível para Saque",
-                withdraw_roi: "Sacar ROI",
-                invest_title: "Começar a Investir",
-                invest_subtitle: "Deposite USDT e comece a ganhar retornos diários com nosso contrato inteligente de investimento seguro",
-                investment_amount: "Valor do Investimento",
-                amount_usdt: "Valor (USDT)",
-                upline_address: "Endereço do Patrocinador",
-                invest_now: "Investir Agora",
-                referral_title: "Programa de Indicação",
-                referral_subtitle: "Ganhe comissões de 10 níveis de sua rede de indicação com nosso sistema em camadas",
-                your_referral_link: "Seu Link de Indicação",
-                copy: "Copiar",
-                referral_levels: "Níveis de Indicação",
-                referral_rewards: "Recompensas de Indicação",
-                claim_bonus: "Reivindicar Bônus",
-                salary_title: "Salário Mensal",
-                salary_subtitle: "Ganhe salário mensal de 4 níveis com potencial de ganho de até $30 por mês",
-                current_monthly_salary: "Salário Mensal Atual",
-                no_active_salary: "Nenhum nível de salário ativo",
-                faq_title: "Perguntas Frequentes",
-                faq_subtitle: "Encontre respostas para perguntas comuns sobre nossa plataforma de investimento",
-                security_title: "Segurança",
-                security_subtitle: "Seus investimentos são protegidos por contratos inteligentes verificados na Binance Smart Chain",
-                verified_contract: "Contrato Verificado",
-                verified_contract_desc: "Nosso contrato inteligente é verificado no BscScan, garantindo transparência e segurança",
-                no_admin_withdrawals: "Sem Saques do Administrador",
-                no_admin_withdrawals_desc: "Os fundos são protegidos no contrato sem capacidade de saque pelo administrador",
-                transparent: "Transparente",
-                transparent_desc: "Todas as atividades podem ser vistas e verificadas por qualquer pessoa sem exceção",
-                view_on_bscscan: "Ver no BSCScan",
-                footer_text: "Maximize seus retornos com nossa plataforma de investimento segura e transparente - Ganhe ROI diário, comissões de indicação e salários mensais",
-                investment_successful: "Investimento Bem-sucedido!",
-                investment_successful_desc: "Seu investimento foi processado com sucesso. Agora você pode monitorar seus ganhos no painel de controle.",
-                open_dashboard: "Abrir Painel de Controle",
-                referral_not_detected: "Indicação não detectada!"
-            },
-            in: {
-                home_title: "VelionAscend के साथ स्मार्ट निवेश",
-                home_subtitle: "हमारे सुरक्षित और पारदर्शी निवेश प्लेटफॉर्म के साथ अपनी कमाई को अधिकतम करें - दैनिक ROI, रेफरल कमीशन और मासिक वेतन कमाएं",
-                tvl: "TVL",
-                tvl_desc: "कुल लॉक मूल्य",
-                total_users: "कुल उपयोगकर्ता",
-                total_users_desc: "सक्रिय निवेशक",
-                total_deposit: "कुल जमा",
-                total_deposit_desc: "कुल जमा राशि",
-                total_paid: "कुल भुगतान",
-                total_paid_desc: "कुल वितरित पुरस्कार",
-                connect_wallet: "वॉलेट कनेक्ट करें",
-                connected: "कनेक्टेड",
-                start_investing: "निवेश शुरू करें",
-                why_choose_title: "VelionAscend क्यों चुनें?",
-                why_choose_subtitle: "हमारा प्लेटफॉर्म सुरक्षा और पारदर्शिता के साथ आपके निवेश को बढ़ाने के कई तरीके प्रदान करता है",
-                daily_roi: "दैनिक ROI",
-                daily_roi_desc: "TVL वृद्धि के आधार पर अपने निवेश पर 0.5% से 2.5% दैनिक रिटर्न कमाएं",
-                referral_program: "रेफरल प्रोग्राम",
-                referral_program_desc: "अपने 10 स्तरों के रेफरल नेटवर्क से 40% तक के लाभ के साथ कमीशन कमाएं",
-                monthly_salary: "मासिक वेतन",
-                monthly_salary_desc: "4 स्तरों से मासिक वेतन कमाएं, प्रति माह $30 तक कमाई की संभावना",
-                secure_transparent: "सुरक्षित और पारदर्शी",
-                secure_transparent_desc: "हमारा स्मार्ट कॉन्ट्रैक्ट BscScan पर सत्यापित है, जिसमें एडमिन निकासी क्षमता नहीं है",
-                dashboard_title: "आपका डैशबोर्ड",
-                dashboard_subtitle: "अपने निवेश, कमाई और रेफरल नेटवर्क को रीयल-टाइम में मॉनिटर करें",
-                active_deposit: "सक्रिय जमा",
-                active_deposit_desc: "आपका वर्तमान निवेश",
-                current_roi: "वर्तमान दैनिक ROI",
-                current_roi_desc: "आपकी दैनिक रिटर्न दर",
-                pending_roi: "लंबित ROI",
-                pending_roi_desc: "निकासी के लिए उपलब्ध",
-                withdraw_roi: "ROI निकालें",
-                invest_title: "निवेश शुरू करें",
-                invest_subtitle: "USDT जमा करें और हमारे सुरक्षित निवेश स्मार्ट कॉन्ट्रैक्ट के साथ दैनिक रिटर्न कमाना शुरू करें",
-                investment_amount: "निवेश राशि",
-                amount_usdt: "राशि (USDT)",
-                upline_address: "अपलाइन पता",
-                invest_now: "अभी निवेश करें",
-                referral_title: "रेफरल प्रोग्राम",
-                referral_subtitle: "हमारी टियर-आधारित प्रणाली के साथ अपने रेफरल नेटवर्क के 10 स्तरों से कमीशन कमाएं",
-                your_referral_link: "आपका रेफरल लिंक",
-                copy: "कॉपी करें",
-                referral_levels: "रेफरल स्तर",
-                referral_rewards: "रेफरल पुरस्कार",
-                claim_bonus: "बोनस क्लेम करें",
-                salary_title: "मासिक वेतन",
-                salary_subtitle: "4 स्तरों से मासिक वेतन कमाएं, प्रति माह $30 तक कमाई की संभावना",
-                current_monthly_salary: "वर्तमान मासिक वेतन",
-                no_active_salary: "कोई सक्रिय वेतन स्तर नहीं",
-                faq_title: "अक्सर पूछे जाने वाले प्रश्न",
-                faq_subtitle: "हमारे निवेश प्लेटफॉर्म के बारे में सामान्य प्रश्नों के उत्तर खोजें",
-                security_title: "सुरक्षा",
-                security_subtitle: "आपके निवेश बिनेंस स्मार्ट चेन पर सत्यापित स्मार्ट कॉन्ट्रैक्ट्स द्वारा सुरक्षित हैं",
-                verified_contract: "सत्यापित कॉन्ट्रैक्ट",
-                verified_contract_desc: "हमारा स्मार्ट कॉन्ट्रैक्ट BscScan पर सत्यापित है, जो पारदर्शिता और सुरक्षा सुनिश्चित करता है",
-                no_admin_withdrawals: "कोई एडमिन निकासी नहीं",
-                no_admin_withdrawals_desc: "फंड कॉन्ट्रैक्ट में सुरक्षित हैं, एडमिन के पास उपयोगकर्ता जमा निकालने की क्षमता नहीं है",
-                transparent: "पारदर्शी",
-                transparent_desc: "सभी गतिविधियां बिना किसी अपवाद के किसी के द्वारा देखी और सत्यापित की जा सकती हैं",
-                view_on_bscscan: "BSCScan पर देखें",
-                footer_text: "हमारे सुरक्षित और पारदर्शी निवेश प्लेटफॉर्म के साथ अपनी कमाई को अधिकतम करें - दैनिक ROI, रेफरल कमीशन और मासिक वेतन कमाएं",
-                investment_successful: "निवेश सफल!",
-                investment_successful_desc: "आपका निवेश सफलतापूर्वक संसाधित किया गया है। अब आप डैशबोर्ड में अपनी कमाई की निगरानी कर सकते हैं।",
-                open_dashboard: "डैशबोर्ड खोलें",
-                referral_not_detected: "रेफरल का पता नहीं चला!"
-            },
-            fr: {
-                home_title: "Investissement Intelligent avec VelionAscend",
-                home_subtitle: "Maximisez vos rendements avec notre plateforme d'investissement sécurisée et transparente - Gagnez un ROI quotidien, des commissions de parrainage et des salaires mensuels",
-                tvl: "TVL",
-                tvl_desc: "Valeur Totale Verrouillée",
-                total_users: "Utilisateurs Totaux",
-                total_users_desc: "Investisseurs Actifs",
-                total_deposit: "Dépôt Total",
-                total_deposit_desc: "Fonds Totaux Déposés",
-                total_paid: "Total Payé",
-                total_paid_desc: "Récompenses Totales Distribuées",
-                connect_wallet: "Connecter le Portefeuille",
-                connected: "Connecté",
-                start_investing: "Commencer à Investir",
-                why_choose_title: "Pourquoi Choisir VelionAscend?",
-                why_choose_subtitle: "Notre plateforme offre plusieurs façons de faire croître votre investissement avec sécurité et transparence",
-                daily_roi: "ROI Quotidien",
-                daily_roi_desc: "Gagnez entre 0,5% et 2,5% de rendement quotidien sur votre investissement basé sur la croissance du TVL",
-                referral_program: "Programme de Parrainage",
-                referral_program_desc: "Gagnez des commissions sur vos 10 niveaux de réseau de parrainage avec des bénéfices allant jusqu'à 40%",
-                monthly_salary: "Salaire Mensuel",
-                monthly_salary_desc: "Gagnez un salaire mensuel sur 4 niveaux avec un potentiel de gain allant jusqu'à 30$ par mois",
-                secure_transparent: "Sécurisé et Transparent",
-                secure_transparent_desc: "Notre contrat intelligent est vérifié sur BscScan sans capacité de retrait administrateur",
-                dashboard_title: "Votre Tableau de Bord",
-                dashboard_subtitle: "Surveillez vos investissements, gains et réseau de parrainage en temps réel",
-                active_deposit: "Dépôt Actif",
-                active_deposit_desc: "Votre Investissement Actuel",
-                current_roi: "ROI Quotidien Actuel",
-                current_roi_desc: "Votre Taux de Rendement Quotidien",
-                pending_roi: "ROI en Attente",
-                pending_roi_desc: "Disponible pour Retrait",
-                withdraw_roi: "Retirer le ROI",
-                invest_title: "Commencer à Investir",
-                invest_subtitle: "Déposez de l'USDT et commencez à gagner des rendements quotidiens avec notre contrat d'investissement intelligent sécurisé",
-                investment_amount: "Montant de l'Investissement",
-                amount_usdt: "Montant (USDT)",
-                upline_address: "Adresse du Parrain",
-                invest_now: "Investir Maintenant",
-                referral_title: "Programme de Parrainage",
-                referral_subtitle: "Gagnez des commissions sur 10 niveaux de votre réseau de parrainage avec notre système à paliers",
-                your_referral_link: "Votre Lien de Parrainage",
-                copy: "Copier",
-                referral_levels: "Niveaux de Parrainage",
-                referral_rewards: "Récompenses de Parrainage",
-                claim_bonus: "Réclamer le Bonus",
-                salary_title: "Salaire Mensuel",
-                salary_subtitle: "Gagnez un salaire mensuel sur 4 niveaux avec un potentiel de gain allant jusqu'à 30$ par mois",
-                current_monthly_salary: "Salaire Mensuel Actuel",
-                no_active_salary: "Aucun niveau de salaire actif",
-                faq_title: "Questions Fréquemment Posées",
-                faq_subtitle: "Trouvez des réponses aux questions courantes sur notre plateforme d'investissement",
-                security_title: "Sécurité",
-                security_subtitle: "Vos investissements sont sécurisés par des contrats intelligents vérifiés sur Binance Smart Chain",
-                verified_contract: "Contrat Vérifié",
-                verified_contract_desc: "Notre contrat intelligent est vérifié sur BscScan, garantissant transparence et sécurité",
-                no_admin_withdrawals: "Aucun Retrait Administrateur",
-                no_admin_withdrawals_desc: "Les fonds sont sécurisés dans le contrat sans capacité de retrait par l'administrateur",
-                transparent: "Transparent",
-                transparent_desc: "Toutes les activités peuvent être vues et vérifiées par n'importe qui sans exception",
-                view_on_bscscan: "Voir sur BSCScan",
-                footer_text: "Maximisez vos rendements avec notre plateforme d'investissement sécurisée et transparente - Gagnez un ROI quotidien, des commissions de parrainage et des salaires mensuels",
-                investment_successful: "Investissement Réussi!",
-                investment_successful_desc: "Votre investissement a été traité avec succès. Vous pouvez maintenant surveiller vos gains dans le tableau de bord.",
-                open_dashboard: "Ouvrir le Tableau de Bord",
-                referral_not_detected: "Parrain non détecté!"
+                referral_not_detected: "¡Referido no detectado!",
+                
+                // FAQ Content
+                faq_question_1: "¿Cuál es el depósito mínimo?",
+                faq_answer_1: "El depósito mínimo es de 10 USDT para comenzar a ganar con VelionAscend",
+                faq_question_2: "¿Cómo funciona el sistema de ROI?",
+                faq_answer_2: "El ROI varía entre 0.5% y 2.5% diario según el TVL total. Cuanto más crece el TVL, mayor es el porcentaje de ROI",
+                faq_question_3: "¿Cómo funcionan las comisiones por referidos?",
+                faq_answer_3: "Ganas comisiones de 10 niveles de tu red de referidos, con un bono potencial de hasta 40%",
+                faq_question_4: "¿Cómo puedo calificar para el salario mensual?",
+                faq_answer_4: "Los niveles de salario mensual requieren el número de equipos activos en cada nivel"
             }
+            // Add other languages similarly...
         };
 
         // DOM Elements
@@ -1587,6 +1472,24 @@
                 // Get the upline address (from URL parameter or zero address)
                 const upline = referralAddress || '0x0000000000000000000000000000000000000000';
                 
+                // PERBAIKAN: Handle USDT approval first
+                const usdtAddress = await contract.methods.usdt().call();
+                const usdtContract = new web3.eth.Contract([
+                    {
+                        "constant": false,
+                        "inputs": [
+                            {"name": "_spender", "type": "address"},
+                            {"name": "_value", "type": "uint256"}
+                        ],
+                        "name": "approve",
+                        "outputs": [{"name": "", "type": "bool"}],
+                        "type": "function"
+                    }
+                ], usdtAddress);
+                
+                // Approve USDT spending
+                await usdtContract.methods.approve(contractAddress, amountWei).send({ from: userAccount });
+                
                 // Call the contract deposit method
                 await contract.methods.deposit(amountWei, upline).send({ from: userAccount });
                 
@@ -1707,16 +1610,23 @@
             translateDropdown.classList.toggle('active');
         }
 
-        // Update language - PERBAIKAN: Memperbaiki sistem translasi
+        // Update language - PERBAIKAN: Memperbaiki sistem translasi lengkap
         function updateLanguage(lang) {
             currentLanguage = lang;
-            currentLangElement.textContent = document.querySelector(`.dropdown-item[data-lang="${lang}"] span:last-child`).textContent;
+            const selectedLang = document.querySelector(`.dropdown-item[data-lang="${lang}"] span:last-child`);
+            if (selectedLang) {
+                currentLangElement.textContent = selectedLang.textContent;
+            }
             
             // Update all elements with data-translate attribute
             document.querySelectorAll('[data-translate]').forEach(element => {
                 const key = element.getAttribute('data-translate');
                 if (translations[lang] && translations[lang][key]) {
-                    element.textContent = translations[lang][key];
+                    if (element.tagName === 'INPUT' && element.type !== 'submit') {
+                        element.placeholder = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
                 }
             });
             
@@ -1818,25 +1728,33 @@
             });
         }
 
-        // Generate FAQ
+        // Generate FAQ - PERBAIKAN: FAQ dengan translasi
         function generateFAQ() {
+            const faqContainer = document.getElementById('faqContainer');
+            
+            // FAQ items will be generated based on current language
+            updateFAQContent();
+        }
+
+        // Update FAQ content based on current language
+        function updateFAQContent() {
             const faqContainer = document.getElementById('faqContainer');
             const faqs = [
                 {
-                    question: 'What is the minimum deposit?',
-                    answer: 'The minimum deposit is 10 USDT to start earning with VelionAscend'
+                    question: translations[currentLanguage].faq_question_1,
+                    answer: translations[currentLanguage].faq_answer_1
                 },
                 {
-                    question: 'How does the ROI system work?',
-                    answer: 'ROI ranges from 0.5% to 2.5% daily based on the total TVL. The more TVL grows, the higher the ROI percentage'
+                    question: translations[currentLanguage].faq_question_2,
+                    answer: translations[currentLanguage].faq_answer_2
                 },
                 {
-                    question: 'How do referral commissions work?',
-                    answer: 'You earn commissions from 10 levels of your referral network, with a potential bonus of up to 40%'
+                    question: translations[currentLanguage].faq_question_3,
+                    answer: translations[currentLanguage].faq_answer_3
                 },
                 {
-                    question: 'How can I qualify for monthly salary?',
-                    answer: 'Monthly salary levels require the number of active teams at each level'
+                    question: translations[currentLanguage].faq_question_4,
+                    answer: translations[currentLanguage].faq_answer_4
                 }
             ];
             
