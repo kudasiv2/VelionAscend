@@ -82,65 +82,6 @@
             gap: 15px;
         }
 
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-btn {
-            background: rgba(100, 255, 218, 0.1);
-            border: 1px solid var(--cyan);
-            border-radius: 5px;
-            padding: 6px 12px;
-            color: var(--white);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .dropdown-btn:hover {
-            background: rgba(100, 255, 218, 0.2);
-            box-shadow: 0 0 10px var(--cyan-glow);
-        }
-
-        .dropdown-content {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: var(--navy);
-            border: 1px solid var(--cyan);
-            border-radius: 5px;
-            padding: 10px 0;
-            min-width: 160px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: var(--transition);
-            z-index: 1001;
-        }
-
-        .dropdown.active .dropdown-content {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-item {
-            padding: 8px 15px;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-        }
-
-        .dropdown-item:hover {
-            background: rgba(100, 255, 218, 0.1);
-        }
-
         .hamburger {
             display: none;
             flex-direction: column;
@@ -274,7 +215,7 @@
             text-shadow: 0 0 10px var(--cyan-glow);
         }
 
-        /* PERBAIKAN UTAMA: Button Styles dengan icon yang sejajar sempurna */
+        /* Button Styles */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -322,143 +263,6 @@
             font-size: 1rem;
             min-width: 140px;
             height: 44px;
-        }
-
-        /* PERBAIKAN KHUSUS: Button Start Investing di Home - FIXED ALIGNMENT */
-        #startInvesting {
-            display: inline-flex !important; /* Important untuk memastikan tidak ditimpa JavaScript */
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            min-width: 180px;
-            padding: 12px 24px;
-            height: 44px;
-        }
-
-        #startInvesting i {
-            font-size: 1rem;
-            line-height: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 16px;
-            height: 16px;
-            margin: 0;
-            padding: 0;
-        }
-
-        #startInvesting span {
-            line-height: 1;
-            display: flex;
-            align-items: center;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* PERBAIKAN: Menyamakan semua icon button dengan alignment yang sempurna */
-        .btn i, .btn-small i {
-            font-size: 1rem;
-            color: var(--navy);
-            width: 16px;
-            height: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1;
-            margin: 0;
-            padding: 0;
-        }
-
-        .btn-secondary i {
-            color: var(--cyan);
-        }
-
-        /* PERBAIKAN: Memastikan semua button memiliki alignment yang konsisten */
-        .btn span, .btn-small span {
-            line-height: 1;
-            display: flex;
-            align-items: center;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* PERBAIKAN TAMBAHAN: Untuk button yang spesifik */
-        #investNow i,
-        #copyLink i,
-        #claimReferral i,
-        #claimSalary i {
-            font-size: 1rem;
-            line-height: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 16px;
-            height: 16px;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* PERBAIKAN KHUSUS: Button Invest Now dengan icon roket */
-        #investNow {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-        }
-
-        #investNow i {
-            font-size: 1rem;
-            line-height: 1;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* PERBAIKAN KHUSUS: Button Copy di menu referral */
-        #copyLink {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        #copyLink i {
-            font-size: 1rem;
-            line-height: 1;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* PERBAIKAN KHUSUS: Button Claim Bonus di menu referral */
-        #claimReferral {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        #claimReferral i {
-            font-size: 1rem;
-            line-height: 1;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* PERBAIKAN KHUSUS: Button Claim Salary di menu salary */
-        #claimSalary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        #claimSalary i {
-            font-size: 1rem;
-            line-height: 1;
-            margin: 0;
-            padding: 0;
         }
 
         /* Wallet Connection */
@@ -749,10 +553,6 @@
                 padding: 10px 20px;
                 font-size: 0.9rem;
             }
-            
-            #startInvesting {
-                min-width: 160px;
-            }
         }
     </style>
 </head>
@@ -766,39 +566,6 @@
                     <div class="logo-text">BNBVelion</div>
                 </div>
                 <div class="nav-right">
-                    <div class="dropdown" id="translateDropdown">
-                        <button class="dropdown-btn">
-                            <i class="fas fa-globe"></i>
-                            <span id="currentLang">English</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="dropdown-content">
-                            <div class="dropdown-item" data-lang="en">
-                                <span>🇺🇸</span>
-                                <span>English</span>
-                            </div>
-                            <div class="dropdown-item" data-lang="es">
-                                <span>🇪🇸</span>
-                                <span>Español</span>
-                            </div>
-                            <div class="dropdown-item" data-lang="pt">
-                                <span>🇵🇹</span>
-                                <span>Português</span>
-                            </div>
-                            <div class="dropdown-item" data-lang="in">
-                                <span>🇮🇳</span>
-                                <span>Hindi</span>
-                            </div>
-                            <div class="dropdown-item" data-lang="fr">
-                                <span>🇫🇷</span>
-                                <span>Français</span>
-                            </div>
-                            <div class="dropdown-item" data-lang="id">
-                                <span>🇮🇩</span>
-                                <span>Indonesia</span>
-                            </div>
-                        </div>
-                    </div>
                     <div class="hamburger" id="hamburger">
                         <span></span>
                         <span></span>
@@ -1082,7 +849,7 @@
             </div>
             
             <div class="btn-center">
-                <a href="https://testnet.bscscan.com/address/0x785408c19C728fCEA2420516b1F3Ec92DA26d0ad#code" target="_blank" class="btn btn-small">
+                <a href="https://bscscan.com/address/0x058697328c6F1624007413E6Df6C85B468E4f6F4" target="_blank" class="btn btn-small">
                     <i class="fas fa-external-link-alt"></i>
                     <span>View on BSCScan</span>
                 </a>
@@ -1134,15 +901,14 @@
 
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script>
-        // Contract details
-        const contractAddress = '0x785408c19C728fCEA2420516b1F3Ec92DA26d0ad';
+        // Contract details - DIPERBAIKI: Menggunakan contract address yang benar
+        const contractAddress = '0x058697328c6F1624007413E6Df6C85B468E4f6F4';
         const contractABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":true,"internalType":"address","name":"referrer","type":"address"},{"indexed":false,"internalType":"uint256","name":"fee","type":"uint256"}],"name":"Deposited","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"DirectBNBReceived","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"ROIClaimed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"newROI","type":"uint256"}],"name":"ROIUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"ReferralBonusClaimed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"referrer","type":"address"},{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"level","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"ReferralBonusDistributed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"rank","type":"uint256"},{"indexed":false,"internalType":"string","name":"rankName","type":"string"}],"name":"SalaryPaid","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":true,"internalType":"address","name":"referrer","type":"address"}],"name":"UserRegistered","type":"event"},{"stateMutability":"payable","type":"fallback"},{"inputs":[],"name":"FEE_DIVIDER","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"FEE_PERCENTAGE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"LEADER1","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"LEADER2","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"LEADER3","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_ROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_TVL_FOR_MAX_ROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MIN_DEPOSIT","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MIN_ROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"ROI_INCREMENT","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"TVL_STEP","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"claimROI","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"claimReferralBonus","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"claimSalary","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"currentROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_referrer","type":"address"}],"name":"deposit","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"getContractInfo","outputs":[{"internalType":"uint256","name":"totalTVLAmount","type":"uint256"},{"internalType":"uint256","name":"currentROIPercentage","type":"uint256"},{"internalType":"uint256","name":"totalUsersCount","type":"uint256"},{"internalType":"uint256","name":"totalDepositsAmount","type":"uint256"},{"internalType":"uint256","name":"contractBalance","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"getPendingSalary","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"},{"internalType":"uint256","name":"_level","type":"uint256"}],"name":"getReferralCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"getUserInfo","outputs":[{"internalType":"uint256","name":"totalDeposit","type":"uint256"},{"internalType":"uint256","name":"pendingROI","type":"uint256"},{"internalType":"uint256","name":"referralBonus","type":"uint256"},{"internalType":"uint256","name":"teamCount","type":"uint256"},{"internalType":"uint256","name":"salaryRank","type":"uint256"},{"internalType":"uint256","name":"daysUntilNextSalary","type":"uint256"},{"internalType":"address","name":"referrer","type":"address"},{"internalType":"bool","name":"isUserActive","type":"bool"},{"internalType":"uint256","name":"registrationTime","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"getUserPendingROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"hasDeposited","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"isAddressSpecialUser","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"isSpecialUser","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"manager","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"referralLevels","outputs":[{"internalType":"uint256","name":"percentage","type":"uint256"},{"internalType":"uint256","name":"minDeposit","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"salaryRanks","outputs":[{"internalType":"uint256","name":"monthlySalary","type":"uint256"},{"internalType":"uint256","name":"minTeamMembers","type":"uint256"},{"internalType":"string","name":"rankName","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalDeposits","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalTVL","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalUsers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"userReferrals","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"users","outputs":[{"internalType":"uint256","name":"totalDeposit","type":"uint256"},{"internalType":"uint256","name":"lastROIUpdate","type":"uint256"},{"internalType":"uint256","name":"accumulatedROI","type":"uint256"},{"internalType":"address","name":"referrer","type":"address"},{"internalType":"uint256","name":"referralBonus","type":"uint256"},{"internalType":"uint256","name":"totalWithdrawn","type":"uint256"},{"internalType":"uint256","name":"teamCount","type":"uint256"},{"internalType":"uint256","name":"lastSalaryClaim","type":"uint256"},{"internalType":"uint256","name":"currentSalaryRank","type":"uint256"},{"internalType":"bool","name":"isActive","type":"bool"},{"internalType":"uint256","name":"registrationTime","type":"uint256"}],"stateMutability":"view","type":"function"},{"stateMutability":"payable","type":"receive"}];
 
         // Global variables
         let web3;
         let contract;
         let userAccount;
-        let currentLanguage = 'en';
         let referralAddress = null;
 
         // DOM Elements
@@ -1160,8 +926,6 @@
         const notification = document.getElementById('notification');
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
-        const translateDropdown = document.getElementById('translateDropdown');
-        const currentLangElement = document.getElementById('currentLang');
         const referrerAddressInput = document.getElementById('referrerAddress');
 
         // Initialize the app
@@ -1230,28 +994,6 @@
                 });
             });
             
-            // Dropdown menus
-            translateDropdown.addEventListener('click', toggleTranslateDropdown);
-            
-            // Language selection
-            document.querySelectorAll('.dropdown-item[data-lang]').forEach(item => {
-                item.addEventListener('click', function() {
-                    const lang = this.getAttribute('data-lang');
-                    updateLanguage(lang);
-                    translateDropdown.classList.remove('active');
-                });
-            });
-            
-            // Close dropdowns when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!translateDropdown.contains(e.target)) {
-                    translateDropdown.classList.remove('active');
-                }
-                if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                    navMenu.classList.remove('active');
-                }
-            });
-            
             // Update referrer address when wallet connects
             if (window.ethereum) {
                 window.ethereum.on('accountsChanged', function(accounts) {
@@ -1296,11 +1038,10 @@
             }
         }
 
-        // PERBAIKAN UTAMA: Update wallet UI setelah koneksi - FIXED ALIGNMENT
+        // Update wallet UI after connection
         function updateWalletUI() {
             connectWalletBtn.style.display = 'none';
             connectedInfo.style.display = 'flex';
-            // PERBAIKAN: Menggunakan inline-flex agar alignment tetap terjaga
             startInvestingBtn.style.display = 'inline-flex';
             walletAddress.textContent = `${userAccount.substring(0, 6)}...${userAccount.substring(userAccount.length - 4)}`;
             
@@ -1579,20 +1320,6 @@
         // Toggle navigation menu
         function toggleNavMenu() {
             navMenu.classList.toggle('active');
-        }
-
-        // Toggle translate dropdown
-        function toggleTranslateDropdown() {
-            translateDropdown.classList.toggle('active');
-        }
-
-        // Update language
-        function updateLanguage(lang) {
-            currentLanguage = lang;
-            const selectedLang = document.querySelector(`.dropdown-item[data-lang="${lang}"] span:last-child`);
-            if (selectedLang) {
-                currentLangElement.textContent = selectedLang.textContent;
-            }
         }
 
         // Generate referral levels
