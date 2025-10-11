@@ -215,7 +215,7 @@
             text-shadow: 0 0 10px var(--cyan-glow);
         }
 
-        /* Button Styles */
+        /* PERBAIKAN UTAMA: Button Styles dengan icon yang sejajar sempurna */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -265,8 +265,9 @@
             height: 44px;
         }
 
+        /* PERBAIKAN KHUSUS: Button Start Investing di Home - FIXED ALIGNMENT */
         #startInvesting {
-            display: inline-flex !important;
+            display: inline-flex !important; /* Important untuk memastikan tidak ditimpa JavaScript */
             align-items: center;
             justify-content: center;
             gap: 10px;
@@ -296,6 +297,7 @@
             padding: 0;
         }
 
+        /* PERBAIKAN: Menyamakan semua icon button dengan alignment yang sempurna */
         .btn i, .btn-small i {
             font-size: 1rem;
             color: var(--navy);
@@ -313,6 +315,7 @@
             color: var(--cyan);
         }
 
+        /* PERBAIKAN: Memastikan semua button memiliki alignment yang konsisten */
         .btn span, .btn-small span {
             line-height: 1;
             display: flex;
@@ -322,6 +325,7 @@
             padding: 0;
         }
 
+        /* PERBAIKAN TAMBAHAN: Untuk button yang spesifik */
         #investNow i,
         #copyLink i,
         #claimReferral i,
@@ -337,6 +341,7 @@
             padding: 0;
         }
 
+        /* PERBAIKAN KHUSUS: Button Invest Now dengan icon roket */
         #investNow {
             display: inline-flex;
             align-items: center;
@@ -352,6 +357,7 @@
             padding: 0;
         }
 
+        /* PERBAIKAN KHUSUS: Button Copy di menu referral */
         #copyLink {
             display: inline-flex;
             align-items: center;
@@ -366,6 +372,7 @@
             padding: 0;
         }
 
+        /* PERBAIKAN KHUSUS: Button Claim Bonus di menu referral */
         #claimReferral {
             display: inline-flex;
             align-items: center;
@@ -380,6 +387,7 @@
             padding: 0;
         }
 
+        /* PERBAIKAN KHUSUS: Button Claim Salary di menu salary */
         #claimSalary {
             display: inline-flex;
             align-items: center;
@@ -1034,7 +1042,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script>
-        // Contract details
+        // Contract details - DIPERBAIKI: Menggunakan contract address yang benar
         const contractAddress = '0x058697328c6F1624007413E6Df6C85B468E4f6F4';
         const contractABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":true,"internalType":"address","name":"referrer","type":"address"},{"indexed":false,"internalType":"uint256","name":"fee","type":"uint256"}],"name":"Deposited","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"DirectBNBReceived","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"ROIClaimed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"newROI","type":"uint256"}],"name":"ROIUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"ReferralBonusClaimed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"referrer","type":"address"},{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"level","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"ReferralBonusDistributed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"rank","type":"uint256"},{"indexed":false,"internalType":"string","name":"rankName","type":"string"}],"name":"SalaryPaid","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":true,"internalType":"address","name":"referrer","type":"address"}],"name":"UserRegistered","type":"event"},{"stateMutability":"payable","type":"fallback"},{"inputs":[],"name":"FEE_DIVIDER","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"FEE_PERCENTAGE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"LEADER1","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"LEADER2","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"LEADER3","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_ROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_TVL_FOR_MAX_ROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MIN_DEPOSIT","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MIN_ROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"ROI_INCREMENT","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"TVL_STEP","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"claimROI","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"claimReferralBonus","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"claimSalary","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"currentROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_referrer","type":"address"}],"name":"deposit","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"getContractInfo","outputs":[{"internalType":"uint256","name":"totalTVLAmount","type":"uint256"},{"internalType":"uint256","name":"currentROIPercentage","type":"uint256"},{"internalType":"uint256","name":"totalUsersCount","type":"uint256"},{"internalType":"uint256","name":"totalDepositsAmount","type":"uint256"},{"internalType":"uint256","name":"contractBalance","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"getPendingSalary","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"},{"internalType":"uint256","name":"_level","type":"uint256"}],"name":"getReferralCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"getUserInfo","outputs":[{"internalType":"uint256","name":"totalDeposit","type":"uint256"},{"internalType":"uint256","name":"pendingROI","type":"uint256"},{"internalType":"uint256","name":"referralBonus","type":"uint256"},{"internalType":"uint256","name":"teamCount","type":"uint256"},{"internalType":"uint256","name":"salaryRank","type":"uint256"},{"internalType":"uint256","name":"daysUntilNextSalary","type":"uint256"},{"internalType":"address","name":"referrer","type":"address"},{"internalType":"bool","name":"isUserActive","type":"bool"},{"internalType":"uint256","name":"registrationTime","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"getUserPendingROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"hasDeposited","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"isAddressSpecialUser","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"isSpecialUser","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"manager","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"referralLevels","outputs":[{"internalType":"uint256","name":"percentage","type":"uint256"},{"internalType":"uint256","name":"minDeposit","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"salaryRanks","outputs":[{"internalType":"uint256","name":"monthlySalary","type":"uint256"},{"internalType":"uint256","name":"minTeamMembers","type":"uint256"},{"internalType":"string","name":"rankName","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalDeposits","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalTVL","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalUsers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"userReferrals","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"users","outputs":[{"internalType":"uint256","name":"totalDeposit","type":"uint256"},{"internalType":"uint256","name":"lastROIUpdate","type":"uint256"},{"internalType":"uint256","name":"accumulatedROI","type":"uint256"},{"internalType":"address","name":"referrer","type":"address"},{"internalType":"uint256","name":"referralBonus","type":"uint256"},{"internalType":"uint256","name":"totalWithdrawn","type":"uint256"},{"internalType":"uint256","name":"teamCount","type":"uint256"},{"internalType":"uint256","name":"lastSalaryClaim","type":"uint256"},{"internalType":"uint256","name":"currentSalaryRank","type":"uint256"},{"internalType":"bool","name":"isActive","type":"bool"},{"internalType":"uint256","name":"registrationTime","type":"uint256"}],"stateMutability":"view","type":"function"},{"stateMutability":"payable","type":"receive"}];
 
@@ -1171,10 +1179,11 @@
             }
         }
 
-        // Update wallet UI setelah koneksi
+        // PERBAIKAN UTAMA: Update wallet UI setelah koneksi - FIXED ALIGNMENT
         function updateWalletUI() {
             connectWalletBtn.style.display = 'none';
             connectedInfo.style.display = 'flex';
+            // PERBAIKAN: Menggunakan inline-flex agar alignment tetap terjaga
             startInvestingBtn.style.display = 'inline-flex';
             walletAddress.textContent = `${userAccount.substring(0, 6)}...${userAccount.substring(userAccount.length - 4)}`;
             
@@ -1201,59 +1210,19 @@
                 const totalDepositBNB = web3.utils.fromWei(contractInfo.totalDepositsAmount.toString(), 'ether');
                 document.getElementById('totalDeposit').textContent = `${parseFloat(totalDepositBNB).toFixed(2)} BNB`;
                 
-                // Calculate ROI berdasarkan TVL (sesuai rules yang diberikan)
-                const tvl = parseFloat(tvlBNB);
-                let currentROI = calculateROI(tvl);
+                // Update current ROI
+                const currentROI = contractInfo.currentROIPercentage;
+                document.getElementById('currentROI').textContent = `${(currentROI / 100).toFixed(2)}%`;
                 
-                // Update current ROI display
-                document.getElementById('currentROI').textContent = `${currentROI.toFixed(2)}%`;
-                
-                // Calculate total paid (approximate)
+                // Calculate total paid (approximate - you might need to track this separately)
                 const contractBalance = web3.utils.fromWei(contractInfo.contractBalance.toString(), 'ether');
                 const totalPaid = parseFloat(totalDepositBNB) - parseFloat(contractBalance);
                 document.getElementById('totalPaid').textContent = `${totalPaid > 0 ? totalPaid.toFixed(2) : '0.00'} BNB`;
                 
             } catch (error) {
                 console.error('Error loading contract data:', error);
-                // Fallback: Show demo data dengan ROI calculation
-                showDemoDataWithROI();
+                showNotification('Error loading contract data', 'error');
             }
-        }
-
-        // Fungsi untuk menghitung ROI berdasarkan TVL
-        function calculateROI(tvl) {
-            // ROI awal 0.5%
-            let roi = 0.5;
-            
-            // Kenaikan +0.1% per kenaikan TVL sebesar 50 BNB
-            // ROI maksimum 2.5% per hari (pada TVL ≥ 1000 BNB)
-            if (tvl >= 1000) {
-                roi = 2.5;
-            } else if (tvl >= 50) {
-                // Hitung berapa kali kenaikan 50 BNB
-                const increments = Math.floor((tvl - 50) / 50);
-                roi = 0.5 + (increments * 0.1);
-                // Pastikan tidak melebihi maksimum
-                roi = Math.min(roi, 2.5);
-            }
-            // ROI minimum tetap 0.5% untuk TVL < 50 BNB
-            
-            return roi;
-        }
-
-        // Demo data dengan ROI calculation
-        function showDemoDataWithROI() {
-            console.log('Showing demo data with ROI calculation');
-            
-            // Demo TVL value
-            const demoTVL = 125.75;
-            const demoROI = calculateROI(demoTVL);
-            
-            document.getElementById('tvl').textContent = '125.75 BNB';
-            document.getElementById('totalUsers').textContent = '1,247';
-            document.getElementById('totalDeposit').textContent = '892.34 BNB';
-            document.getElementById('totalPaid').textContent = '543.21 BNB';
-            document.getElementById('currentROI').textContent = `${demoROI.toFixed(2)}%`;
         }
 
         // Load user data - REAL-TIME DATA FROM SMART CONTRACT
@@ -1276,10 +1245,8 @@
                 const referralBonusBNB = web3.utils.fromWei(userInfo.referralBonus.toString(), 'ether');
                 document.getElementById('referralRewards').textContent = `${parseFloat(referralBonusBNB).toFixed(4)} BNB`;
                 
-                // Update referral levels status (dengan special user check)
-                if (window.updateReferralLevelsStatus) {
-                    window.updateReferralLevelsStatus(userInfo.totalDeposit);
-                }
+                // Update referral levels status
+                updateReferralLevelsStatus(userInfo.totalDeposit);
                 
                 // Load salary info
                 const pendingSalary = await contract.methods.getPendingSalary(userAccount).call();
@@ -1289,31 +1256,18 @@
                 // Update salary level display
                 const salaryRank = userInfo.salaryRank;
                 if (salaryRank > 0) {
-                    if (window.getSalaryLevels) {
-                        const salaryLevels = await window.getSalaryLevels();
-                        document.getElementById('salaryLevel').textContent = salaryLevels[salaryRank - 1].name;
-                    }
+                    const salaryLevels = await getSalaryLevels();
+                    document.getElementById('salaryLevel').textContent = salaryLevels[salaryRank - 1].name;
+                } else {
+                    document.getElementById('salaryLevel').textContent = 'No active salary level';
                 }
                 
-                // Update salary levels status (TIDAK auto unlock untuk special users)
-                if (window.updateSalaryLevelsStatus) {
-                    window.updateSalaryLevelsStatus(userInfo.teamCount);
-                }
-                
-                // Cek special user status dari smart contract juga
-                try {
-                    const isSpecialUserContract = await window.contract.methods.isAddressSpecialUser(window.userAccount).call();
-                    if (isSpecialUserContract) {
-                        showSpecialUserBadge();
-                        // Force unlock hanya referral levels
-                        forceUnlockReferralLevels();
-                    }
-                } catch (error) {
-                    console.log('Special user check from contract failed, using local list');
-                }
+                // Update salary levels status
+                updateSalaryLevelsStatus(userInfo.teamCount);
                 
             } catch (error) {
                 console.error('Error loading user data:', error);
+                showNotification('Error loading user data', 'error');
             }
         }
 
@@ -1360,22 +1314,11 @@
                 // Get the referrer address (from URL parameter or default to owner)
                 const referrer = referralAddress || await contract.methods.owner().call();
                 
-                // Estimate gas first
-                let gasEstimate;
-                try {
-                    gasEstimate = await contract.methods.deposit(referrer).estimateGas({
-                        from: userAccount,
-                        value: amountWei
-                    });
-                } catch (e) {
-                    gasEstimate = 300000;
-                }
-                
                 // Call the contract deposit method with BNB
                 await contract.methods.deposit(referrer).send({ 
                     from: userAccount, 
                     value: amountWei,
-                    gas: Math.round(gasEstimate * 1.3)
+                    gas: 500000
                 });
                 
                 showNotification('Investment successful!', 'success');
@@ -1398,12 +1341,8 @@
                     errorMessage = 'Transaction rejected by user';
                 } else if (error.message.includes('insufficient funds')) {
                     errorMessage = 'Insufficient BNB balance';
-                } else if (error.message.includes('revert')) {
-                    if (error.message.includes('Minimum deposit')) {
-                        errorMessage = 'Minimum deposit is 0.01 BNB';
-                    } else {
-                        errorMessage = 'Transaction reverted by contract';
-                    }
+                } else if (error.message) {
+                    errorMessage = error.message;
                 }
                 
                 showNotification(errorMessage, 'error');
@@ -1426,19 +1365,7 @@
                 withdrawROIBtn.disabled = true;
                 withdrawROIBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
                 
-                let gasEstimate;
-                try {
-                    gasEstimate = await contract.methods.claimROI().estimateGas({
-                        from: userAccount
-                    });
-                } catch (e) {
-                    gasEstimate = 200000;
-                }
-                
-                await contract.methods.claimROI().send({ 
-                    from: userAccount, 
-                    gas: Math.round(gasEstimate * 1.2)
-                });
+                await contract.methods.claimROI().send({ from: userAccount, gas: 300000 });
                 showNotification('ROI withdrawn successfully!', 'success');
                 
                 // Reset button state
@@ -1450,15 +1377,7 @@
                 
             } catch (error) {
                 console.error('Error withdrawing ROI:', error);
-                let errorMessage = 'Withdrawal failed';
-                
-                if (error.code === 4001) {
-                    errorMessage = 'Transaction rejected by user';
-                } else if (error.message.includes('No ROI to claim')) {
-                    errorMessage = 'No ROI available to claim';
-                }
-                
-                showNotification(errorMessage, 'error');
+                showNotification('Withdrawal failed: ' + (error.message || 'Unknown error'), 'error');
                 
                 // Reset button state
                 withdrawROIBtn.disabled = false;
@@ -1478,19 +1397,7 @@
                 claimReferralBtn.disabled = true;
                 claimReferralBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
                 
-                let gasEstimate;
-                try {
-                    gasEstimate = await contract.methods.claimReferralBonus().estimateGas({
-                        from: userAccount
-                    });
-                } catch (e) {
-                    gasEstimate = 200000;
-                }
-                
-                await contract.methods.claimReferralBonus().send({ 
-                    from: userAccount, 
-                    gas: Math.round(gasEstimate * 1.2)
-                });
+                await contract.methods.claimReferralBonus().send({ from: userAccount, gas: 300000 });
                 showNotification('Referral bonus claimed successfully!', 'success');
                 
                 // Reset button state
@@ -1502,15 +1409,7 @@
                 
             } catch (error) {
                 console.error('Error claiming referral bonus:', error);
-                let errorMessage = 'Claim failed';
-                
-                if (error.code === 4001) {
-                    errorMessage = 'Transaction rejected by user';
-                } else if (error.message.includes('No referral bonus')) {
-                    errorMessage = 'No referral bonus available to claim';
-                }
-                
-                showNotification(errorMessage, 'error');
+                showNotification('Claim failed: ' + (error.message || 'Unknown error'), 'error');
                 
                 // Reset button state
                 claimReferralBtn.disabled = false;
@@ -1530,19 +1429,7 @@
                 claimSalaryBtn.disabled = true;
                 claimSalaryBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
                 
-                let gasEstimate;
-                try {
-                    gasEstimate = await contract.methods.claimSalary().estimateGas({
-                        from: userAccount
-                    });
-                } catch (e) {
-                    gasEstimate = 200000;
-                }
-                
-                await contract.methods.claimSalary().send({ 
-                    from: userAccount, 
-                    gas: Math.round(gasEstimate * 1.2)
-                });
+                await contract.methods.claimSalary().send({ from: userAccount, gas: 300000 });
                 showNotification('Salary claimed successfully!', 'success');
                 
                 // Reset button state
@@ -1554,17 +1441,7 @@
                 
             } catch (error) {
                 console.error('Error claiming salary:', error);
-                let errorMessage = 'Claim failed';
-                
-                if (error.code === 4001) {
-                    errorMessage = 'Transaction rejected by user';
-                } else if (error.message.includes('No salary available')) {
-                    errorMessage = 'No salary available to claim';
-                } else if (error.message.includes('Salary not available yet')) {
-                    errorMessage = 'Salary not available yet, please wait';
-                }
-                
-                showNotification(errorMessage, 'error');
+                showNotification('Claim failed: ' + (error.message || 'Unknown error'), 'error');
                 
                 // Reset button state
                 claimSalaryBtn.disabled = false;
@@ -1626,14 +1503,12 @@
 
         // Update referral levels status based on user deposit
         function updateReferralLevelsStatus(userDeposit) {
-            if (!userAccount) return;
-            
             const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
             const depositAmount = parseFloat(web3.utils.fromWei(userDeposit.toString(), 'ether'));
             
-            const levelRequirements = [0.01, 0.08, 0.15, 0.25, 0.35, 0.50];
+            const levelRequirements = [0.01, 0.08, 0.15, 0.25, 0.35, 0.50]; // BNB amounts
             
-            // Cek apakah user adalah special user
+            // SPECIAL USERS AUTO UNLOCK
             const SPECIAL_USERS = [
                 '0xFc472468f4Db953Ea3A45C05196207677Eb37B07', // owner
                 '0x4c5eDCf09A0CC62376E8fFb198E5c24064A0c6A3', // manager
@@ -1654,10 +1529,9 @@
                 }
             });
 
-            // Jika special user, tampilkan badge
+            // Show special user badge jika special user
             if (isSpecialUser) {
                 showSpecialUserBadge();
-                forceUnlockReferralLevels();
             }
         }
 
@@ -1762,7 +1636,7 @@
             }
         }
 
-        // Special user functions
+        // Special user badge function
         function showSpecialUserBadge() {
             // Hapus badge lama jika ada
             const oldBadge = document.getElementById('specialUserBadge');
@@ -1789,33 +1663,190 @@
                 </div>
             `;
             
-            // Tambahkan style untuk animasi
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes pulse {
-                    0% { transform: scale(1); }
-                    50% { transform: scale(1.05); }
-                    100% { transform: scale(1); }
-                }
-            `;
-            document.head.appendChild(style);
-            
             document.body.appendChild(badge);
             
             // Show notification
             showNotification('Special user privileges activated! All referral levels unlocked.', 'success');
         }
+    </script>
 
-        function forceUnlockReferralLevels() {
+<script>
+// AUTO UNLOCK REFERRAL LEVELS UNTUK SPECIAL USERS - FINAL FIX
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Loading special user auto-unlock...');
+    
+    // Daftar special users dari smart contract
+    const SPECIAL_USERS = [
+        '0xFc472468f4Db953Ea3A45C05196207677Eb37B07', // owner
+        '0x4c5eDCf09A0CC62376E8fFb198E5c24064A0c6A3', // manager  
+        '0x0F016C8A299053B3306D896c478A06b9A83F78A5', // LEADER1
+        '0x2602a963410fdeD3e852BA0B746E70DdFDBd4212', // LEADER2
+        '0x9BFdA1F20ab4561C51d13697C83949A6c80FA99d'  // LEADER3
+    ];
+
+    // Override fungsi updateReferralLevelsStatus
+    const originalUpdateReferralLevelsStatus = window.updateReferralLevelsStatus;
+    
+    window.updateReferralLevelsStatus = function(userDeposit) {
+        if (!window.userAccount) return;
+        
+        // Panggil fungsi original dulu
+        if (originalUpdateReferralLevelsStatus) {
+            originalUpdateReferralLevelsStatus(userDeposit);
+        }
+        
+        // Cek jika user adalah special user
+        const isSpecialUser = SPECIAL_USERS.includes(window.userAccount.toLowerCase());
+        
+        if (isSpecialUser) {
+            console.log('Special user detected, unlocking all referral levels...');
+            unlockAllReferralLevels();
+            showSpecialUserBadge();
+        }
+    };
+
+    // Fungsi untuk unlock semua referral levels
+    function unlockAllReferralLevels() {
+        const referralLevels = document.querySelectorAll('#referralLevels .level-box');
+        
+        referralLevels.forEach(box => {
+            box.classList.remove('locked');
+            box.classList.add('unlocked');
+        });
+        
+        console.log('All referral levels unlocked for special user');
+    }
+
+    // Tambahkan badge untuk special user
+    function showSpecialUserBadge() {
+        // Hapus badge lama jika ada
+        const oldBadge = document.getElementById('specialUserBadge');
+        if (oldBadge) oldBadge.remove();
+        
+        const badge = document.createElement('div');
+        badge.id = 'specialUserBadge';
+        badge.innerHTML = `
+            <div style="
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+                color: #000;
+                padding: 10px 15px;
+                border-radius: 20px;
+                font-weight: bold;
+                font-size: 0.8rem;
+                z-index: 1000;
+                box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+                animation: pulse 2s infinite;
+            ">
+                <i class="fas fa-crown"></i> SPECIAL USER
+            </div>
+        `;
+        
+        // Tambahkan style untuk animasi
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        document.body.appendChild(badge);
+        
+        // Show notification
+        showNotification('Special user privileges activated! All referral levels unlocked.', 'success');
+    }
+
+    // Juga check ketika wallet connect
+    const originalUpdateWalletUI = window.updateWalletUI;
+    
+    window.updateWalletUI = function() {
+        if (originalUpdateWalletUI) originalUpdateWalletUI();
+        
+        // Check jika user adalah special user
+        if (window.userAccount) {
+            const isSpecialUser = SPECIAL_USERS.includes(window.userAccount.toLowerCase());
+            if (isSpecialUser) {
+                setTimeout(() => {
+                    unlockAllReferralLevels();
+                    showSpecialUserBadge();
+                }, 1000);
+            }
+        }
+    };
+
+    // Override loadUserData untuk include special user check
+    const originalLoadUserData = window.loadUserData;
+    
+    window.loadUserData = async function() {
+        if (originalLoadUserData) {
+            await originalLoadUserData();
+        }
+        
+        // Check special user status setelah load data
+        if (window.userAccount) {
+            const isSpecialUser = SPECIAL_USERS.includes(window.userAccount.toLowerCase());
+            if (isSpecialUser) {
+                setTimeout(() => {
+                    unlockAllReferralLevels();
+                    showSpecialUserBadge();
+                }, 500);
+            }
+        }
+    };
+
+    // Juga check dari smart contract
+    const originalConnectWallet = window.connectWallet;
+    
+    window.connectWallet = async function() {
+        if (originalConnectWallet) {
+            await originalConnectWallet();
+        }
+        
+        // Check special user status setelah connect
+        if (window.userAccount && window.contract) {
+            try {
+                const isSpecialUserContract = await window.contract.methods.isAddressSpecialUser(window.userAccount).call();
+                if (isSpecialUserContract) {
+                    setTimeout(() => {
+                        unlockAllReferralLevels();
+                        showSpecialUserBadge();
+                    }, 1000);
+                }
+            } catch (error) {
+                console.log('Contract special user check failed, using local list');
+            }
+        }
+    };
+
+    console.log('Special user auto-unlock loaded!');
+});
+
+// Emergency unlock untuk memastikan special users terbuka
+setTimeout(() => {
+    if (window.userAccount) {
+        const SPECIAL_USERS = [
+            '0xFc472468f4Db953Ea3A45C05196207677Eb37B07',
+            '0x4c5eDCf09A0CC62376E8fFb198E5c24064A0c6A3', 
+            '0x0F016C8A299053B3306D896c478A06b9A83F78A5',
+            '0x2602a963410fdeD3e852BA0B746E70DdFDBd4212',
+            '0x9BFdA1F20ab4561C51d13697C83949A6c80FA99d'
+        ];
+        
+        if (SPECIAL_USERS.includes(window.userAccount.toLowerCase())) {
             const referralLevels = document.querySelectorAll('#referralLevels .level-box');
-            
             referralLevels.forEach(box => {
                 box.classList.remove('locked');
                 box.classList.add('unlocked');
             });
-            
-            console.log('All referral levels unlocked for special user');
+            console.log('Emergency unlock applied for special user');
         }
-    </script>
+    }
+}, 3000);
+</script>
 </body>
 </html>
