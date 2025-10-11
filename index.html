@@ -324,6 +324,38 @@
             height: 44px;
         }
 
+        /* PERBAIKAN KHUSUS: Button Start Investing di Home - FIXED ALIGNMENT */
+        #startInvesting {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 180px;
+            padding: 12px 24px;
+            height: 44px;
+        }
+
+        #startInvesting i {
+            font-size: 1rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            margin: 0;
+            padding: 0;
+        }
+
+        #startInvesting span {
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
         /* PERBAIKAN: Menyamakan semua icon button dengan alignment yang sempurna */
         .btn i, .btn-small i {
             font-size: 1rem;
@@ -348,6 +380,8 @@
             display: flex;
             align-items: center;
             height: 100%;
+            margin: 0;
+            padding: 0;
         }
 
         /* PERBAIKAN TAMBAHAN: Untuk button yang spesifik */
@@ -362,6 +396,8 @@
             justify-content: center;
             width: 16px;
             height: 16px;
+            margin: 0;
+            padding: 0;
         }
 
         /* PERBAIKAN KHUSUS: Button Invest Now dengan icon roket */
@@ -370,6 +406,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+            width: 100%;
         }
 
         #investNow i {
@@ -712,6 +749,10 @@
                 padding: 10px 20px;
                 font-size: 0.9rem;
             }
+            
+            #startInvesting {
+                min-width: 160px;
+            }
         }
     </style>
 </head>
@@ -770,14 +811,14 @@
 
     <!-- Navigation Menu -->
     <nav class="nav-menu" id="navMenu">
-        <a href="#home" class="nav-link" data-translate="home">Home</a>
-        <a href="#why-choose" class="nav-link" data-translate="why_choose">Why Choose</a>
-        <a href="#dashboard" class="nav-link" data-translate="dashboard">Dashboard</a>
-        <a href="#invest" class="nav-link" data-translate="invest">Invest</a>
-        <a href="#referral" class="nav-link" data-translate="referral">Referral</a>
-        <a href="#salary" class="nav-link" data-translate="salary">Salary</a>
-        <a href="#faq" class="nav-link" data-translate="faq">FAQ</a>
-        <a href="#security" class="nav-link" data-translate="security">Security</a>
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#why-choose" class="nav-link">Why Choose</a>
+        <a href="#dashboard" class="nav-link">Dashboard</a>
+        <a href="#invest" class="nav-link">Invest</a>
+        <a href="#referral" class="nav-link">Referral</a>
+        <a href="#salary" class="nav-link">Salary</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="#security" class="nav-link">Security</a>
     </nav>
 
     <!-- Notification -->
@@ -787,54 +828,54 @@
     <section id="home">
         <div class="container">
             <div class="section-title">
-                <h1 data-translate="home_title">Smart Investment with BNBVelion</h1>
-                <p data-translate="home_subtitle">Maximize your returns with our secure BNB investment platform – Earn daily ROI, referral commissions, and monthly salaries</p>
+                <h1>Smart Investment with BNBVelion</h1>
+                <p>Maximize your returns with our secure BNB investment platform – Earn daily ROI, referral commissions, and monthly salaries</p>
             </div>
             
             <div class="box-grid">
                 <div class="box">
                     <i class="fas fa-chart-line"></i>
-                    <h3 data-translate="tvl">TVL</h3>
+                    <h3>TVL</h3>
                     <div class="box-value" id="tvl">0 BNB</div>
-                    <p data-translate="tvl_desc">Total Value Locked</p>
+                    <p>Total Value Locked</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-users"></i>
-                    <h3 data-translate="total_users">Total Users</h3>
+                    <h3>Total Users</h3>
                     <div class="box-value" id="totalUsers">0</div>
-                    <p data-translate="total_users_desc">Active Investors</p>
+                    <p>Active Investors</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-wallet"></i>
-                    <h3 data-translate="total_deposit">Total Deposit</h3>
+                    <h3>Total Deposit</h3>
                     <div class="box-value" id="totalDeposit">0 BNB</div>
-                    <p data-translate="total_deposit_desc">Total Funds Deposited</p>
+                    <p>Total Funds Deposited</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-money-bill-wave"></i>
-                    <h3 data-translate="total_paid">Total Paid Out</h3>
+                    <h3>Total Paid Out</h3>
                     <div class="box-value" id="totalPaid">0 BNB</div>
-                    <p data-translate="total_paid_desc">Total Rewards Distributed</p>
+                    <p>Total Rewards Distributed</p>
                 </div>
             </div>
             
             <div class="wallet-section">
                 <button class="btn" id="connectWallet">
                     <i class="fas fa-plug"></i>
-                    <span data-translate="connect_wallet">Connect Wallet</span>
+                    <span>Connect Wallet</span>
                 </button>
                 
                 <div class="connected" id="connectedInfo" style="display: none;">
                     <div class="connected-status">
                         <div class="blinking-dot"></div>
-                        <span data-translate="connected">Connected</span>
+                        <span>Connected</span>
                     </div>
                     <div class="wallet-address" id="walletAddress"></div>
                 </div>
                 
                 <button class="btn" id="startInvesting" style="display: none;">
                     <i class="fas fa-rocket"></i>
-                    <span data-translate="start_investing">Start Investing</span>
+                    <span>Start Investing</span>
                 </button>
             </div>
         </div>
@@ -844,30 +885,30 @@
     <section id="why-choose">
         <div class="container">
             <div class="section-title">
-                <h1 data-translate="why_choose_title">Why Choose BNBVelion?</h1>
-                <p data-translate="why_choose_subtitle">Our platform offers multiple ways to grow your BNB investment with security and transparency</p>
+                <h1>Why Choose BNBVelion?</h1>
+                <p>Our platform offers multiple ways to grow your BNB investment with security and transparency</p>
             </div>
             
             <div class="box-grid">
                 <div class="box">
                     <i class="fas fa-chart-pie"></i>
-                    <h3 data-translate="daily_roi">Daily ROI</h3>
-                    <p data-translate="daily_roi_desc">Earn between 0.5% to 2.5% daily return on your investment based on TVL growth</p>
+                    <h3>Daily ROI</h3>
+                    <p>Earn between 0.5% to 2.5% daily return on your investment based on TVL growth</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-user-friends"></i>
-                    <h3 data-translate="referral_program">Referral Program</h3>
-                    <p data-translate="referral_program_desc">Earn commissions from 6 levels of your referral network with total bonus up to 40%</p>
+                    <h3>Referral Program</h3>
+                    <p>Earn commissions from 6 levels of your referral network with total bonus up to 40%</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-money-check-alt"></i>
-                    <h3 data-translate="monthly_salary">Monthly Salary</h3>
-                    <p data-translate="monthly_salary_desc">Earn monthly salary from 4 levels with earning potential up to 0.025 BNB per month</p>
+                    <h3>Monthly Salary</h3>
+                    <p>Earn monthly salary from 4 levels with earning potential up to 0.025 BNB per month</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-shield-alt"></i>
-                    <h3 data-translate="secure_transparent">Secure & Transparent</h3>
-                    <p data-translate="secure_transparent_desc">Our smart contract is verified on BscScan with no admin withdrawal capabilities</p>
+                    <h3>Secure & Transparent</h3>
+                    <p>Our smart contract is verified on BscScan with no admin withdrawal capabilities</p>
                 </div>
             </div>
         </div>
@@ -877,35 +918,35 @@
     <section id="dashboard">
         <div class="container">
             <div class="section-title">
-                <h1 data-translate="dashboard_title">Your Dashboard</h1>
-                <p data-translate="dashboard_subtitle">Monitor your investments, earnings, and referral network in real-time</p>
+                <h1>Your Dashboard</h1>
+                <p>Monitor your investments, earnings, and referral network in real-time</p>
             </div>
             
             <div class="box-grid">
                 <div class="box">
                     <i class="fas fa-coins"></i>
-                    <h3 data-translate="active_deposit">Active Deposit</h3>
+                    <h3>Active Deposit</h3>
                     <div class="box-value" id="userDeposit">0 BNB</div>
-                    <p data-translate="active_deposit_desc">Your Current Investment</p>
+                    <p>Your Current Investment</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-percentage"></i>
-                    <h3 data-translate="current_roi">Current Daily ROI</h3>
+                    <h3>Current Daily ROI</h3>
                     <div class="box-value" id="currentROI">0%</div>
-                    <p data-translate="current_roi_desc">Your Daily Return Rate</p>
+                    <p>Your Daily Return Rate</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-hand-holding-usd"></i>
-                    <h3 data-translate="pending_roi">Pending ROI</h3>
+                    <h3>Pending ROI</h3>
                     <div class="box-value" id="pendingROI">0 BNB</div>
-                    <p data-translate="pending_roi_desc">Available for Withdrawal</p>
+                    <p>Available for Withdrawal</p>
                 </div>
             </div>
             
             <div class="btn-center">
                 <button class="btn btn-small" id="withdrawROI">
                     <i class="fas fa-download"></i>
-                    <span data-translate="withdraw_roi">Withdraw ROI</span>
+                    <span>Withdraw ROI</span>
                 </button>
             </div>
         </div>
@@ -915,23 +956,23 @@
     <section id="invest">
         <div class="container">
             <div class="section-title">
-                <h1 data-translate="invest_title">Start Investing</h1>
-                <p data-translate="invest_subtitle">Deposit BNB and start earning daily returns with our secure investment smart contract</p>
+                <h1>Start Investing</h1>
+                <p>Deposit BNB and start earning daily returns with our secure investment smart contract</p>
             </div>
             
             <div class="box" style="max-width: 500px; margin: 0 auto;">
-                <h3 style="text-align: center; margin-bottom: 20px;" data-translate="investment_amount">Investment Amount</h3>
+                <h3 style="text-align: center; margin-bottom: 20px;">Investment Amount</h3>
                 <div class="form-group">
-                    <label for="investAmount" data-translate="amount_bnb">Amount (BNB)</label>
+                    <label for="investAmount">Amount (BNB)</label>
                     <input type="number" id="investAmount" class="form-control" placeholder="Minimum 0.01 BNB" min="0.01" step="0.01">
                 </div>
                 <div class="form-group">
-                    <label for="referrerAddress" data-translate="referrer_address">Referrer Address</label>
+                    <label for="referrerAddress">Referrer Address</label>
                     <input type="text" id="referrerAddress" class="form-control" readonly>
                 </div>
                 <button class="btn btn-small" id="investNow" style="width: 100%;">
                     <i class="fas fa-rocket"></i>
-                    <span data-translate="invest_now">Invest Now</span>
+                    <span>Invest Now</span>
                 </button>
             </div>
         </div>
@@ -941,33 +982,33 @@
     <section id="referral">
         <div class="container">
             <div class="section-title">
-                <h1 data-translate="referral_title">Referral Program</h1>
-                <p data-translate="referral_subtitle">Earn commissions from 6 levels of your referral network with our tier-based system</p>
+                <h1>Referral Program</h1>
+                <p>Earn commissions from 6 levels of your referral network with our tier-based system</p>
             </div>
             
             <div class="box" style="margin-bottom: 40px;">
-                <h3 style="text-align: center; margin-bottom: 15px;" data-translate="your_referral_link">Your Referral Link</h3>
+                <h3 style="text-align: center; margin-bottom: 15px;">Your Referral Link</h3>
                 <div style="display: flex; gap: 10px; align-items: center;">
                     <input type="text" id="referralLink" class="form-control" readonly>
                     <button class="btn btn-small" id="copyLink">
                         <i class="fas fa-copy"></i>
-                        <span data-translate="copy">Copy</span>
+                        <span>Copy</span>
                     </button>
                 </div>
             </div>
             
-            <h3 style="text-align: center; margin-bottom: 20px;" data-translate="referral_levels">Referral Levels</h3>
+            <h3 style="text-align: center; margin-bottom: 20px;">Referral Levels</h3>
             <div class="level-grid" id="referralLevels">
                 <!-- Levels will be dynamically generated -->
             </div>
             
             <div class="box" style="max-width: 400px; margin: 40px auto 0;">
-                <h3 style="text-align: center; margin-bottom: 15px;" data-translate="referral_rewards">Referral Rewards</h3>
+                <h3 style="text-align: center; margin-bottom: 15px;">Referral Rewards</h3>
                 <div class="box-value" id="referralRewards">0 BNB</div>
                 <div class="btn-center">
                     <button class="btn btn-small" id="claimReferral">
                         <i class="fas fa-gift"></i>
-                        <span data-translate="claim_bonus">Claim Bonus</span>
+                        <span>Claim Bonus</span>
                     </button>
                 </div>
             </div>
@@ -978,8 +1019,8 @@
     <section id="salary">
         <div class="container">
             <div class="section-title">
-                <h1 data-translate="salary_title">Monthly Salary</h1>
-                <p data-translate="salary_subtitle">Earn monthly salary from 4 levels with earning potential up to 0.025 BNB per month</p>
+                <h1>Monthly Salary</h1>
+                <p>Earn monthly salary from 4 levels with earning potential up to 0.025 BNB per month</p>
             </div>
             
             <div class="level-grid" id="salaryLevels">
@@ -987,13 +1028,13 @@
             </div>
             
             <div class="box" style="max-width: 500px; margin: 40px auto 0;">
-                <h3 style="text-align: center; margin-bottom: 15px;" data-translate="current_monthly_salary">Current Monthly Salary</h3>
+                <h3 style="text-align: center; margin-bottom: 15px;">Current Monthly Salary</h3>
                 <div class="box-value" id="currentSalary">0 BNB</div>
-                <p style="text-align: center; margin-bottom: 20px;" id="salaryLevel" data-translate="no_active_salary">No active salary level</p>
+                <p style="text-align: center; margin-bottom: 20px;" id="salaryLevel">No active salary level</p>
                 <div class="btn-center">
                     <button class="btn btn-small" id="claimSalary">
                         <i class="fas fa-calendar-check"></i>
-                        <span data-translate="claim_salary">Claim Salary</span>
+                        <span>Claim Salary</span>
                     </button>
                 </div>
             </div>
@@ -1004,8 +1045,8 @@
     <section id="faq">
         <div class="container">
             <div class="section-title">
-                <h1 data-translate="faq_title">Frequently Asked Questions</h1>
-                <p data-translate="faq_subtitle">Find answers to common questions about our investment platform</p>
+                <h1>Frequently Asked Questions</h1>
+                <p>Find answers to common questions about our investment platform</p>
             </div>
             
             <div class="faq-container" id="faqContainer">
@@ -1018,32 +1059,32 @@
     <section id="security">
         <div class="container">
             <div class="section-title">
-                <h1 data-translate="security_title">Security</h1>
-                <p data-translate="security_subtitle">Your investments are secured by verified smart contracts on the Binance Smart Chain</p>
+                <h1>Security</h1>
+                <p>Your investments are secured by verified smart contracts on the Binance Smart Chain</p>
             </div>
             
             <div class="box-grid">
                 <div class="box">
                     <i class="fas fa-check-circle"></i>
-                    <h3 data-translate="verified_contract">Verified Contract</h3>
-                    <p data-translate="verified_contract_desc">Our smart contract is verified on BscScan, ensuring transparency and security</p>
+                    <h3>Verified Contract</h3>
+                    <p>Our smart contract is verified on BscScan, ensuring transparency and security</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-lock"></i>
-                    <h3 data-translate="no_admin_withdrawals">No Admin Withdrawals</h3>
-                    <p data-translate="no_admin_withdrawals_desc">Funds are secured in the contract with no ability for admin to withdraw user deposits</p>
+                    <h3>No Admin Withdrawals</h3>
+                    <p>Funds are secured in the contract with no ability for admin to withdraw user deposits</p>
                 </div>
                 <div class="box">
                     <i class="fas fa-eye"></i>
-                    <h3 data-translate="transparent">Transparent</h3>
-                    <p data-translate="transparent_desc">All activities can be seen and verified by anyone without exception</p>
+                    <h3>Transparent</h3>
+                    <p>All activities can be seen and verified by anyone without exception</p>
                 </div>
             </div>
             
             <div class="btn-center">
                 <a href="https://testnet.bscscan.com/address/0x785408c19C728fCEA2420516b1F3Ec92DA26d0ad#code" target="_blank" class="btn btn-small">
                     <i class="fas fa-external-link-alt"></i>
-                    <span data-translate="view_on_bscscan">View on BSCScan</span>
+                    <span>View on BSCScan</span>
                 </a>
             </div>
         </div>
@@ -1055,7 +1096,7 @@
             <div class="footer-logo">
                 <img src="https://files.catbox.moe/itr11l.png" alt="BNBVelion Logo">
             </div>
-            <p class="footer-text" data-translate="footer_text">Maximize your returns with our secure and transparent BNB investment platform – Earn daily ROI, referral commissions, and monthly salaries</p>
+            <p class="footer-text">Maximize your returns with our secure and transparent BNB investment platform – Earn daily ROI, referral commissions, and monthly salaries</p>
             
             <div class="social-links">
                 <a href="#" class="social-link">
@@ -1082,11 +1123,11 @@
     <div id="successModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 10000; justify-content: center; align-items: center;">
         <div class="box" style="max-width: 400px; text-align: center;">
             <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--light-cyan); margin-bottom: 20px;"></i>
-            <h2 style="margin-bottom: 15px;" data-translate="investment_successful">Investment Successful!</h2>
-            <p style="margin-bottom: 25px;" data-translate="investment_successful_desc">Your investment has been processed successfully. You can now monitor your earnings in the dashboard.</p>
+            <h2 style="margin-bottom: 15px;">Investment Successful!</h2>
+            <p style="margin-bottom: 25px;">Your investment has been processed successfully. You can now monitor your earnings in the dashboard.</p>
             <button class="btn btn-small" id="openDashboard">
                 <i class="fas fa-tachometer-alt"></i>
-                <span data-translate="open_dashboard">Open Dashboard</span>
+                <span>Open Dashboard</span>
             </button>
         </div>
     </div>
@@ -1103,826 +1144,6 @@
         let userAccount;
         let currentLanguage = 'en';
         let referralAddress = null;
-
-        // Language translations - LENGKAP UNTUK SEMUA BAHASA
-        const translations = {
-            en: {
-                // Navigation
-                home: "Home",
-                why_choose: "Why Choose",
-                dashboard: "Dashboard",
-                invest: "Invest",
-                referral: "Referral",
-                salary: "Salary",
-                faq: "FAQ",
-                security: "Security",
-                
-                // Home Section
-                home_title: "Smart Investment with BNBVelion",
-                home_subtitle: "Maximize your returns with our secure BNB investment platform – Earn daily ROI, referral commissions, and monthly salaries",
-                tvl: "TVL",
-                tvl_desc: "Total Value Locked",
-                total_users: "Total Users",
-                total_users_desc: "Active Investors",
-                total_deposit: "Total Deposit",
-                total_deposit_desc: "Total Funds Deposited",
-                total_paid: "Total Paid Out",
-                total_paid_desc: "Total Rewards Distributed",
-                connect_wallet: "Connect Wallet",
-                connected: "Connected",
-                start_investing: "Start Investing",
-                
-                // Why Choose Section
-                why_choose_title: "Why Choose BNBVelion?",
-                why_choose_subtitle: "Our platform offers multiple ways to grow your BNB investment with security and transparency",
-                daily_roi: "Daily ROI",
-                daily_roi_desc: "Earn between 0.5% to 2.5% daily return on your investment based on TVL growth",
-                referral_program: "Referral Program",
-                referral_program_desc: "Earn commissions from 6 levels of your referral network with total bonus up to 40%",
-                monthly_salary: "Monthly Salary",
-                monthly_salary_desc: "Earn monthly salary from 4 levels with earning potential up to 0.025 BNB per month",
-                secure_transparent: "Secure & Transparent",
-                secure_transparent_desc: "Our smart contract is verified on BscScan with no admin withdrawal capabilities",
-                
-                // Dashboard Section
-                dashboard_title: "Your Dashboard",
-                dashboard_subtitle: "Monitor your investments, earnings, and referral network in real-time",
-                active_deposit: "Active Deposit",
-                active_deposit_desc: "Your Current Investment",
-                current_roi: "Current Daily ROI",
-                current_roi_desc: "Your Daily Return Rate",
-                pending_roi: "Pending ROI",
-                pending_roi_desc: "Available for Withdrawal",
-                withdraw_roi: "Withdraw ROI",
-                
-                // Invest Section
-                invest_title: "Start Investing",
-                invest_subtitle: "Deposit BNB and start earning daily returns with our secure investment smart contract",
-                investment_amount: "Investment Amount",
-                amount_bnb: "Amount (BNB)",
-                referrer_address: "Referrer Address",
-                invest_now: "Invest Now",
-                
-                // Referral Section
-                referral_title: "Referral Program",
-                referral_subtitle: "Earn commissions from 6 levels of your referral network with our tier-based system",
-                your_referral_link: "Your Referral Link",
-                copy: "Copy",
-                referral_levels: "Referral Levels",
-                referral_rewards: "Referral Rewards",
-                claim_bonus: "Claim Bonus",
-                referral_level_1: "Level 1",
-                referral_level_2: "Level 2",
-                referral_level_3: "Level 3",
-                referral_level_4: "Level 4",
-                referral_level_5: "Level 5",
-                referral_level_6: "Level 6",
-                referral_requirement_1: "Min deposit 0.01 BNB",
-                referral_requirement_2: "Min deposit 0.08 BNB",
-                referral_requirement_3: "Min deposit 0.15 BNB",
-                referral_requirement_4: "Min deposit 0.25 BNB",
-                referral_requirement_5: "Min deposit 0.35 BNB",
-                referral_requirement_6: "Min deposit 0.50 BNB",
-                
-                // Salary Section
-                salary_title: "Monthly Salary",
-                salary_subtitle: "Earn monthly salary from 4 levels with earning potential up to 0.025 BNB per month",
-                current_monthly_salary: "Current Monthly Salary",
-                no_active_salary: "No active salary level",
-                claim_salary: "Claim Salary",
-                salary_level_1: "Pionir",
-                salary_level_2: "Visioner",
-                salary_level_3: "Arsitek",
-                salary_level_4: "Maverick",
-                salary_team_1: "350 members",
-                salary_team_2: "550 members",
-                salary_team_3: "850 members",
-                salary_team_4: "1000 members",
-                salary_amount_1: "0.004 BNB",
-                salary_amount_2: "0.008 BNB",
-                salary_amount_3: "0.015 BNB",
-                salary_amount_4: "0.025 BNB",
-                salary_requirement_1: "Build team 350 members",
-                salary_requirement_2: "Build team 550 members",
-                salary_requirement_3: "Build team 850 members",
-                salary_requirement_4: "Build team 1000 members",
-                
-                // FAQ Section
-                faq_title: "Frequently Asked Questions",
-                faq_subtitle: "Find answers to common questions about our investment platform",
-                faq_question_1: "What is the minimum deposit?",
-                faq_answer_1: "The minimum deposit is 0.01 BNB to start earning with BNBVelion",
-                faq_question_2: "How does the ROI system work?",
-                faq_answer_2: "ROI ranges from 0.5% to 2.5% daily based on the total TVL. The more TVL grows, the higher the ROI percentage",
-                faq_question_3: "How do referral commissions work?",
-                faq_answer_3: "You earn commissions from 6 levels of your referral network, with bonuses from 20% to 1%",
-                faq_question_4: "How can I qualify for monthly salary?",
-                faq_answer_4: "Monthly salary levels require building teams of 350, 550, 850, or 1000 active members",
-                
-                // Security Section
-                security_title: "Security",
-                security_subtitle: "Your investments are secured by verified smart contracts on the Binance Smart Chain",
-                verified_contract: "Verified Contract",
-                verified_contract_desc: "Our smart contract is verified on BscScan, ensuring transparency and security",
-                no_admin_withdrawals: "No Admin Withdrawals",
-                no_admin_withdrawals_desc: "Funds are secured in the contract with no ability for admin to withdraw user deposits",
-                transparent: "Transparent",
-                transparent_desc: "All activities can be seen and verified by anyone without exception",
-                view_on_bscscan: "View on BSCScan",
-                
-                // Footer
-                footer_text: "Maximize your returns with our secure and transparent BNB investment platform – Earn daily ROI, referral commissions, and monthly salaries",
-                
-                // Modal and Notifications
-                investment_successful: "Investment Successful!",
-                investment_successful_desc: "Your investment has been processed successfully. You can now monitor your earnings in the dashboard.",
-                open_dashboard: "Open Dashboard",
-                referral_not_detected: "Referral not detected!",
-                
-                // Placeholders
-                min_investment: "Minimum 0.01 BNB"
-            },
-            es: {
-                // Navigation
-                home: "Inicio",
-                why_choose: "Por Qué Elegir",
-                dashboard: "Panel",
-                invest: "Invertir",
-                referral: "Referidos",
-                salary: "Salario",
-                faq: "Preguntas",
-                security: "Seguridad",
-                
-                // Home Section
-                home_title: "Inversión Inteligente con BNBVelion",
-                home_subtitle: "Maximiza tus rendimientos con nuestra plataforma de inversión BNB segura – Gana ROI diario, comisiones por referidos y salarios mensuales",
-                tvl: "TVL",
-                tvl_desc: "Valor Total Bloqueado",
-                total_users: "Usuarios Totales",
-                total_users_desc: "Inversores Activos",
-                total_deposit: "Depósito Total",
-                total_deposit_desc: "Fondos Totales Depositados",
-                total_paid: "Total Pagado",
-                total_paid_desc: "Recompensas Totales Distribuidas",
-                connect_wallet: "Conectar Cartera",
-                connected: "Conectado",
-                start_investing: "Comenzar a Invertir",
-                
-                // Why Choose Section
-                why_choose_title: "¿Por Qué Elegir BNBVelion?",
-                why_choose_subtitle: "Nuestra plataforma ofrece múltiples formas de hacer crecer tu inversión BNB con seguridad y transparencia",
-                daily_roi: "ROI Diario",
-                daily_roi_desc: "Gana entre 0.5% y 2.5% de retorno diario en tu inversión basado en el crecimiento del TVL",
-                referral_program: "Programa de Referidos",
-                referral_program_desc: "Gana comisiones de tus 6 niveles de red de referidos con bono total de hasta 40%",
-                monthly_salary: "Salario Mensual",
-                monthly_salary_desc: "Gana salario mensual de 4 niveles con potencial de ganancia de hasta 0.025 BNB por mes",
-                secure_transparent: "Seguro y Transparente",
-                secure_transparent_desc: "Nuestro contrato inteligente está verificado en BscScan sin capacidad de retiro de administrador",
-                
-                // Dashboard Section
-                dashboard_title: "Tu Panel de Control",
-                dashboard_subtitle: "Monitorea tus inversiones, ganancias y red de referidos en tiempo real",
-                active_deposit: "Depósito Activo",
-                active_deposit_desc: "Tu Inversión Actual",
-                current_roi: "ROI Diario Actual",
-                current_roi_desc: "Tu Tasa de Retorno Diaria",
-                pending_roi: "ROI Pendiente",
-                pending_roi_desc: "Disponible para Retiro",
-                withdraw_roi: "Retirar ROI",
-                
-                // Invest Section
-                invest_title: "Comenzar a Invertir",
-                invest_subtitle: "Deposita BNB y comienza a ganar rendimientos diarios con nuestro contrato inteligente de inversión seguro",
-                investment_amount: "Monto de Inversión",
-                amount_bnb: "Monto (BNB)",
-                referrer_address: "Dirección del Referidor",
-                invest_now: "Invertir Ahora",
-                
-                // Referral Section
-                referral_title: "Programa de Referidos",
-                referral_subtitle: "Gana comisiones de 6 niveles de tu red de referidos con nuestro sistema por niveles",
-                your_referral_link: "Tu Enlace de Referido",
-                copy: "Copiar",
-                referral_levels: "Niveles de Referidos",
-                referral_rewards: "Recompensas de Referidos",
-                claim_bonus: "Reclamar Bono",
-                referral_level_1: "Nivel 1",
-                referral_level_2: "Nivel 2",
-                referral_level_3: "Nivel 3",
-                referral_level_4: "Nivel 4",
-                referral_level_5: "Nivel 5",
-                referral_level_6: "Nivel 6",
-                referral_requirement_1: "Mín. depósito 0.01 BNB",
-                referral_requirement_2: "Mín. depósito 0.08 BNB",
-                referral_requirement_3: "Mín. depósito 0.15 BNB",
-                referral_requirement_4: "Mín. depósito 0.25 BNB",
-                referral_requirement_5: "Mín. depósito 0.35 BNB",
-                referral_requirement_6: "Mín. depósito 0.50 BNB",
-                
-                // Salary Section
-                salary_title: "Salario Mensual",
-                salary_subtitle: "Gana salario mensual de 4 niveles con potencial de ganancia de hasta 0.025 BNB por mes",
-                current_monthly_salary: "Salario Mensual Actual",
-                no_active_salary: "Sin nivel de salario activo",
-                claim_salary: "Reclamar Salario",
-                salary_level_1: "Pionero",
-                salary_level_2: "Visionario",
-                salary_level_3: "Arquitecto",
-                salary_level_4: "Maverick",
-                salary_team_1: "350 miembros",
-                salary_team_2: "550 miembros",
-                salary_team_3: "850 miembros",
-                salary_team_4: "1000 miembros",
-                salary_amount_1: "0.004 BNB",
-                salary_amount_2: "0.008 BNB",
-                salary_amount_3: "0.015 BNB",
-                salary_amount_4: "0.025 BNB",
-                salary_requirement_1: "Construye equipo 350 miembros",
-                salary_requirement_2: "Construye equipo 550 miembros",
-                salary_requirement_3: "Construye equipo 850 miembros",
-                salary_requirement_4: "Construye equipo 1000 miembros",
-                
-                // FAQ Section
-                faq_title: "Preguntas Frecuentes",
-                faq_subtitle: "Encuentra respuestas a preguntas comunes sobre nuestra plataforma de inversión",
-                faq_question_1: "¿Cuál es el depósito mínimo?",
-                faq_answer_1: "El depósito mínimo es de 0.01 BNB para comenzar a ganar con BNBVelion",
-                faq_question_2: "¿Cómo funciona el sistema de ROI?",
-                faq_answer_2: "El ROI varía entre 0.5% y 2.5% diario según el TVL total. Cuanto más crece el TVL, mayor es el porcentaje de ROI",
-                faq_question_3: "¿Cómo funcionan las comisiones por referidos?",
-                faq_answer_3: "Ganas comisiones de 6 niveles de tu red de referidos, con bonos del 20% al 1%",
-                faq_question_4: "¿Cómo puedo calificar para el salario mensual?",
-                faq_answer_4: "Los niveles de salario mensual requieren construir equipos de 350, 550, 850 o 1000 miembros activos",
-                
-                // Security Section
-                security_title: "Seguridad",
-                security_subtitle: "Tus inversiones están aseguradas por contratos inteligentes verificados en Binance Smart Chain",
-                verified_contract: "Contrato Verificado",
-                verified_contract_desc: "Nuestro contrato inteligente está verificado en BscScan, garantizando transparencia y seguridad",
-                no_admin_withdrawals: "Sin Retiros de Administrador",
-                no_admin_withdrawals_desc: "Los fondos están asegurados en el contrato sin capacidad de retiro por parte del administrador",
-                transparent: "Transparente",
-                transparent_desc: "Todas las actividades pueden ser vistas y verificadas por cualquiera sin excepción",
-                view_on_bscscan: "Ver en BSCScan",
-                
-                // Footer
-                footer_text: "Maximiza tus rendimientos con nuestra plataforma de inversión BNB segura y transparente – Gana ROI diario, comisiones por referidos y salarios mensuales",
-                
-                // Modal and Notifications
-                investment_successful: "¡Inversión Exitosa!",
-                investment_successful_desc: "Tu inversión ha sido procesada exitosamente. Ahora puedes monitorear tus ganancias en el panel de control.",
-                open_dashboard: "Abrir Panel de Control",
-                referral_not_detected: "¡Referido no detectado!",
-                
-                // Placeholders
-                min_investment: "Mínimo 0.01 BNB"
-            },
-            pt: {
-                // Navigation
-                home: "Início",
-                why_choose: "Por Que Escolher",
-                dashboard: "Painel",
-                invest: "Investir",
-                referral: "Indicação",
-                salary: "Salário",
-                faq: "Perguntas",
-                security: "Segurança",
-                
-                // Home Section
-                home_title: "Investimento Inteligente com BNBVelion",
-                home_subtitle: "Maximize seus retornos com nossa plataforma segura de investimento BNB – Ganhe ROI diário, comissões de indicação e salários mensais",
-                tvl: "TVL",
-                tvl_desc: "Valor Total Bloqueado",
-                total_users: "Total de Usuários",
-                total_users_desc: "Investidores Ativos",
-                total_deposit: "Depósito Total",
-                total_deposit_desc: "Fundos Totais Depositados",
-                total_paid: "Total Pago",
-                total_paid_desc: "Recompensas Totais Distribuídas",
-                connect_wallet: "Conectar Carteira",
-                connected: "Conectado",
-                start_investing: "Começar a Investir",
-                
-                // Why Choose Section
-                why_choose_title: "Por Que Escolher BNBVelion?",
-                why_choose_subtitle: "Nossa plataforma oferece múltiplas formas de crescer seu investimento BNB com segurança e transparência",
-                daily_roi: "ROI Diário",
-                daily_roi_desc: "Ganhe entre 0.5% a 2.5% de retorno diário no seu investimento baseado no crescimento do TVL",
-                referral_program: "Programa de Indicação",
-                referral_program_desc: "Ganhe comissões de 6 níveis da sua rede de indicação com bônus total de até 40%",
-                monthly_salary: "Salário Mensual",
-                monthly_salary_desc: "Ganhe salário mensual de 4 níveis com potencial de ganho de até 0.025 BNB por mês",
-                secure_transparent: "Seguro e Transparente",
-                secure_transparent_desc: "Nosso contrato inteligente é verificado no BscScan sem capacidade de saque do administrador",
-                
-                // Dashboard Section
-                dashboard_title: "Seu Painel",
-                dashboard_subtitle: "Monitore seus investimentos, ganhos e rede de indicação em tempo real",
-                active_deposit: "Depósito Ativo",
-                active_deposit_desc: "Seu Investimento Atual",
-                current_roi: "ROI Diário Atual",
-                current_roi_desc: "Sua Taxa de Retorno Diária",
-                pending_roi: "ROI Pendente",
-                pending_roi_desc: "Disponível para Saque",
-                withdraw_roi: "Sacar ROI",
-                
-                // Invest Section
-                invest_title: "Começar a Investir",
-                invest_subtitle: "Deposite BNB e comece a ganhar retornos diários com nosso contrato inteligente de investimento seguro",
-                investment_amount: "Valor do Investimento",
-                amount_bnb: "Valor (BNB)",
-                referrer_address: "Endereço do Indicador",
-                invest_now: "Investir Agora",
-                
-                // Referral Section
-                referral_title: "Programa de Indicação",
-                referral_subtitle: "Ganhe comissões de 6 níveis da sua rede de indicação com nosso sistema em camadas",
-                your_referral_link: "Seu Link de Indicação",
-                copy: "Copiar",
-                referral_levels: "Níveis de Indicação",
-                referral_rewards: "Recompensas de Indicação",
-                claim_bonus: "Reivindicar Bônus",
-                referral_level_1: "Nível 1",
-                referral_level_2: "Nível 2",
-                referral_level_3: "Nível 3",
-                referral_level_4: "Nível 4",
-                referral_level_5: "Nível 5",
-                referral_level_6: "Nível 6",
-                referral_requirement_1: "Mín. depósito 0.01 BNB",
-                referral_requirement_2: "Mín. depósito 0.08 BNB",
-                referral_requirement_3: "Mín. depósito 0.15 BNB",
-                referral_requirement_4: "Mín. depósito 0.25 BNB",
-                referral_requirement_5: "Mín. depósito 0.35 BNB",
-                referral_requirement_6: "Mín. depósito 0.50 BNB",
-                
-                // Salary Section
-                salary_title: "Salário Mensual",
-                salary_subtitle: "Ganhe salário mensual de 4 níveis com potencial de ganho de até 0.025 BNB por mês",
-                current_monthly_salary: "Salário Mensal Atual",
-                no_active_salary: "Nenhum nível de salário ativo",
-                claim_salary: "Reivindicar Salário",
-                salary_level_1: "Pioneiro",
-                salary_level_2: "Visionário",
-                salary_level_3: "Arquiteto",
-                salary_level_4: "Maverick",
-                salary_team_1: "350 membros",
-                salary_team_2: "550 membros",
-                salary_team_3: "850 membros",
-                salary_team_4: "1000 membros",
-                salary_amount_1: "0.004 BNB",
-                salary_amount_2: "0.008 BNB",
-                salary_amount_3: "0.015 BNB",
-                salary_amount_4: "0.025 BNB",
-                salary_requirement_1: "Construa equipe 350 membros",
-                salary_requirement_2: "Construa equipe 550 membros",
-                salary_requirement_3: "Construa equipe 850 membros",
-                salary_requirement_4: "Construa equipe 1000 membros",
-                
-                // FAQ Section
-                faq_title: "Perguntas Frequentes",
-                faq_subtitle: "Encontre respostas para perguntas comuns sobre nossa plataforma de investimento",
-                faq_question_1: "Qual é o depósito mínimo?",
-                faq_answer_1: "O depósito mínimo é de 0.01 BNB para começar a ganhar com BNBVelion",
-                faq_question_2: "Como funciona o sistema de ROI?",
-                faq_answer_2: "O ROI varia entre 0.5% e 2.5% diário com base no TVL total. Quanto mais o TVL cresce, maior a porcentagem de ROI",
-                faq_question_3: "Como funcionam as comissões de indicação?",
-                faq_answer_3: "Você ganha comissões de 6 níveis da sua rede de indicação, com bônus de 20% a 1%",
-                faq_question_4: "Como posso me qualificar para o salário mensual?",
-                faq_answer_4: "Os níveis de salário mensual exigem construir equipes de 350, 550, 850 ou 1000 membros ativos",
-                
-                // Security Section
-                security_title: "Segurança",
-                security_subtitle: "Seus investimentos são protegidos por contratos inteligentes verificados na Binance Smart Chain",
-                verified_contract: "Contrato Verificado",
-                verified_contract_desc: "Nosso contrato inteligente é verificado no BscScan, garantindo transparência e segurança",
-                no_admin_withdrawals: "Sem Saques do Administrador",
-                no_admin_withdrawals_desc: "Os fundos são protegidos no contrato sem capacidade do administrador sacar depósitos de usuários",
-                transparent: "Transparente",
-                transparent_desc: "Todas as atividades podem ser vistas e verificadas por qualquer pessoa sem exceção",
-                view_on_bscscan: "Ver no BSCScan",
-                
-                // Footer
-                footer_text: "Maximize seus retornos com nossa plataforma segura e transparente de investimento BNB – Ganhe ROI diário, comissões de indicação e salários mensais",
-                
-                // Modal and Notifications
-                investment_successful: "Investimento Bem-sucedido!",
-                investment_successful_desc: "Seu investimento foi processado com sucesso. Agora você pode monitorar seus ganhos no painel.",
-                open_dashboard: "Abrir Painel",
-                referral_not_detected: "Indicação não detectada!",
-                
-                // Placeholders
-                min_investment: "Mínimo 0.01 BNB"
-            },
-            in: {
-                // Navigation
-                home: "होम",
-                why_choose: "क्यों चुनें",
-                dashboard: "डैशबोर्ड",
-                invest: "निवेश",
-                referral: "रेफरल",
-                salary: "वेतन",
-                faq: "सवाल-जवाब",
-                security: "सुरक्षा",
-                
-                // Home Section
-                home_title: "BNBVelion के साथ स्मार्ट निवेश",
-                home_subtitle: "हमारे सुरक्षित BNB निवेश प्लेटफॉर्म के साथ अपने रिटर्न को अधिकतम करें – दैनिक ROI, रेफरल कमीशन और मासिक वेतन कमाएं",
-                tvl: "TVL",
-                tvl_desc: "कुल लॉक मूल्य",
-                total_users: "कुल उपयोगकर्ता",
-                total_users_desc: "सक्रिय निवेशक",
-                total_deposit: "कुल जमा",
-                total_deposit_desc: "कुल जमा राशि",
-                total_paid: "कुल भुगतान",
-                total_paid_desc: "कुल वितरित पुरस्कार",
-                connect_wallet: "वॉलेट कनेक्ट करें",
-                connected: "कनेक्टेड",
-                start_investing: "निवेश शुरू करें",
-                
-                // Why Choose Section
-                why_choose_title: "BNBVelion क्यों चुनें?",
-                why_choose_subtitle: "हमारा प्लेटफॉर्म सुरक्षा और पारदर्शिता के साथ आपके BNB निवेश को बढ़ाने के कई तरीके प्रदान करता है",
-                daily_roi: "दैनिक ROI",
-                daily_roi_desc: "TVL विकास के आधार पर अपने निवेश पर 0.5% से 2.5% दैनिक रिटर्न कमाएं",
-                referral_program: "रेफरल प्रोग्राम",
-                referral_program_desc: "अपने रेफरल नेटवर्क के 6 स्तरों से कमीशन कमाएं कुल बोनस 40% तक",
-                monthly_salary: "मासिक वेतन",
-                monthly_salary_desc: "4 स्तरों से मासिक वेतन कमाएं 0.025 BNB प्रति माह तक की कमाई की क्षमता",
-                secure_transparent: "सुरक्षित और पारदर्शी",
-                secure_transparent_desc: "हमारा स्मार्ट कॉन्ट्रैक्ट BscScan पर सत्यापित है बिना एडमिन निकासी क्षमता के",
-                
-                // Dashboard Section
-                dashboard_title: "आपका डैशबोर्ड",
-                dashboard_subtitle: "अपने निवेश, कमाई और रेफरल नेटवर्क को रीयल-टाइम में मॉनिटर करें",
-                active_deposit: "सक्रिय जमा",
-                active_deposit_desc: "आपका वर्तमान निवेश",
-                current_roi: "वर्तमान दैनिक ROI",
-                current_roi_desc: "आपकी दैनिक रिटर्न दर",
-                pending_roi: "लंबित ROI",
-                pending_roi_desc: "निकासी के लिए उपलब्ध",
-                withdraw_roi: "ROI निकालें",
-                
-                // Invest Section
-                invest_title: "निवेश शुरू करें",
-                invest_subtitle: "BNB जमा करें और हमारे सुरक्षित निवेश स्मार्ट कॉन्ट्रैक्ट के साथ दैनिक रिटर्न कमाना शुरू करें",
-                investment_amount: "निवेश राशि",
-                amount_bnb: "राशि (BNB)",
-                referrer_address: "रेफरर पता",
-                invest_now: "अभी निवेश करें",
-                
-                // Referral Section
-                referral_title: "रेफरल प्रोग्राम",
-                referral_subtitle: "हमारी टियर-आधारित प्रणाली के साथ अपने रेफरल नेटवर्क के 6 स्तरों से कमीशन कमाएं",
-                your_referral_link: "आपका रेफरल लिंक",
-                copy: "कॉपी करें",
-                referral_levels: "रेफरल स्तर",
-                referral_rewards: "रेफरल पुरस्कार",
-                claim_bonus: "बोनस क्लेम करें",
-                referral_level_1: "स्तर 1",
-                referral_level_2: "स्तर 2",
-                referral_level_3: "स्तर 3",
-                referral_level_4: "स्तर 4",
-                referral_level_5: "स्तर 5",
-                referral_level_6: "स्तर 6",
-                referral_requirement_1: "न्यूनतम जमा 0.01 BNB",
-                referral_requirement_2: "न्यूनतम जमा 0.08 BNB",
-                referral_requirement_3: "न्यूनतम जमा 0.15 BNB",
-                referral_requirement_4: "न्यूनतम जमा 0.25 BNB",
-                referral_requirement_5: "न्यूनतम जमा 0.35 BNB",
-                referral_requirement_6: "न्यूनतम जमा 0.50 BNB",
-                
-                // Salary Section
-                salary_title: "मासिक वेतन",
-                salary_subtitle: "4 स्तरों से मासिक वेतन कमाएं 0.025 BNB प्रति माह तक की कमाई की क्षमता",
-                current_monthly_salary: "वर्तमान मासिक वेतन",
-                no_active_salary: "कोई सक्रिय वेतन स्तर नहीं",
-                claim_salary: "वेतन क्लेम करें",
-                salary_level_1: "पायनियर",
-                salary_level_2: "विजनरी",
-                salary_level_3: "आर्किटेक्ट",
-                salary_level_4: "मावेरिक",
-                salary_team_1: "350 सदस्य",
-                salary_team_2: "550 सदस्य",
-                salary_team_3: "850 सदस्य",
-                salary_team_4: "1000 सदस्य",
-                salary_amount_1: "0.004 BNB",
-                salary_amount_2: "0.008 BNB",
-                salary_amount_3: "0.015 BNB",
-                salary_amount_4: "0.025 BNB",
-                salary_requirement_1: "350 सदस्यों की टीम बनाएं",
-                salary_requirement_2: "550 सदस्यों की टीम बनाएं",
-                salary_requirement_3: "850 सदस्यों की टीम बनाएं",
-                salary_requirement_4: "1000 सदस्यों की टीम बनाएं",
-                
-                // FAQ Section
-                faq_title: "अक्सर पूछे जाने वाले प्रश्न",
-                faq_subtitle: "हमारे निवेश प्लेटफॉर्म के बारे में सामान्य प्रश्नों के उत्तर खोजें",
-                faq_question_1: "न्यूनतम जमा क्या है?",
-                faq_answer_1: "BNBVelion के साथ कमाई शुरू करने के लिए न्यूनतम जमा 0.01 BNB है",
-                faq_question_2: "ROI सिस्टम कैसे काम करता है?",
-                faq_answer_2: "ROI कुल TVL के आधार पर 0.5% से 2.5% दैनिक होता है। TVL जितना बढ़ता है, ROI प्रतिशत उतना ही अधिक होता है",
-                faq_question_3: "रेफरल कमीशन कैसे काम करते हैं?",
-                faq_answer_3: "आप अपने रेफरल नेटवर्क के 6 स्तरों से कमीशन कमाते हैं, 20% से 1% तक के बोनस के साथ",
-                faq_question_4: "मैं मासिक वेतन के लिए कैसे योग्य हो सकता हूं?",
-                faq_answer_4: "मासिक वेतन स्तरों के लिए 350, 550, 850, या 1000 सक्रिय सदस्यों की टीमें बनाने की आवश्यकता होती है",
-                
-                // Security Section
-                security_title: "सुरक्षा",
-                security_subtitle: "आपके निवेश बाइनेंस स्मार्ट चेन पर सत्यापित स्मार्ट कॉन्ट्रैक्ट्स द्वारा सुरक्षित हैं",
-                verified_contract: "सत्यापित कॉन्ट्रैक्ट",
-                verified_contract_desc: "हमारा स्मार्ट कॉन्ट्रैक्ट BscScan पर सत्यापित है, पारदर्शिता और सुरक्षा सुनिश्चित करता है",
-                no_admin_withdrawals: "कोई एडमिन निकासी नहीं",
-                no_admin_withdrawals_desc: "फंड कॉन्ट्रैक्ट में सुरक्षित हैं एडमिन के लिए उपयोगकर्ता जमा निकालने की कोई क्षमता नहीं",
-                transparent: "पारदर्शी",
-                transparent_desc: "सभी गतिविधियां बिना किसी अपवाद के किसी के द्वारा देखी और सत्यापित की जा सकती हैं",
-                view_on_bscscan: "BSCScan पर देखें",
-                
-                // Footer
-                footer_text: "हमारे सुरक्षित और पारदर्शी BNB निवेश प्लेटफॉर्म के साथ अपने रिटर्न को अधिकतम करें – दैनिक ROI, रेफरल कमीशन और मासिक वेतन कमाएं",
-                
-                // Modal and Notifications
-                investment_successful: "निवेश सफल!",
-                investment_successful_desc: "आपका निवेश सफलतापूर्वक संसाधित किया गया है। अब आप डैशबोर्ड में अपनी कमाई की निगरानी कर सकते हैं।",
-                open_dashboard: "डैशबोर्ड खोलें",
-                referral_not_detected: "रेफरल का पता नहीं चला!",
-                
-                // Placeholders
-                min_investment: "न्यूनतम 0.01 BNB"
-            },
-            fr: {
-                // Navigation
-                home: "Accueil",
-                why_choose: "Pourquoi Choisir",
-                dashboard: "Tableau de Bord",
-                invest: "Investir",
-                referral: "Parrainage",
-                salary: "Salaire",
-                faq: "FAQ",
-                security: "Sécurité",
-                
-                // Home Section
-                home_title: "Investissement Intelligent avec BNBVelion",
-                home_subtitle: "Maximisez vos rendements avec notre plateforme d'investissement BNB sécurisée – Gagnez un ROI quotidien, des commissions de parrainage et des salaires mensuels",
-                tvl: "TVL",
-                tvl_desc: "Valeur Totale Verrouillée",
-                total_users: "Utilisateurs Totaux",
-                total_users_desc: "Investisseurs Actifs",
-                total_deposit: "Dépôt Total",
-                total_deposit_desc: "Fonds Totaux Déposés",
-                total_paid: "Total Payé",
-                total_paid_desc: "Récompenses Totales Distribuées",
-                connect_wallet: "Connecter le Portefeuille",
-                connected: "Connecté",
-                start_investing: "Commencer à Investir",
-                
-                // Why Choose Section
-                why_choose_title: "Pourquoi Choisir BNBVelion?",
-                why_choose_subtitle: "Notre plateforme offre plusieurs façons de faire croître votre investissement BNB avec sécurité et transparence",
-                daily_roi: "ROI Quotidien",
-                daily_roi_desc: "Gagnez entre 0.5% et 2.5% de retour quotidien sur votre investissement basé sur la croissance du TVL",
-                referral_program: "Programme de Parrainage",
-                referral_program_desc: "Gagnez des commissions sur 6 niveaux de votre réseau de parrainage avec un bonus total jusqu'à 40%",
-                monthly_salary: "Salaire Mensuel",
-                monthly_salary_desc: "Gagnez un salaire mensuel de 4 niveaux avec un potentiel de gain jusqu'à 0.025 BNB par mois",
-                secure_transparent: "Sécurisé et Transparent",
-                secure_transparent_desc: "Notre contrat intelligent est vérifié sur BscScan sans capacité de retrait administrateur",
-                
-                // Dashboard Section
-                dashboard_title: "Votre Tableau de Bord",
-                dashboard_subtitle: "Surveillez vos investissements, gains et réseau de parrainage en temps réel",
-                active_deposit: "Dépôt Actif",
-                active_deposit_desc: "Votre Investissement Actuel",
-                current_roi: "ROI Quotidien Actuel",
-                current_roi_desc: "Votre Taux de Retour Quotidien",
-                pending_roi: "ROI en Attente",
-                pending_roi_desc: "Disponible pour Retrait",
-                withdraw_roi: "Retirer ROI",
-                
-                // Invest Section
-                invest_title: "Commencer à Investir",
-                invest_subtitle: "Déposez BNB et commencez à gagner des rendements quotidiens avec notre contrat intelligent d'investissement sécurisé",
-                investment_amount: "Montant de l'Investissement",
-                amount_bnb: "Montant (BNB)",
-                referrer_address: "Adresse du Parrain",
-                invest_now: "Investir Maintenant",
-                
-                // Referral Section
-                referral_title: "Programme de Parrainage",
-                referral_subtitle: "Gagnez des commissions sur 6 niveaux de votre réseau de parrainage avec notre système à paliers",
-                your_referral_link: "Votre Lien de Parrainage",
-                copy: "Copier",
-                referral_levels: "Niveaux de Parrainage",
-                referral_rewards: "Récompenses de Parrainage",
-                claim_bonus: "Réclamer le Bonus",
-                referral_level_1: "Niveau 1",
-                referral_level_2: "Niveau 2",
-                referral_level_3: "Niveau 3",
-                referral_level_4: "Niveau 4",
-                referral_level_5: "Niveau 5",
-                referral_level_6: "Niveau 6",
-                referral_requirement_1: "Dépôt min. 0.01 BNB",
-                referral_requirement_2: "Dépôt min. 0.08 BNB",
-                referral_requirement_3: "Dépôt min. 0.15 BNB",
-                referral_requirement_4: "Dépôt min. 0.25 BNB",
-                referral_requirement_5: "Dépôt min. 0.35 BNB",
-                referral_requirement_6: "Dépôt min. 0.50 BNB",
-                
-                // Salary Section
-                salary_title: "Salaire Mensuel",
-                salary_subtitle: "Gagnez un salaire mensuel de 4 niveaux avec un potentiel de gain jusqu'à 0.025 BNB par mois",
-                current_monthly_salary: "Salaire Mensuel Actuel",
-                no_active_salary: "Aucun niveau de salaire actif",
-                claim_salary: "Réclamer le Salaire",
-                salary_level_1: "Pionnier",
-                salary_level_2: "Visionnaire",
-                salary_level_3: "Architecte",
-                salary_level_4: "Maverick",
-                salary_team_1: "350 membres",
-                salary_team_2: "550 membres",
-                salary_team_3: "850 membres",
-                salary_team_4: "1000 membres",
-                salary_amount_1: "0.004 BNB",
-                salary_amount_2: "0.008 BNB",
-                salary_amount_3: "0.015 BNB",
-                salary_amount_4: "0.025 BNB",
-                salary_requirement_1: "Construire équipe 350 membres",
-                salary_requirement_2: "Construire équipe 550 membres",
-                salary_requirement_3: "Construire équipe 850 membres",
-                salary_requirement_4: "Construire équipe 1000 membres",
-                
-                // FAQ Section
-                faq_title: "Questions Fréquemment Posées",
-                faq_subtitle: "Trouvez des réponses aux questions courantes sur notre plateforme d'investissement",
-                faq_question_1: "Quel est le dépôt minimum?",
-                faq_answer_1: "Le dépôt minimum est de 0.01 BNB pour commencer à gagner avec BNBVelion",
-                faq_question_2: "Comment fonctionne le système ROI?",
-                faq_answer_2: "Le ROI varie entre 0.5% et 2.5% quotidiennement basé sur le TVL total. Plus le TVL augmente, plus le pourcentage ROI est élevé",
-                faq_question_3: "Comment fonctionnent les commissions de parrainage?",
-                faq_answer_3: "Vous gagnez des commissions sur 6 niveaux de votre réseau de parrainage, avec des bonus de 20% à 1%",
-                faq_question_4: "Comment puis-je me qualifier pour le salaire mensuel?",
-                faq_answer_4: "Les niveaux de salaire mensuel nécessitent de construire des équipes de 350, 550, 850 ou 1000 membres actifs",
-                
-                // Security Section
-                security_title: "Sécurité",
-                security_subtitle: "Vos investissements sont sécurisés par des contrats intelligents vérifiés sur Binance Smart Chain",
-                verified_contract: "Contrat Vérifié",
-                verified_contract_desc: "Notre contrat intelligent est vérifié sur BscScan, assurant transparence et sécurité",
-                no_admin_withdrawals: "Aucun Retrait Administrateur",
-                no_admin_withdrawals_desc: "Les fonds sont sécurisés dans le contrat sans capacité de l'administrateur à retirer les dépôts utilisateurs",
-                transparent: "Transparent",
-                transparent_desc: "Toutes les activités peuvent être vues et vérifiées par n'importe qui sans exception",
-                view_on_bscscan: "Voir sur BSCScan",
-                
-                // Footer
-                footer_text: "Maximisez vos rendements avec notre plateforme d'investissement BNB sécurisée et transparente – Gagnez un ROI quotidien, des commissions de parrainage et des salaires mensuels",
-                
-                // Modal and Notifications
-                investment_successful: "Investissement Réussi!",
-                investment_successful_desc: "Votre investissement a été traité avec succès. Vous pouvez maintenant surveiller vos gains dans le tableau de bord.",
-                open_dashboard: "Ouvrir le Tableau de Bord",
-                referral_not_detected: "Parrain non détecté!",
-                
-                // Placeholders
-                min_investment: "Minimum 0.01 BNB"
-            },
-            id: {
-                // Navigation
-                home: "Beranda",
-                why_choose: "Mengapa Memilih",
-                dashboard: "Dashboard",
-                invest: "Investasi",
-                referral: "Referral",
-                salary: "Gaji",
-                faq: "FAQ",
-                security: "Keamanan",
-                
-                // Home Section
-                home_title: "Investasi Cerdas dengan BNBVelion",
-                home_subtitle: "Maksimalkan keuntungan Anda dengan platform investasi BNB yang aman – Dapatkan ROI harian, komisi referral, dan gaji bulanan",
-                tvl: "TVL",
-                tvl_desc: "Total Nilai Terkunci",
-                total_users: "Total Pengguna",
-                total_users_desc: "Investor Aktif",
-                total_deposit: "Total Deposit",
-                total_deposit_desc: "Total Dana Didepositkan",
-                total_paid: "Total Dibayarkan",
-                total_paid_desc: "Total Hadiah Didistribusikan",
-                connect_wallet: "Hubungkan Wallet",
-                connected: "Terhubung",
-                start_investing: "Mulai Investasi",
-                
-                // Why Choose Section
-                why_choose_title: "Mengapa Memilih BNBVelion?",
-                why_choose_subtitle: "Platform kami menawarkan berbagai cara untuk mengembangkan investasi BNB Anda dengan keamanan dan transparansi",
-                daily_roi: "ROI Harian",
-                daily_roi_desc: "Dapatkan return harian 0.5% hingga 2.5% berdasarkan pertumbuhan TVL",
-                referral_program: "Program Referral",
-                referral_program_desc: "Dapatkan komisi dari 6 level jaringan referral Anda dengan total bonus hingga 40%",
-                monthly_salary: "Gaji Bulanan",
-                monthly_salary_desc: "Dapatkan gaji bulanan dari 4 level dengan potensi penghasilan hingga 0.025 BNB per bulan",
-                secure_transparent: "Aman & Transparan",
-                secure_transparent_desc: "Smart contract kami terverifikasi di BscScan tanpa kemampuan penarikan admin",
-                
-                // Dashboard Section
-                dashboard_title: "Dashboard Anda",
-                dashboard_subtitle: "Pantau investasi, penghasilan, dan jaringan referral Anda secara real-time",
-                active_deposit: "Deposit Aktif",
-                active_deposit_desc: "Investasi Anda Saat Ini",
-                current_roi: "ROI Harian Saat Ini",
-                current_roi_desc: "Tingkat Return Harian Anda",
-                pending_roi: "ROI Tertunda",
-                pending_roi_desc: "Tersedia untuk Penarikan",
-                withdraw_roi: "Tarik ROI",
-                
-                // Invest Section
-                invest_title: "Mulai Investasi",
-                invest_subtitle: "Deposit BNB dan mulai dapatkan return harian dengan smart contract investasi yang aman",
-                investment_amount: "Jumlah Investasi",
-                amount_bnb: "Jumlah (BNB)",
-                referrer_address: "Alamat Referrer",
-                invest_now: "Investasi Sekarang",
-                
-                // Referral Section
-                referral_title: "Program Referral",
-                referral_subtitle: "Dapatkan komisi dari 6 level jaringan referral Anda dengan sistem berbasis tier",
-                your_referral_link: "Link Referral Anda",
-                copy: "Salin",
-                referral_levels: "Level Referral",
-                referral_rewards: "Hadiah Referral",
-                claim_bonus: "Klaim Bonus",
-                referral_level_1: "Level 1",
-                referral_level_2: "Level 2",
-                referral_level_3: "Level 3",
-                referral_level_4: "Level 4",
-                referral_level_5: "Level 5",
-                referral_level_6: "Level 6",
-                referral_requirement_1: "Min deposit 0.01 BNB",
-                referral_requirement_2: "Min deposit 0.08 BNB",
-                referral_requirement_3: "Min deposit 0.15 BNB",
-                referral_requirement_4: "Min deposit 0.25 BNB",
-                referral_requirement_5: "Min deposit 0.35 BNB",
-                referral_requirement_6: "Min deposit 0.50 BNB",
-                
-                // Salary Section
-                salary_title: "Gaji Bulanan",
-                salary_subtitle: "Dapatkan gaji bulanan dari 4 level dengan potensi penghasilan hingga 0.025 BNB per bulan",
-                current_monthly_salary: "Gaji Bulanan Saat Ini",
-                no_active_salary: "Tidak ada level gaji aktif",
-                claim_salary: "Klaim Gaji",
-                salary_level_1: "Pionir",
-                salary_level_2: "Visioner",
-                salary_level_3: "Arsitek",
-                salary_level_4: "Maverick",
-                salary_team_1: "350 anggota",
-                salary_team_2: "550 anggota",
-                salary_team_3: "850 anggota",
-                salary_team_4: "1000 anggota",
-                salary_amount_1: "0.004 BNB",
-                salary_amount_2: "0.008 BNB",
-                salary_amount_3: "0.015 BNB",
-                salary_amount_4: "0.025 BNB",
-                salary_requirement_1: "Bangun tim 350 anggota",
-                salary_requirement_2: "Bangun tim 550 anggota",
-                salary_requirement_3: "Bangun tim 850 anggota",
-                salary_requirement_4: "Bangun tim 1000 anggota",
-                
-                // FAQ Section
-                faq_title: "Pertanyaan Umum",
-                faq_subtitle: "Temukan jawaban untuk pertanyaan umum tentang platform investasi kami",
-                faq_question_1: "Berapa deposit minimum?",
-                faq_answer_1: "Deposit minimum adalah 0.01 BNB untuk mulai menghasilkan dengan BNBVelion",
-                faq_question_2: "Bagaimana sistem ROI bekerja?",
-                faq_answer_2: "ROI berkisar antara 0.5% hingga 2.5% harian berdasarkan total TVL. Semakin TVL tumbuh, semakin tinggi persentase ROI",
-                faq_question_3: "Bagaimana komisi referral bekerja?",
-                faq_answer_3: "Anda mendapatkan komisi dari 6 level jaringan referral Anda, dengan bonus dari 20% hingga 1%",
-                faq_question_4: "Bagaimana saya bisa memenuhi syarat untuk gaji bulanan?",
-                faq_answer_4: "Level gaji bulanan membutuhkan pembangunan tim 350, 550, 850, atau 1000 anggota aktif",
-                
-                // Security Section
-                security_title: "Keamanan",
-                security_subtitle: "Investasi Anda diamankan oleh smart contract terverifikasi di Binance Smart Chain",
-                verified_contract: "Kontrak Terverifikasi",
-                verified_contract_desc: "Smart contract kami terverifikasi di BscScan, memastikan transparansi dan keamanan",
-                no_admin_withdrawals: "Tidak Ada Penarikan Admin",
-                no_admin_withdrawals_desc: "Dana diamankan dalam kontrak tanpa kemampuan admin untuk menarik deposit pengguna",
-                transparent: "Transparan",
-                transparent_desc: "Semua aktivitas dapat dilihat dan diverifikasi oleh siapa pun tanpa pengecualian",
-                view_on_bscscan: "Lihat di BSCScan",
-                
-                // Footer
-                footer_text: "Maksimalkan keuntungan Anda dengan platform investasi BNB yang aman dan transparan – Dapatkan ROI harian, komisi referral, dan gaji bulanan",
-                
-                // Modal and Notifications
-                investment_successful: "Investasi Berhasil!",
-                investment_successful_desc: "Investasi Anda telah berhasil diproses. Anda sekarang dapat memantau penghasilan Anda di dashboard.",
-                open_dashboard: "Buka Dashboard",
-                referral_not_detected: "Referral tidak terdeteksi!",
-                
-                // Placeholders
-                min_investment: "Minimum 0.01 BNB"
-            }
-        };
 
         // DOM Elements
         const connectWalletBtn = document.getElementById('connectWallet');
@@ -1951,7 +1172,6 @@
             generateSalaryLevels();
             generateFAQ();
             checkURLForReferral();
-            updateLanguage('en');
         });
 
         // Initialize the application
@@ -2087,52 +1307,67 @@
             document.getElementById('referralLink').value = `${window.location.origin}${window.location.pathname}?ref=${userAccount}`;
         }
 
-        // Load contract data
+        // Load contract data - REAL-TIME DATA FROM SMART CONTRACT
         async function loadContractData() {
             if (!contract) return;
             
             try {
+                // Get contract info
                 const contractInfo = await contract.methods.getContractInfo().call();
-                document.getElementById('tvl').textContent = `${(contractInfo.totalTVLAmount / 1e18).toFixed(2)} BNB`;
-                document.getElementById('totalUsers').textContent = contractInfo.totalUsersCount;
-                document.getElementById('totalDeposit').textContent = `${(contractInfo.totalDepositsAmount / 1e18).toFixed(2)} BNB`;
                 
-                // Calculate total paid (approximate)
-                const totalPaid = (contractInfo.totalDepositsAmount / 1e18) * 0.8; // 80% of deposits as estimate
-                document.getElementById('totalPaid').textContent = `${totalPaid.toFixed(2)} BNB`;
+                // Update TVL
+                const tvlBNB = web3.utils.fromWei(contractInfo.totalTVLAmount.toString(), 'ether');
+                document.getElementById('tvl').textContent = `${parseFloat(tvlBNB).toFixed(2)} BNB`;
                 
-                document.getElementById('currentROI').textContent = `${(contractInfo.currentROIPercentage / 100).toFixed(2)}%`;
+                // Update total users
+                document.getElementById('totalUsers').textContent = contractInfo.totalUsersCount.toString();
+                
+                // Update total deposit
+                const totalDepositBNB = web3.utils.fromWei(contractInfo.totalDepositsAmount.toString(), 'ether');
+                document.getElementById('totalDeposit').textContent = `${parseFloat(totalDepositBNB).toFixed(2)} BNB`;
+                
+                // Update current ROI
+                const currentROI = contractInfo.currentROIPercentage;
+                document.getElementById('currentROI').textContent = `${(currentROI / 100).toFixed(2)}%`;
+                
+                // Calculate total paid (approximate - you might need to track this separately)
+                const contractBalance = web3.utils.fromWei(contractInfo.contractBalance.toString(), 'ether');
+                const totalPaid = parseFloat(totalDepositBNB) - parseFloat(contractBalance);
+                document.getElementById('totalPaid').textContent = `${totalPaid > 0 ? totalPaid.toFixed(2) : '0.00'} BNB`;
                 
             } catch (error) {
                 console.error('Error loading contract data:', error);
-                // Fallback values for demo
-                document.getElementById('tvl').textContent = '125.50 BNB';
-                document.getElementById('totalUsers').textContent = '2847';
-                document.getElementById('totalDeposit').textContent = '105.25 BNB';
-                document.getElementById('totalPaid').textContent = '87.50 BNB';
-                document.getElementById('currentROI').textContent = '1.25%';
+                showNotification('Error loading contract data', 'error');
             }
         }
 
-        // Load user data
+        // Load user data - REAL-TIME DATA FROM SMART CONTRACT
         async function loadUserData() {
             if (!contract || !userAccount) return;
             
             try {
                 const userInfo = await contract.methods.getUserInfo(userAccount).call();
-                document.getElementById('userDeposit').textContent = `${(userInfo.totalDeposit / 1e18).toFixed(4)} BNB`;
                 
+                // Update user deposit
+                const userDepositBNB = web3.utils.fromWei(userInfo.totalDeposit.toString(), 'ether');
+                document.getElementById('userDeposit').textContent = `${parseFloat(userDepositBNB).toFixed(4)} BNB`;
+                
+                // Get pending ROI
                 const pendingROI = await contract.methods.getUserPendingROI(userAccount).call();
-                document.getElementById('pendingROI').textContent = `${(pendingROI / 1e18).toFixed(4)} BNB`;
+                const pendingROIBNB = web3.utils.fromWei(pendingROI.toString(), 'ether');
+                document.getElementById('pendingROI').textContent = `${parseFloat(pendingROIBNB).toFixed(4)} BNB`;
                 
-                document.getElementById('referralRewards').textContent = `${(userInfo.referralBonus / 1e18).toFixed(4)} BNB`;
+                // Update referral rewards
+                const referralBonusBNB = web3.utils.fromWei(userInfo.referralBonus.toString(), 'ether');
+                document.getElementById('referralRewards').textContent = `${parseFloat(referralBonusBNB).toFixed(4)} BNB`;
                 
                 // Update referral levels status
                 updateReferralLevelsStatus(userInfo.totalDeposit);
                 
                 // Load salary info
                 const pendingSalary = await contract.methods.getPendingSalary(userAccount).call();
-                document.getElementById('currentSalary').textContent = `${(pendingSalary / 1e18).toFixed(4)} BNB`;
+                const pendingSalaryBNB = web3.utils.fromWei(pendingSalary.toString(), 'ether');
+                document.getElementById('currentSalary').textContent = `${parseFloat(pendingSalaryBNB).toFixed(4)} BNB`;
                 
                 // Update salary level display
                 const salaryRank = userInfo.salaryRank;
@@ -2140,7 +1375,7 @@
                     const salaryLevels = await getSalaryLevels();
                     document.getElementById('salaryLevel').textContent = salaryLevels[salaryRank - 1].name;
                 } else {
-                    document.getElementById('salaryLevel').textContent = translations[currentLanguage].no_active_salary;
+                    document.getElementById('salaryLevel').textContent = 'No active salary level';
                 }
                 
                 // Update salary levels status
@@ -2148,12 +1383,7 @@
                 
             } catch (error) {
                 console.error('Error loading user data:', error);
-                // Fallback values for demo
-                document.getElementById('userDeposit').textContent = '0 BNB';
-                document.getElementById('pendingROI').textContent = '0 BNB';
-                document.getElementById('referralRewards').textContent = '0 BNB';
-                document.getElementById('currentSalary').textContent = '0 BNB';
-                document.getElementById('salaryLevel').textContent = translations[currentLanguage].no_active_salary;
+                showNotification('Error loading user data', 'error');
             }
         }
 
@@ -2175,7 +1405,7 @@
             return levels;
         }
 
-        // Invest function
+        // Invest function - REAL TRANSACTION WITH SMART CONTRACT
         async function invest() {
             if (!contract || !userAccount) {
                 showNotification('Please connect your wallet first!', 'error');
@@ -2198,7 +1428,7 @@
                 const amountWei = web3.utils.toWei(amount.toString(), 'ether');
                 
                 // Get the referrer address (from URL parameter or default to owner)
-                const referrer = referralAddress || '0xFc472468f4Db953Ea3A45C05196207677Eb37B07';
+                const referrer = referralAddress || await contract.methods.owner().call();
                 
                 // Call the contract deposit method with BNB
                 await contract.methods.deposit(referrer).send({ 
@@ -2212,7 +1442,7 @@
                 // Reset form and button state
                 document.getElementById('investAmount').value = '';
                 investNowBtn.disabled = false;
-                investNowBtn.innerHTML = '<i class="fas fa-rocket"></i> <span data-translate="invest_now">Invest Now</span>';
+                investNowBtn.innerHTML = '<i class="fas fa-rocket"></i> Invest Now';
                 
                 // Reload user data
                 loadUserData();
@@ -2224,11 +1454,11 @@
                 
                 // Reset button state
                 investNowBtn.disabled = false;
-                investNowBtn.innerHTML = '<i class="fas fa-rocket"></i> <span data-translate="invest_now">Invest Now</span>';
+                investNowBtn.innerHTML = '<i class="fas fa-rocket"></i> Invest Now';
             }
         }
 
-        // Withdraw ROI
+        // Withdraw ROI - REAL TRANSACTION WITH SMART CONTRACT
         async function withdrawROI() {
             if (!contract || !userAccount) {
                 showNotification('Please connect your wallet first!', 'error');
@@ -2245,7 +1475,7 @@
                 
                 // Reset button state
                 withdrawROIBtn.disabled = false;
-                withdrawROIBtn.innerHTML = '<i class="fas fa-download"></i> <span data-translate="withdraw_roi">Withdraw ROI</span>';
+                withdrawROIBtn.innerHTML = '<i class="fas fa-download"></i> Withdraw ROI';
                 
                 // Reload user data
                 loadUserData();
@@ -2256,11 +1486,11 @@
                 
                 // Reset button state
                 withdrawROIBtn.disabled = false;
-                withdrawROIBtn.innerHTML = '<i class="fas fa-download"></i> <span data-translate="withdraw_roi">Withdraw ROI</span>';
+                withdrawROIBtn.innerHTML = '<i class="fas fa-download"></i> Withdraw ROI';
             }
         }
 
-        // Claim referral bonus
+        // Claim referral bonus - REAL TRANSACTION WITH SMART CONTRACT
         async function claimReferralBonus() {
             if (!contract || !userAccount) {
                 showNotification('Please connect your wallet first!', 'error');
@@ -2277,7 +1507,7 @@
                 
                 // Reset button state
                 claimReferralBtn.disabled = false;
-                claimReferralBtn.innerHTML = '<i class="fas fa-gift"></i> <span data-translate="claim_bonus">Claim Bonus</span>';
+                claimReferralBtn.innerHTML = '<i class="fas fa-gift"></i> Claim Bonus';
                 
                 // Reload user data
                 loadUserData();
@@ -2288,11 +1518,11 @@
                 
                 // Reset button state
                 claimReferralBtn.disabled = false;
-                claimReferralBtn.innerHTML = '<i class="fas fa-gift"></i> <span data-translate="claim_bonus">Claim Bonus</span>';
+                claimReferralBtn.innerHTML = '<i class="fas fa-gift"></i> Claim Bonus';
             }
         }
 
-        // Claim salary
+        // Claim salary - REAL TRANSACTION WITH SMART CONTRACT
         async function claimSalary() {
             if (!contract || !userAccount) {
                 showNotification('Please connect your wallet first!', 'error');
@@ -2309,7 +1539,7 @@
                 
                 // Reset button state
                 claimSalaryBtn.disabled = false;
-                claimSalaryBtn.innerHTML = '<i class="fas fa-calendar-check"></i> <span data-translate="claim_salary">Claim Salary</span>';
+                claimSalaryBtn.innerHTML = '<i class="fas fa-calendar-check"></i> Claim Salary';
                 
                 // Reload user data
                 loadUserData();
@@ -2320,7 +1550,7 @@
                 
                 // Reset button state
                 claimSalaryBtn.disabled = false;
-                claimSalaryBtn.innerHTML = '<i class="fas fa-calendar-check"></i> <span data-translate="claim_salary">Claim Salary</span>';
+                claimSalaryBtn.innerHTML = '<i class="fas fa-calendar-check"></i> Claim Salary';
             }
         }
 
@@ -2355,58 +1585,25 @@
             translateDropdown.classList.toggle('active');
         }
 
-        // Update language - LENGKAP UNTUK SEMUA BAHASA
+        // Update language
         function updateLanguage(lang) {
             currentLanguage = lang;
             const selectedLang = document.querySelector(`.dropdown-item[data-lang="${lang}"] span:last-child`);
             if (selectedLang) {
                 currentLangElement.textContent = selectedLang.textContent;
             }
-            
-            // Update all elements with data-translate attribute
-            document.querySelectorAll('[data-translate]').forEach(element => {
-                const key = element.getAttribute('data-translate');
-                if (translations[lang] && translations[lang][key]) {
-                    if (element.tagName === 'INPUT' && element.type !== 'submit') {
-                        element.placeholder = translations[lang][key];
-                    } else {
-                        element.textContent = translations[lang][key];
-                    }
-                }
-            });
-            
-            // Update placeholder text
-            const investAmountInput = document.getElementById('investAmount');
-            if (investAmountInput) {
-                investAmountInput.placeholder = translations[lang].min_investment;
-            }
-            
-            // Update referral levels
-            updateReferralLevelsContent();
-            
-            // Update salary levels
-            updateSalaryLevelsContent();
-            
-            // Update FAQ
-            updateFAQContent();
         }
 
-        // Generate referral levels - 6 LEVELS SESUAI KONTRAK
+        // Generate referral levels
         function generateReferralLevels() {
             const levelGrid = document.getElementById('referralLevels');
-            updateReferralLevelsContent();
-        }
-
-        // Update referral levels content based on current language
-        function updateReferralLevelsContent() {
-            const levelGrid = document.getElementById('referralLevels');
             const levels = [
-                { level: 1, percentage: '20%', requirementKey: 'referral_requirement_1', levelKey: 'referral_level_1' },
-                { level: 2, percentage: '10%', requirementKey: 'referral_requirement_2', levelKey: 'referral_level_2' },
-                { level: 3, percentage: '5%', requirementKey: 'referral_requirement_3', levelKey: 'referral_level_3' },
-                { level: 4, percentage: '3%', requirementKey: 'referral_requirement_4', levelKey: 'referral_level_4' },
-                { level: 5, percentage: '1%', requirementKey: 'referral_requirement_5', levelKey: 'referral_level_5' },
-                { level: 6, percentage: '1%', requirementKey: 'referral_requirement_6', levelKey: 'referral_level_6' }
+                { level: 1, percentage: '20%', requirement: 'Min deposit 0.01 BNB' },
+                { level: 2, percentage: '10%', requirement: 'Min deposit 0.08 BNB' },
+                { level: 3, percentage: '5%', requirement: 'Min deposit 0.15 BNB' },
+                { level: 4, percentage: '3%', requirement: 'Min deposit 0.25 BNB' },
+                { level: 5, percentage: '1%', requirement: 'Min deposit 0.35 BNB' },
+                { level: 6, percentage: '1%', requirement: 'Min deposit 0.50 BNB' }
             ];
             
             levelGrid.innerHTML = '';
@@ -2415,9 +1612,9 @@
                 const levelBox = document.createElement('div');
                 levelBox.className = 'level-box locked';
                 levelBox.innerHTML = `
-                    <div class="level-name">${translations[currentLanguage][level.levelKey]}</div>
+                    <div class="level-name">Level ${level.level}</div>
                     <div class="level-percentage">${level.percentage}</div>
-                    <div class="level-requirement">${translations[currentLanguage][level.requirementKey]}</div>
+                    <div class="level-requirement">${level.requirement}</div>
                 `;
                 levelGrid.appendChild(levelBox);
             });
@@ -2426,7 +1623,7 @@
         // Update referral levels status based on user deposit
         function updateReferralLevelsStatus(userDeposit) {
             const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
-            const depositAmount = userDeposit / 1e18; // Convert from wei
+            const depositAmount = parseFloat(web3.utils.fromWei(userDeposit.toString(), 'ether'));
             
             const levelRequirements = [0.01, 0.08, 0.15, 0.25, 0.35, 0.50]; // BNB amounts
             
@@ -2441,44 +1638,14 @@
             });
         }
 
-        // Generate salary levels - 4 LEVELS SESUAI KONTRAK
+        // Generate salary levels
         function generateSalaryLevels() {
             const levelGrid = document.getElementById('salaryLevels');
-            updateSalaryLevelsContent();
-        }
-
-        // Update salary levels content based on current language
-        function updateSalaryLevelsContent() {
-            const levelGrid = document.getElementById('salaryLevels');
             const levels = [
-                { 
-                    nameKey: 'salary_level_1', 
-                    teamKey: 'salary_team_1', 
-                    salaryKey: 'salary_amount_1', 
-                    requirementKey: 'salary_requirement_1', 
-                    minTeam: 350 
-                },
-                { 
-                    nameKey: 'salary_level_2', 
-                    teamKey: 'salary_team_2', 
-                    salaryKey: 'salary_amount_2', 
-                    requirementKey: 'salary_requirement_2', 
-                    minTeam: 550 
-                },
-                { 
-                    nameKey: 'salary_level_3', 
-                    teamKey: 'salary_team_3', 
-                    salaryKey: 'salary_amount_3', 
-                    requirementKey: 'salary_requirement_3', 
-                    minTeam: 850 
-                },
-                { 
-                    nameKey: 'salary_level_4', 
-                    teamKey: 'salary_team_4', 
-                    salaryKey: 'salary_amount_4', 
-                    requirementKey: 'salary_requirement_4', 
-                    minTeam: 1000 
-                }
+                { name: 'Pionir', salary: '0.004 BNB', requirement: 'Build team 350 members' },
+                { name: 'Visioner', salary: '0.008 BNB', requirement: 'Build team 550 members' },
+                { name: 'Arsitek', salary: '0.015 BNB', requirement: 'Build team 850 members' },
+                { name: 'Maverick', salary: '0.025 BNB', requirement: 'Build team 1000 members' }
             ];
             
             levelGrid.innerHTML = '';
@@ -2487,10 +1654,9 @@
                 const levelBox = document.createElement('div');
                 levelBox.className = 'level-box locked';
                 levelBox.innerHTML = `
-                    <div class="level-name">${translations[currentLanguage][level.nameKey]}</div>
-                    <div class="level-percentage">${translations[currentLanguage][level.salaryKey]}</div>
-                    <div class="level-requirement">Min Team: ${translations[currentLanguage][level.teamKey]}</div>
-                    <div class="level-requirement">${translations[currentLanguage][level.requirementKey]}</div>
+                    <div class="level-name">${level.name}</div>
+                    <div class="level-percentage">${level.salary}</div>
+                    <div class="level-requirement">${level.requirement}</div>
                 `;
                 levelGrid.appendChild(levelBox);
             });
@@ -2516,28 +1682,23 @@
 
         // Generate FAQ
         function generateFAQ() {
-            updateFAQContent();
-        }
-
-        // Update FAQ content based on current language
-        function updateFAQContent() {
             const faqContainer = document.getElementById('faqContainer');
             const faqs = [
                 {
-                    question: translations[currentLanguage].faq_question_1,
-                    answer: translations[currentLanguage].faq_answer_1
+                    question: "What is the minimum deposit?",
+                    answer: "The minimum deposit is 0.01 BNB to start earning with BNBVelion"
                 },
                 {
-                    question: translations[currentLanguage].faq_question_2,
-                    answer: translations[currentLanguage].faq_answer_2
+                    question: "How does the ROI system work?",
+                    answer: "ROI ranges from 0.5% to 2.5% daily based on the total TVL. The more TVL grows, the higher the ROI percentage"
                 },
                 {
-                    question: translations[currentLanguage].faq_question_3,
-                    answer: translations[currentLanguage].faq_answer_3
+                    question: "How do referral commissions work?",
+                    answer: "You earn commissions from 6 levels of your referral network, with bonuses from 20% to 1%"
                 },
                 {
-                    question: translations[currentLanguage].faq_question_4,
-                    answer: translations[currentLanguage].faq_answer_4
+                    question: "How can I qualify for monthly salary?",
+                    answer: "Monthly salary levels require building teams of 350, 550, 850, or 1000 active members"
                 }
             ];
             
@@ -2574,7 +1735,7 @@
                 referrerAddressInput.value = refAddress;
                 showNotification('Referral address detected from URL!', 'success');
             } else {
-                referrerAddressInput.value = translations[currentLanguage].referral_not_detected;
+                referrerAddressInput.value = 'Referral not detected!';
             }
         }
     </script>
