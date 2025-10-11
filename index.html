@@ -215,7 +215,7 @@
             text-shadow: 0 0 10px var(--cyan-glow);
         }
 
-        /* Button Styles */
+        /* Button Styles - FIXED ICON ALIGNMENT */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -1138,7 +1138,7 @@
                     levels.push({
                         name: level.rankName,
                         minTeam: level.minTeamMembers,
-                        salary: level.monthlySalary
+                        salary: web3.utils.fromWei(level.monthlySalary.toString(), 'ether')
                     });
                 } catch (error) {
                     console.error('Error getting salary level:', error);
