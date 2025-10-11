@@ -326,7 +326,7 @@
 
         /* PERBAIKAN KHUSUS: Button Start Investing di Home - FIXED ALIGNMENT */
         #startInvesting {
-            display: inline-flex;
+            display: inline-flex !important; /* Important untuk memastikan tidak ditimpa JavaScript */
             align-items: center;
             justify-content: center;
             gap: 10px;
@@ -1296,11 +1296,12 @@
             }
         }
 
-        // Update wallet UI after connection
+        // PERBAIKAN UTAMA: Update wallet UI setelah koneksi - FIXED ALIGNMENT
         function updateWalletUI() {
             connectWalletBtn.style.display = 'none';
             connectedInfo.style.display = 'flex';
-            startInvestingBtn.style.display = 'block';
+            // PERBAIKAN: Menggunakan inline-flex agar alignment tetap terjaga
+            startInvestingBtn.style.display = 'inline-flex';
             walletAddress.textContent = `${userAccount.substring(0, 6)}...${userAccount.substring(userAccount.length - 4)}`;
             
             // Update referral link
