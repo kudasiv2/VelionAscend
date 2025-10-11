@@ -1522,6 +1522,172 @@
                 referrerAddressInput.value = 'Referral not detected!';
             }
         }
-    </script>
+    <script>
+// PERBAIKAN KHUSUS: Fix untuk tingkat referral owner, manager, dan leader
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Applying special user referral fix...');
+    
+    // Override fungsi updateReferralLevelsStatus untuk special users
+    const originalUpdateReferralLevelsStatus = window.updateReferralLevelsStatus;
+    
+    window.updateReferralLevelsStatus = async function(userDeposit) {
+        if (!window.contract || !window.userAccount) return;
+        
+        try {
+            // Cek apakah user adalah special user (owner, manager, leader)
+            const isSpecial = await window.contract.methods.isAddressSpecialUser(window.userAccount).call();
+            
+            if (isSpecial) {
+                console.log('User is special - unlocking all referral levels');
+                // Unlock semua level untuk special users
+                const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
+                levelBoxes.forEach(box => {
+                    box.classList.remove('locked');
+                    box.classList.add('unlocked');
+                });
+                return;
+            }
+            
+            // Jika bukan special user, gunakan logika normal
+            if (originalUpdateReferralLevelsStatus) {
+                originalUpdateReferralLevelsStatus(userDeposit);
+            }
+            
+        } catch (error) {
+            console.error('Error in special user check:', error);
+            // Fallback ke logika normal jika ada error
+            if (originalUpdateReferralLevelsStatus) {
+                originalUpdateReferralLevelsStatus(userDeposit);
+            }
+        }
+    };
+
+    // Override fungsi generateReferralLevels untuk menambahkan info special user
+    const originalGenerateReferralLevels = window.generateReferralLevels;
+    
+    window.generateReferralLevels = function() {
+        if (originalGenerateReferralLevels) {
+            originalGenerateReferralLevels();
+        }
+        
+        // Tambahkan pengecekan special user setelah generate
+        setTimeout(async () => {
+            if (window.contract && window.userAccount) {
+                try {
+                    const isSpecial = await window.contract.methods.isAddressSpecialUser(window.userAccount).call();
+                    if (isSpecial) {
+                        console.log('Special user detected on page load - unlocking referral levels');
+                        const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
+                        levelBoxes.forEach(box => {
+                            box.classList.remove('locked');
+                            box.classList.add('unlocked');
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error checking special user on page load:', error);
+                }
+            }
+        }, 1000);
+    };
+
+    // Fix untuk loadUserData - pastikan special user dicek
+    const originalLoadUserData = window.loadUserData;
+    
+    window.loadUserData = async function() {
+        if (originalLoadUserData) {
+            await originalLoadUserData();
+        }
+        
+        // Tambahkan pengecekan special user setelah load data user
+        if (window.contract && window.userAccount) {
+            try {
+                const isSpecial = await window.contract.methods.isAddressSpecialUser(window.userAccount).call();
+                if (isSpecial) {
+                    console.log('Special user detected in loadUserData - unlocking referral levels');
+                    const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
+                    levelBoxes.forEach(box => {
+                        box.classList.remove('locked');
+                        box.classList.add('unlocked');
+                    });
+                }
+            } catch (error) {
+                console.error('Error checking special user in loadUserData:', error);
+            }
+        }
+    };
+
+    // Fix untuk connectWallet - pastikan special user dicek setelah koneksi
+    const originalConnectWallet = window.connectWallet;
+    
+    window.connectWallet = async function() {
+        if (originalConnectWallet) {
+            await originalConnectWallet();
+        }
+        
+        // Tambahkan pengecekan special user setelah koneksi wallet
+        setTimeout(async () => {
+            if (window.contract && window.userAccount) {
+                try {
+                    const isSpecial = await window.contract.methods.isAddressSpecialUser(window.userAccount).call();
+                    if (isSpecial) {
+                        console.log('Special user detected after wallet connection - unlocking referral levels');
+                        const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
+                        levelBoxes.forEach(box => {
+                            box.classList.remove('locked');
+                            box.classList.add('unlocked');
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error checking special user after wallet connection:', error);
+                }
+            }
+        }, 1500);
+    };
+
+    console.log('Special user referral fix applied successfully!');
+});
+
+// PERBAIKAN TAMBAHAN: Fungsi untuk memastikan tingkat referral terbuka untuk special users
+function ensureSpecialUserReferralLevels() {
+    if (!window.contract || !window.userAccount) return;
+    
+    // Cek setiap 3 detik apakah user adalah special user
+    const checkInterval = setInterval(async () => {
+        try {
+            const isSpecial = await window.contract.methods.isAddressSpecialUser(window.userAccount).call();
+            if (isSpecial) {
+                console.log('Special user verified - ensuring referral levels are unlocked');
+                const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
+                let allUnlocked = true;
+                
+                levelBoxes.forEach(box => {
+                    if (box.classList.contains('locked')) {
+                        allUnlocked = false;
+                        box.classList.remove('locked');
+                        box.classList.add('unlocked');
+                    }
+                });
+                
+                if (allUnlocked) {
+                    clearInterval(checkInterval);
+                    console.log('All referral levels unlocked for special user');
+                }
+            }
+        } catch (error) {
+            console.error('Error in special user verification:', error);
+        }
+    }, 3000);
+    
+    // Stop checking after 30 seconds
+    setTimeout(() => {
+        clearInterval(checkInterval);
+    }, 30000);
+}
+
+// Jalankan fungsi tambahan setelah DOM loaded
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(ensureSpecialUserReferralLevels, 2000);
+});
+</script>
 </body>
 </html>
