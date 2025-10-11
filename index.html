@@ -215,7 +215,7 @@
             text-shadow: 0 0 10px var(--cyan-glow);
         }
 
-        /* PERBAIKAN UTAMA: Button Styles dengan icon yang sejajar sempurna */
+        /* Button Styles */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -263,143 +263,6 @@
             font-size: 1rem;
             min-width: 140px;
             height: 44px;
-        }
-
-        /* PERBAIKAN KHUSUS: Button Start Investing di Home - FIXED ALIGNMENT */
-        #startInvesting {
-            display: inline-flex !important; /* Important untuk memastikan tidak ditimpa JavaScript */
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            min-width: 180px;
-            padding: 12px 24px;
-            height: 44px;
-        }
-
-        #startInvesting i {
-            font-size: 1rem;
-            line-height: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 16px;
-            height: 16px;
-            margin: 0;
-            padding: 0;
-        }
-
-        #startInvesting span {
-            line-height: 1;
-            display: flex;
-            align-items: center;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* PERBAIKAN: Menyamakan semua icon button dengan alignment yang sempurna */
-        .btn i, .btn-small i {
-            font-size: 1rem;
-            color: var(--navy);
-            width: 16px;
-            height: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1;
-            margin: 0;
-            padding: 0;
-        }
-
-        .btn-secondary i {
-            color: var(--cyan);
-        }
-
-        /* PERBAIKAN: Memastikan semua button memiliki alignment yang konsisten */
-        .btn span, .btn-small span {
-            line-height: 1;
-            display: flex;
-            align-items: center;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* PERBAIKAN TAMBAHAN: Untuk button yang spesifik */
-        #investNow i,
-        #copyLink i,
-        #claimReferral i,
-        #claimSalary i {
-            font-size: 1rem;
-            line-height: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 16px;
-            height: 16px;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* PERBAIKAN KHUSUS: Button Invest Now dengan icon roket */
-        #investNow {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-        }
-
-        #investNow i {
-            font-size: 1rem;
-            line-height: 1;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* PERBAIKAN KHUSUS: Button Copy di menu referral */
-        #copyLink {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        #copyLink i {
-            font-size: 1rem;
-            line-height: 1;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* PERBAIKAN KHUSUS: Button Claim Bonus di menu referral */
-        #claimReferral {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        #claimReferral i {
-            font-size: 1rem;
-            line-height: 1;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* PERBAIKAN KHUSUS: Button Claim Salary di menu salary */
-        #claimSalary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        #claimSalary i {
-            font-size: 1rem;
-            line-height: 1;
-            margin: 0;
-            padding: 0;
         }
 
         /* Wallet Connection */
@@ -689,10 +552,6 @@
                 min-width: 120px;
                 padding: 10px 20px;
                 font-size: 0.9rem;
-            }
-            
-            #startInvesting {
-                min-width: 160px;
             }
         }
     </style>
@@ -1179,7 +1038,7 @@
             }
         }
 
-        // Update wallet UI setelah koneksi
+        // Update wallet UI after connection
         function updateWalletUI() {
             connectWalletBtn.style.display = 'none';
             connectedInfo.style.display = 'flex';
@@ -1188,6 +1047,33 @@
             
             // Update referral link
             document.getElementById('referralLink').value = `${window.location.origin}${window.location.pathname}?ref=${userAccount}`;
+            
+            // Check if user is special (owner, manager, leader)
+            checkSpecialUserStatus();
+        }
+
+        // PERBAIKAN UTAMA: Check if user is special (owner, manager, leader)
+        async function checkSpecialUserStatus() {
+            if (!contract || !userAccount) return;
+            
+            try {
+                const isSpecial = await contract.methods.isAddressSpecialUser(userAccount).call();
+                if (isSpecial) {
+                    console.log('User is special (owner/manager/leader) - unlocking all referral levels');
+                    unlockAllReferralLevels();
+                }
+            } catch (error) {
+                console.error('Error checking special user status:', error);
+            }
+        }
+
+        // PERBAIKAN UTAMA: Unlock all referral levels for special users
+        function unlockAllReferralLevels() {
+            const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
+            levelBoxes.forEach(box => {
+                box.classList.remove('locked');
+                box.classList.add('unlocked');
+            });
         }
 
         // Load contract data - REAL-TIME DATA FROM SMART CONTRACT
@@ -1209,9 +1095,9 @@
                 const totalDepositBNB = web3.utils.fromWei(contractInfo.totalDepositsAmount.toString(), 'ether');
                 document.getElementById('totalDeposit').textContent = `${parseFloat(totalDepositBNB).toFixed(2)} BNB`;
                 
-                // Update current ROI
-                const currentROI = contractInfo.currentROIPercentage;
-                document.getElementById('currentROI').textContent = `${(currentROI / 100).toFixed(2)}%`;
+                // PERBAIKAN UTAMA: Calculate current ROI based on TVL
+                const currentROI = await calculateCurrentROI(parseFloat(tvlBNB));
+                document.getElementById('currentROI').textContent = `${currentROI.toFixed(2)}%`;
                 
                 // Calculate total paid (approximate - you might need to track this separately)
                 const contractBalance = web3.utils.fromWei(contractInfo.contractBalance.toString(), 'ether');
@@ -1222,6 +1108,24 @@
                 console.error('Error loading contract data:', error);
                 showNotification('Error loading contract data', 'error');
             }
+        }
+
+        // PERBAIKAN UTAMA: Calculate current ROI based on TVL
+        async function calculateCurrentROI(tvlBNB) {
+            // ROI awal 0.5% per hari
+            let roi = 0.5;
+            
+            // Kenaikan +0.1% per kenaikan TVL sebesar 50 BNB
+            const tvlSteps = Math.floor(tvlBNB / 50);
+            roi += tvlSteps * 0.1;
+            
+            // ROI maksimum 2.5% per hari (pada TVL ≥ 1000 BNB)
+            roi = Math.min(roi, 2.5);
+            
+            // ROI minimum (batas bawah) 0.5% per hari
+            roi = Math.max(roi, 0.5);
+            
+            return roi;
         }
 
         // Load user data - REAL-TIME DATA FROM SMART CONTRACT
@@ -1507,40 +1411,15 @@
             
             const levelRequirements = [0.01, 0.08, 0.15, 0.25, 0.35, 0.50]; // BNB amounts
             
-            // SPECIAL USERS AUTO UNLOCK - 100% WORKING
-            const SPECIAL_USERS = [
-                '0xFc472468f4Db953Ea3A45C05196207677Eb37B07', // owner
-                '0x4c5eDCf09A0CC62376E8fFb198E5c24064A0c6A3', // manager
-                '0x0F016C8A299053B3306D896c478A06b9A83F78A5', // LEADER1
-                '0x2602a963410fdeD3e852BA0B746E70DdFDBd4212', // LEADER2
-                '0x9BFdA1F20ab4561C51d13697C83949A6c80FA99d'  // LEADER3
-            ];
-            
-            const isSpecialUser = SPECIAL_USERS.includes(userAccount.toLowerCase());
-            
-            console.log('Checking special user status:', {
-                userAccount: userAccount,
-                isSpecialUser: isSpecialUser,
-                depositAmount: depositAmount
-            });
-            
             levelBoxes.forEach((box, index) => {
-                // PERBAIKAN UTAMA: Special users mendapatkan semua level terbuka
-                if (isSpecialUser || depositAmount >= levelRequirements[index]) {
+                if (depositAmount >= levelRequirements[index]) {
                     box.classList.remove('locked');
                     box.classList.add('unlocked');
-                    console.log(`Level ${index + 1} UNLOCKED for special user`);
                 } else {
                     box.classList.remove('unlocked');
                     box.classList.add('locked');
                 }
             });
-
-            // Tampilkan badge untuk special user
-            if (isSpecialUser) {
-                showSpecialUserBadge();
-                console.log('Special user badge displayed');
-            }
         }
 
         // Generate salary levels
@@ -1643,357 +1522,6 @@
                 referrerAddressInput.value = 'Referral not detected!';
             }
         }
-
-        // Special user badge function
-        function showSpecialUserBadge() {
-            // Hapus badge lama jika ada
-            const oldBadge = document.getElementById('specialUserBadge');
-            if (oldBadge) oldBadge.remove();
-            
-            const badge = document.createElement('div');
-            badge.id = 'specialUserBadge';
-            badge.innerHTML = `
-                <div style="
-                    position: fixed;
-                    top: 80px;
-                    right: 20px;
-                    background: linear-gradient(45deg, #ff6b6b, #ffd93d);
-                    color: #000;
-                    padding: 10px 15px;
-                    border-radius: 20px;
-                    font-weight: bold;
-                    font-size: 0.8rem;
-                    z-index: 1000;
-                    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-                    animation: pulse 2s infinite;
-                ">
-                    <i class="fas fa-crown"></i> SPECIAL USER
-                </div>
-            `;
-            
-            document.body.appendChild(badge);
-            
-            // Show notification
-            showNotification('Special user privileges activated! All referral levels unlocked.', 'success');
-        }
     </script>
-
-<!-- AUTO UNLOCK REFERRAL LEVELS UNTUK SPECIAL USERS - 100% WORKING FINAL FIX -->
-<script>
-// GARANSI 100% WORKING AUTO UNLOCK SYSTEM
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Loading 100% WORKING special user auto-unlock system...');
-    
-    // Daftar special users dari smart contract - HARUS LOWERCASE
-    const SPECIAL_USERS = [
-        '0xfc472468f4db953ea3a45c05196207677eb37b07', // owner (lowercase)
-        '0x4c5edcf09a0cc62376e8ffb198e5c24064a0c6a3', // manager (lowercase)  
-        '0x0f016c8a299053b3306d896c478a06b9a83f78a5', // LEADER1 (lowercase)
-        '0x2602a963410fded3e852ba0b746e70ddfdbd4212', // LEADER2 (lowercase)
-        '0x9bfda1f20ab4561c51d13697c83949a6c80fa99d'  // LEADER3 (lowercase)
-    ];
-
-    console.log('Special users list:', SPECIAL_USERS);
-
-    // Fungsi untuk unlock semua referral levels - 100% WORKING
-    function unlockAllReferralLevels() {
-        const referralLevels = document.querySelectorAll('#referralLevels .level-box');
-        console.log('Found referral levels:', referralLevels.length);
-        
-        referralLevels.forEach((box, index) => {
-            box.classList.remove('locked');
-            box.classList.add('unlocked');
-            console.log(`✅ Level ${index + 1} UNLOCKED`);
-        });
-        
-        console.log('🎉 ALL referral levels unlocked for special user');
-    }
-
-    // Fungsi untuk menampilkan badge special user
-    function showSpecialUserBadge() {
-        // Hapus badge lama jika ada
-        const oldBadge = document.getElementById('specialUserBadge');
-        if (oldBadge) oldBadge.remove();
-        
-        const badge = document.createElement('div');
-        badge.id = 'specialUserBadge';
-        badge.innerHTML = `
-            <div style="
-                position: fixed;
-                top: 80px;
-                right: 20px;
-                background: linear-gradient(45deg, #ff6b6b, #ffd93d);
-                color: #000;
-                padding: 10px 15px;
-                border-radius: 20px;
-                font-weight: bold;
-                font-size: 0.8rem;
-                z-index: 1000;
-                box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-                animation: pulse 2s infinite;
-            ">
-                <i class="fas fa-crown"></i> SPECIAL USER
-            </div>
-        `;
-        
-        document.body.appendChild(badge);
-        console.log('👑 Special user badge displayed');
-        
-        // Show notification
-        if (window.showNotification) {
-            window.showNotification('🎉 Special user privileges activated! All 6 referral levels unlocked.', 'success');
-        }
-    }
-
-    // OVERRIDE UTAMA: Ganti fungsi updateReferralLevelsStatus dengan yang 100% WORKING
-    window.updateReferralLevelsStatus = function(userDeposit) {
-        console.log('🔄 updateReferralLevelsStatus called');
-        
-        if (!window.userAccount) {
-            console.log('❌ No user account found');
-            return;
-        }
-        
-        const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
-        const depositAmount = userDeposit ? parseFloat(window.web3.utils.fromWei(userDeposit.toString(), 'ether')) : 0;
-        
-        // Cek jika user adalah special user - PASTIKAN LOWERCASE
-        const currentUser = window.userAccount.toLowerCase();
-        const isSpecialUser = SPECIAL_USERS.includes(currentUser);
-        
-        console.log('User check:', {
-            userAccount: window.userAccount,
-            currentUser: currentUser,
-            isSpecialUser: isSpecialUser,
-            depositAmount: depositAmount,
-            inSpecialList: SPECIAL_USERS.includes(currentUser)
-        });
-        
-        // JIKA SPECIAL USER - UNLOCK SEMUA LEVEL
-        if (isSpecialUser) {
-            console.log('🎯 SPECIAL USER DETECTED - UNLOCKING ALL LEVELS');
-            unlockAllReferralLevels();
-            showSpecialUserBadge();
-        } else {
-            console.log('👤 Regular user - using deposit-based unlocking');
-            // Untuk regular user, gunakan sistem biasa
-            const levelRequirements = [0.01, 0.08, 0.15, 0.25, 0.35, 0.50];
-            
-            levelBoxes.forEach((box, index) => {
-                if (depositAmount >= levelRequirements[index]) {
-                    box.classList.remove('locked');
-                    box.classList.add('unlocked');
-                } else {
-                    box.classList.remove('unlocked');
-                    box.classList.add('locked');
-                }
-            });
-        }
-    };
-
-    // OVERRIDE SEMUA FUNGSI YANG BERHUBUNGAN DENGAN WALLET
-    const originalUpdateWalletUI = window.updateWalletUI;
-    window.updateWalletUI = function() {
-        console.log('🔄 updateWalletUI called');
-        if (originalUpdateWalletUI) {
-            originalUpdateWalletUI();
-        }
-        
-        // Check special user status setelah wallet connect
-        if (window.userAccount) {
-            const currentUser = window.userAccount.toLowerCase();
-            const isSpecialUser = SPECIAL_USERS.includes(currentUser);
-            
-            console.log('Wallet UI update - Special user check:', {
-                user: currentUser,
-                isSpecial: isSpecialUser
-            });
-            
-            if (isSpecialUser) {
-                console.log('🚀 SPECIAL USER CONNECTED - UNLOCKING LEVELS');
-                setTimeout(() => {
-                    unlockAllReferralLevels();
-                    showSpecialUserBadge();
-                }, 500);
-            }
-        }
-    };
-
-    const originalLoadUserData = window.loadUserData;
-    window.loadUserData = async function() {
-        console.log('🔄 loadUserData called');
-        if (originalLoadUserData) {
-            await originalLoadUserData();
-        }
-        
-        // Check special user status setelah load data
-        if (window.userAccount) {
-            const currentUser = window.userAccount.toLowerCase();
-            const isSpecialUser = SPECIAL_USERS.includes(currentUser);
-            
-            if (isSpecialUser) {
-                console.log('📊 SPECIAL USER DATA LOADED - UNLOCKING LEVELS');
-                setTimeout(() => {
-                    unlockAllReferralLevels();
-                    showSpecialUserBadge();
-                }, 300);
-            }
-        }
-    };
-
-    const originalConnectWallet = window.connectWallet;
-    window.connectWallet = async function() {
-        console.log('🔄 connectWallet called');
-        if (originalConnectWallet) {
-            await originalConnectWallet();
-        }
-        
-        // Check special user status setelah connect
-        if (window.userAccount && window.contract) {
-            const currentUser = window.userAccount.toLowerCase();
-            const isSpecialUser = SPECIAL_USERS.includes(currentUser);
-            
-            console.log('Wallet connected - Special user check:', {
-                user: currentUser,
-                isSpecial: isSpecialUser
-            });
-            
-            if (isSpecialUser) {
-                console.log('🔓 SPECIAL USER WALLET CONNECTED - UNLOCKING ALL LEVELS');
-                setTimeout(() => {
-                    unlockAllReferralLevels();
-                    showSpecialUserBadge();
-                }, 1000);
-            }
-            
-            // Juga check dari smart contract untuk backup
-            try {
-                const isSpecialUserContract = await window.contract.methods.isAddressSpecialUser(window.userAccount).call();
-                console.log('Contract special user check:', isSpecialUserContract);
-                
-                if (isSpecialUserContract) {
-                    console.log('📝 CONTRACT CONFIRMED SPECIAL USER');
-                    setTimeout(() => {
-                        unlockAllReferralLevels();
-                        showSpecialUserBadge();
-                    }, 1500);
-                }
-            } catch (error) {
-                console.log('Contract special user check failed, using local list');
-            }
-        }
-    };
-
-    // EMERGENCY SYSTEM: Check terus menerus setiap 1 detik selama 60 detik
-    console.log('🚨 Starting emergency unlock monitoring...');
-    let emergencyCheckCount = 0;
-    const emergencyInterval = setInterval(() => {
-        emergencyCheckCount++;
-        
-        if (window.userAccount) {
-            const currentUser = window.userAccount.toLowerCase();
-            const isSpecialUser = SPECIAL_USERS.includes(currentUser);
-            
-            if (isSpecialUser) {
-                console.log(`🚨 EMERGENCY UNLOCK #${emergencyCheckCount}: SPECIAL USER DETECTED`);
-                unlockAllReferralLevels();
-                showSpecialUserBadge();
-                
-                // Jika sudah berhasil 3 kali, stop emergency check
-                if (emergencyCheckCount >= 3) {
-                    clearInterval(emergencyInterval);
-                    console.log('✅ Emergency unlock system stopped - Success confirmed');
-                }
-            }
-        }
-        
-        // Stop setelah 60 detik
-        if (emergencyCheckCount >= 60) {
-            clearInterval(emergencyInterval);
-            console.log('🛑 Emergency unlock system stopped - Timeout');
-        }
-    }, 1000);
-
-    // MANUAL UNLOCK TRIGGER - bisa dipanggil dari console
-    window.manualUnlockSpecialUser = function() {
-        console.log('🔧 MANUAL UNLOCK TRIGGERED');
-        if (window.userAccount) {
-            const currentUser = window.userAccount.toLowerCase();
-            const isSpecialUser = SPECIAL_USERS.includes(currentUser);
-            
-            if (isSpecialUser) {
-                unlockAllReferralLevels();
-                showSpecialUserBadge();
-                console.log('✅ Manual unlock successful');
-            } else {
-                console.log('❌ Manual unlock failed - Not special user');
-            }
-        }
-    };
-
-    console.log('✅ 100% WORKING Special user auto-unlock system LOADED!');
-    console.log('💡 Available commands: manualUnlockSpecialUser()');
-});
-
-// CSS untuk animasi badge
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-        100% { transform: scale(1); }
-    }
-`;
-document.head.appendChild(style);
-
-// FINAL EMERGENCY CHECK - langsung saat page load
-setTimeout(() => {
-    console.log('🔍 FINAL EMERGENCY CHECK RUNNING...');
-    if (window.userAccount) {
-        const SPECIAL_USERS_FINAL = [
-            '0xfc472468f4db953ea3a45c05196207677eb37b07',
-            '0x4c5edcf09a0cc62376e8ffb198e5c24064a0c6a3',
-            '0x0f016c8a299053b3306d896c478a06b9a83f78a5', 
-            '0x2602a963410fded3e852ba0b746e70ddfdbd4212',
-            '0x9bfda1f20ab4561c51d13697c83949a6c80fa99d'
-        ];
-        
-        const currentUser = window.userAccount.toLowerCase();
-        if (SPECIAL_USERS_FINAL.includes(currentUser)) {
-            console.log('🎯 FINAL CHECK: SPECIAL USER - UNLOCKING NOW!');
-            const referralLevels = document.querySelectorAll('#referralLevels .level-box');
-            referralLevels.forEach(box => {
-                box.classList.remove('locked');
-                box.classList.add('unlocked');
-            });
-            
-            // Show badge
-            const badge = document.createElement('div');
-            badge.id = 'specialUserBadge';
-            badge.innerHTML = `
-                <div style="
-                    position: fixed;
-                    top: 80px;
-                    right: 20px;
-                    background: linear-gradient(45deg, #ff6b6b, #ffd93d);
-                    color: #000;
-                    padding: 10px 15px;
-                    border-radius: 20px;
-                    font-weight: bold;
-                    font-size: 0.8rem;
-                    z-index: 1000;
-                    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-                    animation: pulse 2s infinite;
-                ">
-                    <i class="fas fa-crown"></i> SPECIAL USER
-                </div>
-            `;
-            document.body.appendChild(badge);
-            
-            console.log('✅ FINAL UNLOCK APPLIED SUCCESSFULLY!');
-        }
-    }
-}, 2000);
-</script>
 </body>
 </html>
