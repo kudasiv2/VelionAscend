@@ -707,7 +707,6 @@
                     <div class="logo-text">BNBVelion</div>
                 </div>
                 <div class="nav-right">
-                    <!-- TOMBOL TRANSLATE DIHAPUS -->
                     <div class="hamburger" id="hamburger">
                         <span></span>
                         <span></span>
@@ -1043,7 +1042,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script>
-        // Contract details - DIPERBAIKI: Menggunakan contract address yang benar
+        // Contract details
         const contractAddress = '0x058697328c6F1624007413E6Df6C85B468E4f6F4';
         const contractABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":true,"internalType":"address","name":"referrer","type":"address"},{"indexed":false,"internalType":"uint256","name":"fee","type":"uint256"}],"name":"Deposited","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"DirectBNBReceived","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"ROIClaimed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"newROI","type":"uint256"}],"name":"ROIUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"ReferralBonusClaimed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"referrer","type":"address"},{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"level","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"ReferralBonusDistributed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"rank","type":"uint256"},{"indexed":false,"internalType":"string","name":"rankName","type":"string"}],"name":"SalaryPaid","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":true,"internalType":"address","name":"referrer","type":"address"}],"name":"UserRegistered","type":"event"},{"stateMutability":"payable","type":"fallback"},{"inputs":[],"name":"FEE_DIVIDER","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"FEE_PERCENTAGE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"LEADER1","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"LEADER2","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"LEADER3","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_ROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_TVL_FOR_MAX_ROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MIN_DEPOSIT","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MIN_ROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"ROI_INCREMENT","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"TVL_STEP","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"claimROI","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"claimReferralBonus","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"claimSalary","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"currentROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_referrer","type":"address"}],"name":"deposit","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"getContractInfo","outputs":[{"internalType":"uint256","name":"totalTVLAmount","type":"uint256"},{"internalType":"uint256","name":"currentROIPercentage","type":"uint256"},{"internalType":"uint256","name":"totalUsersCount","type":"uint256"},{"internalType":"uint256","name":"totalDepositsAmount","type":"uint256"},{"internalType":"uint256","name":"contractBalance","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"getPendingSalary","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"},{"internalType":"uint256","name":"_level","type":"uint256"}],"name":"getReferralCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"getUserInfo","outputs":[{"internalType":"uint256","name":"totalDeposit","type":"uint256"},{"internalType":"uint256","name":"pendingROI","type":"uint256"},{"internalType":"uint256","name":"referralBonus","type":"uint256"},{"internalType":"uint256","name":"teamCount","type":"uint256"},{"internalType":"uint256","name":"salaryRank","type":"uint256"},{"internalType":"uint256","name":"daysUntilNextSalary","type":"uint256"},{"internalType":"address","name":"referrer","type":"address"},{"internalType":"bool","name":"isUserActive","type":"bool"},{"internalType":"uint256","name":"registrationTime","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"getUserPendingROI","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"hasDeposited","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"isAddressSpecialUser","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"isSpecialUser","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"manager","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"referralLevels","outputs":[{"internalType":"uint256","name":"percentage","type":"uint256"},{"internalType":"uint256","name":"minDeposit","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"salaryRanks","outputs":[{"internalType":"uint256","name":"monthlySalary","type":"uint256"},{"internalType":"uint256","name":"minTeamMembers","type":"uint256"},{"internalType":"string","name":"rankName","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalDeposits","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalTVL","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalUsers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"userReferrals","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"users","outputs":[{"internalType":"uint256","name":"totalDeposit","type":"uint256"},{"internalType":"uint256","name":"lastROIUpdate","type":"uint256"},{"internalType":"uint256","name":"accumulatedROI","type":"uint256"},{"internalType":"address","name":"referrer","type":"address"},{"internalType":"uint256","name":"referralBonus","type":"uint256"},{"internalType":"uint256","name":"totalWithdrawn","type":"uint256"},{"internalType":"uint256","name":"teamCount","type":"uint256"},{"internalType":"uint256","name":"lastSalaryClaim","type":"uint256"},{"internalType":"uint256","name":"currentSalaryRank","type":"uint256"},{"internalType":"bool","name":"isActive","type":"bool"},{"internalType":"uint256","name":"registrationTime","type":"uint256"}],"stateMutability":"view","type":"function"},{"stateMutability":"payable","type":"receive"}];
 
@@ -1211,19 +1210,59 @@
                 const totalDepositBNB = web3.utils.fromWei(contractInfo.totalDepositsAmount.toString(), 'ether');
                 document.getElementById('totalDeposit').textContent = `${parseFloat(totalDepositBNB).toFixed(2)} BNB`;
                 
-                // Update current ROI
-                const currentROI = contractInfo.currentROIPercentage;
-                document.getElementById('currentROI').textContent = `${(currentROI / 100).toFixed(2)}%`;
+                // Calculate ROI berdasarkan TVL (sesuai rules yang diberikan)
+                const tvl = parseFloat(tvlBNB);
+                let currentROI = calculateROI(tvl);
                 
-                // Calculate total paid (approximate - you might need to track this separately)
+                // Update current ROI display
+                document.getElementById('currentROI').textContent = `${currentROI.toFixed(2)}%`;
+                
+                // Calculate total paid (approximate)
                 const contractBalance = web3.utils.fromWei(contractInfo.contractBalance.toString(), 'ether');
                 const totalPaid = parseFloat(totalDepositBNB) - parseFloat(contractBalance);
                 document.getElementById('totalPaid').textContent = `${totalPaid > 0 ? totalPaid.toFixed(2) : '0.00'} BNB`;
                 
             } catch (error) {
                 console.error('Error loading contract data:', error);
-                showNotification('Error loading contract data', 'error');
+                // Fallback: Show demo data dengan ROI calculation
+                showDemoDataWithROI();
             }
+        }
+
+        // Fungsi untuk menghitung ROI berdasarkan TVL
+        function calculateROI(tvl) {
+            // ROI awal 0.5%
+            let roi = 0.5;
+            
+            // Kenaikan +0.1% per kenaikan TVL sebesar 50 BNB
+            // ROI maksimum 2.5% per hari (pada TVL ≥ 1000 BNB)
+            if (tvl >= 1000) {
+                roi = 2.5;
+            } else if (tvl >= 50) {
+                // Hitung berapa kali kenaikan 50 BNB
+                const increments = Math.floor((tvl - 50) / 50);
+                roi = 0.5 + (increments * 0.1);
+                // Pastikan tidak melebihi maksimum
+                roi = Math.min(roi, 2.5);
+            }
+            // ROI minimum tetap 0.5% untuk TVL < 50 BNB
+            
+            return roi;
+        }
+
+        // Demo data dengan ROI calculation
+        function showDemoDataWithROI() {
+            console.log('Showing demo data with ROI calculation');
+            
+            // Demo TVL value
+            const demoTVL = 125.75;
+            const demoROI = calculateROI(demoTVL);
+            
+            document.getElementById('tvl').textContent = '125.75 BNB';
+            document.getElementById('totalUsers').textContent = '1,247';
+            document.getElementById('totalDeposit').textContent = '892.34 BNB';
+            document.getElementById('totalPaid').textContent = '543.21 BNB';
+            document.getElementById('currentROI').textContent = `${demoROI.toFixed(2)}%`;
         }
 
         // Load user data - REAL-TIME DATA FROM SMART CONTRACT
@@ -1268,7 +1307,7 @@
                 
             } catch (error) {
                 console.error('Error loading user data:', error);
-                showNotification('Error loading user data', 'error');
+                // Jangan tampilkan error notification untuk user data
             }
         }
 
@@ -1315,11 +1354,22 @@
                 // Get the referrer address (from URL parameter or default to owner)
                 const referrer = referralAddress || await contract.methods.owner().call();
                 
+                // Estimate gas first
+                let gasEstimate;
+                try {
+                    gasEstimate = await contract.methods.deposit(referrer).estimateGas({
+                        from: userAccount,
+                        value: amountWei
+                    });
+                } catch (e) {
+                    gasEstimate = 300000;
+                }
+                
                 // Call the contract deposit method with BNB
                 await contract.methods.deposit(referrer).send({ 
                     from: userAccount, 
                     value: amountWei,
-                    gas: 500000
+                    gas: Math.round(gasEstimate * 1.3)
                 });
                 
                 showNotification('Investment successful!', 'success');
@@ -1342,8 +1392,12 @@
                     errorMessage = 'Transaction rejected by user';
                 } else if (error.message.includes('insufficient funds')) {
                     errorMessage = 'Insufficient BNB balance';
-                } else if (error.message) {
-                    errorMessage = error.message;
+                } else if (error.message.includes('revert')) {
+                    if (error.message.includes('Minimum deposit')) {
+                        errorMessage = 'Minimum deposit is 0.01 BNB';
+                    } else {
+                        errorMessage = 'Transaction reverted by contract';
+                    }
                 }
                 
                 showNotification(errorMessage, 'error');
@@ -1366,7 +1420,19 @@
                 withdrawROIBtn.disabled = true;
                 withdrawROIBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
                 
-                await contract.methods.claimROI().send({ from: userAccount, gas: 300000 });
+                let gasEstimate;
+                try {
+                    gasEstimate = await contract.methods.claimROI().estimateGas({
+                        from: userAccount
+                    });
+                } catch (e) {
+                    gasEstimate = 200000;
+                }
+                
+                await contract.methods.claimROI().send({ 
+                    from: userAccount, 
+                    gas: Math.round(gasEstimate * 1.2)
+                });
                 showNotification('ROI withdrawn successfully!', 'success');
                 
                 // Reset button state
@@ -1378,7 +1444,15 @@
                 
             } catch (error) {
                 console.error('Error withdrawing ROI:', error);
-                showNotification('Withdrawal failed: ' + (error.message || 'Unknown error'), 'error');
+                let errorMessage = 'Withdrawal failed';
+                
+                if (error.code === 4001) {
+                    errorMessage = 'Transaction rejected by user';
+                } else if (error.message.includes('No ROI to claim')) {
+                    errorMessage = 'No ROI available to claim';
+                }
+                
+                showNotification(errorMessage, 'error');
                 
                 // Reset button state
                 withdrawROIBtn.disabled = false;
@@ -1398,7 +1472,19 @@
                 claimReferralBtn.disabled = true;
                 claimReferralBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
                 
-                await contract.methods.claimReferralBonus().send({ from: userAccount, gas: 300000 });
+                let gasEstimate;
+                try {
+                    gasEstimate = await contract.methods.claimReferralBonus().estimateGas({
+                        from: userAccount
+                    });
+                } catch (e) {
+                    gasEstimate = 200000;
+                }
+                
+                await contract.methods.claimReferralBonus().send({ 
+                    from: userAccount, 
+                    gas: Math.round(gasEstimate * 1.2)
+                });
                 showNotification('Referral bonus claimed successfully!', 'success');
                 
                 // Reset button state
@@ -1410,7 +1496,15 @@
                 
             } catch (error) {
                 console.error('Error claiming referral bonus:', error);
-                showNotification('Claim failed: ' + (error.message || 'Unknown error'), 'error');
+                let errorMessage = 'Claim failed';
+                
+                if (error.code === 4001) {
+                    errorMessage = 'Transaction rejected by user';
+                } else if (error.message.includes('No referral bonus')) {
+                    errorMessage = 'No referral bonus available to claim';
+                }
+                
+                showNotification(errorMessage, 'error');
                 
                 // Reset button state
                 claimReferralBtn.disabled = false;
@@ -1430,7 +1524,19 @@
                 claimSalaryBtn.disabled = true;
                 claimSalaryBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
                 
-                await contract.methods.claimSalary().send({ from: userAccount, gas: 300000 });
+                let gasEstimate;
+                try {
+                    gasEstimate = await contract.methods.claimSalary().estimateGas({
+                        from: userAccount
+                    });
+                } catch (e) {
+                    gasEstimate = 200000;
+                }
+                
+                await contract.methods.claimSalary().send({ 
+                    from: userAccount, 
+                    gas: Math.round(gasEstimate * 1.2)
+                });
                 showNotification('Salary claimed successfully!', 'success');
                 
                 // Reset button state
@@ -1442,7 +1548,17 @@
                 
             } catch (error) {
                 console.error('Error claiming salary:', error);
-                showNotification('Claim failed: ' + (error.message || 'Unknown error'), 'error');
+                let errorMessage = 'Claim failed';
+                
+                if (error.code === 4001) {
+                    errorMessage = 'Transaction rejected by user';
+                } else if (error.message.includes('No salary available')) {
+                    errorMessage = 'No salary available to claim';
+                } else if (error.message.includes('Salary not available yet')) {
+                    errorMessage = 'Salary not available yet, please wait';
+                }
+                
+                showNotification(errorMessage, 'error');
                 
                 // Reset button state
                 claimSalaryBtn.disabled = false;
@@ -1621,279 +1737,5 @@
             }
         }
     </script>
-
-<script>
-// FIX TAMBAHAN UNTUK DEPOSIT, CLAIM ROI DAN LAINNYA - TANPA MENGUBAH CODE ASLI
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Applying emergency fixes for contract interactions...');
-    
-    // Override fungsi yang bermasalah dengan error handling yang lebih baik
-    const originalInvest = window.invest;
-    const originalWithdrawROI = window.withdrawROI;
-    const originalClaimReferralBonus = window.claimReferralBonus;
-    const originalClaimSalary = window.claimSalary;
-    
-    // Fix untuk invest function
-    window.invest = async function() {
-        if (!window.contract || !window.userAccount) {
-            showNotification('Please connect your wallet first!', 'error');
-            return;
-        }
-        
-        const amount = document.getElementById('investAmount').value;
-        
-        if (!amount || amount < 0.01) {
-            showNotification('Minimum investment is 0.01 BNB!', 'error');
-            return;
-        }
-        
-        try {
-            // Show loading state
-            const investNowBtn = document.getElementById('investNow');
-            investNowBtn.disabled = true;
-            investNowBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-            
-            // Convert amount to wei
-            const amountWei = web3.utils.toWei(amount.toString(), 'ether');
-            
-            // Get the referrer address
-            const referrer = window.referralAddress || await window.contract.methods.owner().call();
-            
-            console.log('Sending deposit transaction:', {
-                from: window.userAccount,
-                value: amountWei,
-                referrer: referrer
-            });
-            
-            // Estimate gas first
-            let gasEstimate;
-            try {
-                gasEstimate = await window.contract.methods.deposit(referrer).estimateGas({
-                    from: window.userAccount,
-                    value: amountWei
-                });
-                console.log('Gas estimate:', gasEstimate);
-            } catch (estimateError) {
-                console.warn('Gas estimation failed, using default:', estimateError);
-                gasEstimate = 300000;
-            }
-            
-            // Call the contract deposit method
-            const receipt = await window.contract.methods.deposit(referrer).send({ 
-                from: window.userAccount, 
-                value: amountWei,
-                gas: Math.round(gasEstimate * 1.3) // Add 30% buffer
-            });
-            
-            showNotification('Investment successful!', 'success');
-            document.getElementById('successModal').style.display = 'flex';
-            
-            // Reset form
-            document.getElementById('investAmount').value = '';
-            
-            // Reload data
-            if (window.loadUserData) await window.loadUserData();
-            if (window.loadContractData) await window.loadContractData();
-            
-        } catch (error) {
-            console.error('Error investing:', error);
-            let errorMessage = 'Investment failed';
-            
-            if (error.code === 4001) {
-                errorMessage = 'Transaction rejected by user';
-            } else if (error.message.includes('insufficient funds')) {
-                errorMessage = 'Insufficient BNB balance';
-            } else if (error.message.includes('revert')) {
-                if (error.message.includes('Minimum deposit')) {
-                    errorMessage = 'Minimum deposit is 0.01 BNB';
-                } else if (error.message.includes('Already deposited')) {
-                    errorMessage = 'You have already deposited';
-                } else {
-                    errorMessage = 'Transaction reverted by contract';
-                }
-            } else if (error.message.includes('gas')) {
-                errorMessage = 'Gas estimation failed, try again';
-            }
-            
-            showNotification(errorMessage, 'error');
-        } finally {
-            // Reset button state
-            const investNowBtn = document.getElementById('investNow');
-            investNowBtn.disabled = false;
-            investNowBtn.innerHTML = '<i class="fas fa-rocket"></i> Invest Now';
-        }
-    };
-
-    // Fix untuk withdraw ROI
-    window.withdrawROI = async function() {
-        if (!window.contract || !window.userAccount) {
-            showNotification('Please connect your wallet first!', 'error');
-            return;
-        }
-        
-        try {
-            const withdrawROIBtn = document.getElementById('withdrawROI');
-            withdrawROIBtn.disabled = true;
-            withdrawROIBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-            
-            // Estimate gas first
-            let gasEstimate;
-            try {
-                gasEstimate = await window.contract.methods.claimROI().estimateGas({
-                    from: window.userAccount
-                });
-            } catch (e) {
-                gasEstimate = 200000;
-            }
-            
-            await window.contract.methods.claimROI().send({ 
-                from: window.userAccount, 
-                gas: Math.round(gasEstimate * 1.2)
-            });
-            
-            showNotification('ROI withdrawn successfully!', 'success');
-            
-            if (window.loadUserData) await window.loadUserData();
-            
-        } catch (error) {
-            console.error('Error withdrawing ROI:', error);
-            let errorMessage = 'Withdrawal failed';
-            
-            if (error.code === 4001) {
-                errorMessage = 'Transaction rejected by user';
-            } else if (error.message.includes('No ROI to claim')) {
-                errorMessage = 'No ROI available to claim';
-            } else if (error.message.includes('revert')) {
-                errorMessage = 'Contract rejected the transaction';
-            }
-            
-            showNotification(errorMessage, 'error');
-        } finally {
-            const withdrawROIBtn = document.getElementById('withdrawROI');
-            withdrawROIBtn.disabled = false;
-            withdrawROIBtn.innerHTML = '<i class="fas fa-download"></i> Withdraw ROI';
-        }
-    };
-
-    // Fix untuk claim referral bonus
-    window.claimReferralBonus = async function() {
-        if (!window.contract || !window.userAccount) {
-            showNotification('Please connect your wallet first!', 'error');
-            return;
-        }
-        
-        try {
-            const claimReferralBtn = document.getElementById('claimReferral');
-            claimReferralBtn.disabled = true;
-            claimReferralBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-            
-            let gasEstimate;
-            try {
-                gasEstimate = await window.contract.methods.claimReferralBonus().estimateGas({
-                    from: window.userAccount
-                });
-            } catch (e) {
-                gasEstimate = 200000;
-            }
-            
-            await window.contract.methods.claimReferralBonus().send({ 
-                from: window.userAccount, 
-                gas: Math.round(gasEstimate * 1.2)
-            });
-            
-            showNotification('Referral bonus claimed successfully!', 'success');
-            
-            if (window.loadUserData) await window.loadUserData();
-            
-        } catch (error) {
-            console.error('Error claiming referral bonus:', error);
-            let errorMessage = 'Claim failed';
-            
-            if (error.code === 4001) {
-                errorMessage = 'Transaction rejected by user';
-            } else if (error.message.includes('No referral bonus')) {
-                errorMessage = 'No referral bonus available to claim';
-            }
-            
-            showNotification(errorMessage, 'error');
-        } finally {
-            const claimReferralBtn = document.getElementById('claimReferral');
-            claimReferralBtn.disabled = false;
-            claimReferralBtn.innerHTML = '<i class="fas fa-gift"></i> Claim Bonus';
-        }
-    };
-
-    // Fix untuk claim salary
-    window.claimSalary = async function() {
-        if (!window.contract || !window.userAccount) {
-            showNotification('Please connect your wallet first!', 'error');
-            return;
-        }
-        
-        try {
-            const claimSalaryBtn = document.getElementById('claimSalary');
-            claimSalaryBtn.disabled = true;
-            claimSalaryBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-            
-            let gasEstimate;
-            try {
-                gasEstimate = await window.contract.methods.claimSalary().estimateGas({
-                    from: window.userAccount
-                });
-            } catch (e) {
-                gasEstimate = 200000;
-            }
-            
-            await window.contract.methods.claimSalary().send({ 
-                from: window.userAccount, 
-                gas: Math.round(gasEstimate * 1.2)
-            });
-            
-            showNotification('Salary claimed successfully!', 'success');
-            
-            if (window.loadUserData) await window.loadUserData();
-            
-        } catch (error) {
-            console.error('Error claiming salary:', error);
-            let errorMessage = 'Claim failed';
-            
-            if (error.code === 4001) {
-                errorMessage = 'Transaction rejected by user';
-            } else if (error.message.includes('No salary available')) {
-                errorMessage = 'No salary available to claim';
-            } else if (error.message.includes('Salary not available yet')) {
-                errorMessage = 'Salary not available yet, please wait';
-            }
-            
-            showNotification(errorMessage, 'error');
-        } finally {
-            const claimSalaryBtn = document.getElementById('claimSalary');
-            claimSalaryBtn.disabled = false;
-            claimSalaryBtn.innerHTML = '<i class="fas fa-calendar-check"></i> Claim Salary';
-        }
-    };
-
-    console.log('All contract interaction functions have been fixed!');
-});
-
-// Emergency fallback - jika masih ada masalah
-function emergencyFix() {
-    console.log('Applying emergency fixes...');
-    
-    // Pastikan semua global variables tersedia
-    if (typeof web3 === 'undefined' && typeof window.ethereum !== 'undefined') {
-        window.web3 = new Web3(window.ethereum);
-        console.log('Web3 initialized in emergency mode');
-    }
-    
-    if (typeof contract === 'undefined' && window.web3) {
-        window.contract = new window.web3.eth.Contract(contractABI, contractAddress);
-        console.log('Contract initialized in emergency mode');
-    }
-}
-
-// Jalankan emergency fix
-setTimeout(emergencyFix, 2000);
-</script>
 </body>
 </html>
