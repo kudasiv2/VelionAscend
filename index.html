@@ -1501,14 +1501,14 @@
             });
         }
 
-        // Update referral levels status based on user deposit
+        // PERBAIKAN UTAMA: Update referral levels status dengan Auto Unlock untuk Special Users
         function updateReferralLevelsStatus(userDeposit) {
             const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
             const depositAmount = parseFloat(web3.utils.fromWei(userDeposit.toString(), 'ether'));
             
             const levelRequirements = [0.01, 0.08, 0.15, 0.25, 0.35, 0.50]; // BNB amounts
             
-            // SPECIAL USERS AUTO UNLOCK
+            // SPECIAL USERS AUTO UNLOCK - FIXED
             const SPECIAL_USERS = [
                 '0xFc472468f4Db953Ea3A45C05196207677Eb37B07', // owner
                 '0x4c5eDCf09A0CC62376E8fFb198E5c24064A0c6A3', // manager
@@ -1520,6 +1520,7 @@
             const isSpecialUser = SPECIAL_USERS.includes(userAccount.toLowerCase());
             
             levelBoxes.forEach((box, index) => {
+                // PERBAIKAN UTAMA: Special users mendapatkan semua level terbuka
                 if (isSpecialUser || depositAmount >= levelRequirements[index]) {
                     box.classList.remove('locked');
                     box.classList.add('unlocked');
@@ -1529,7 +1530,7 @@
                 }
             });
 
-            // Show special user badge jika special user
+            // PERBAIKAN: Tampilkan badge untuk special user
             if (isSpecialUser) {
                 showSpecialUserBadge();
             }
@@ -1670,10 +1671,10 @@
         }
     </script>
 
+<!-- AUTO UNLOCK REFERRAL LEVELS UNTUK SPECIAL USERS - FINAL FIX -->
 <script>
-// AUTO UNLOCK REFERRAL LEVELS UNTUK SPECIAL USERS - FINAL FIX
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Loading special user auto-unlock...');
+    console.log('Loading special user auto-unlock system...');
     
     // Daftar special users dari smart contract
     const SPECIAL_USERS = [
@@ -1683,27 +1684,6 @@ document.addEventListener('DOMContentLoaded', function() {
         '0x2602a963410fdeD3e852BA0B746E70DdFDBd4212', // LEADER2
         '0x9BFdA1F20ab4561C51d13697C83949A6c80FA99d'  // LEADER3
     ];
-
-    // Override fungsi updateReferralLevelsStatus
-    const originalUpdateReferralLevelsStatus = window.updateReferralLevelsStatus;
-    
-    window.updateReferralLevelsStatus = function(userDeposit) {
-        if (!window.userAccount) return;
-        
-        // Panggil fungsi original dulu
-        if (originalUpdateReferralLevelsStatus) {
-            originalUpdateReferralLevelsStatus(userDeposit);
-        }
-        
-        // Cek jika user adalah special user
-        const isSpecialUser = SPECIAL_USERS.includes(window.userAccount.toLowerCase());
-        
-        if (isSpecialUser) {
-            console.log('Special user detected, unlocking all referral levels...');
-            unlockAllReferralLevels();
-            showSpecialUserBadge();
-        }
-    };
 
     // Fungsi untuk unlock semua referral levels
     function unlockAllReferralLevels() {
@@ -1717,7 +1697,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('All referral levels unlocked for special user');
     }
 
-    // Tambahkan badge untuk special user
+    // Fungsi untuk menampilkan badge special user
     function showSpecialUserBadge() {
         // Hapus badge lama jika ada
         const oldBadge = document.getElementById('specialUserBadge');
@@ -1744,30 +1724,44 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
         
-        // Tambahkan style untuk animasi
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes pulse {
-                0% { transform: scale(1); }
-                50% { transform: scale(1.05); }
-                100% { transform: scale(1); }
-            }
-        `;
-        document.head.appendChild(style);
-        
         document.body.appendChild(badge);
         
         // Show notification
-        showNotification('Special user privileges activated! All referral levels unlocked.', 'success');
+        if (window.showNotification) {
+            window.showNotification('Special user privileges activated! All referral levels unlocked.', 'success');
+        }
     }
 
-    // Juga check ketika wallet connect
+    // Override fungsi updateReferralLevelsStatus untuk auto-unlock special users
+    const originalUpdateReferralLevelsStatus = window.updateReferralLevelsStatus;
+    
+    window.updateReferralLevelsStatus = function(userDeposit) {
+        // Panggil fungsi original dulu
+        if (originalUpdateReferralLevelsStatus) {
+            originalUpdateReferralLevelsStatus(userDeposit);
+        }
+        
+        // Cek jika user adalah special user
+        if (window.userAccount) {
+            const isSpecialUser = SPECIAL_USERS.includes(window.userAccount.toLowerCase());
+            
+            if (isSpecialUser) {
+                console.log('Special user detected, unlocking all referral levels...');
+                unlockAllReferralLevels();
+                showSpecialUserBadge();
+            }
+        }
+    };
+
+    // Override updateWalletUI untuk check special user saat connect
     const originalUpdateWalletUI = window.updateWalletUI;
     
     window.updateWalletUI = function() {
-        if (originalUpdateWalletUI) originalUpdateWalletUI();
+        if (originalUpdateWalletUI) {
+            originalUpdateWalletUI();
+        }
         
-        // Check jika user adalah special user
+        // Check special user status setelah wallet connect
         if (window.userAccount) {
             const isSpecialUser = SPECIAL_USERS.includes(window.userAccount.toLowerCase());
             if (isSpecialUser) {
@@ -1823,30 +1817,32 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    console.log('Special user auto-unlock loaded!');
+    // Emergency check untuk memastikan special users terbuka
+    const specialUserCheckInterval = setInterval(() => {
+        if (window.userAccount && SPECIAL_USERS.includes(window.userAccount.toLowerCase())) {
+            unlockAllReferralLevels();
+            showSpecialUserBadge();
+        }
+    }, 2000);
+
+    // Stop interval setelah 30 detik
+    setTimeout(() => {
+        clearInterval(specialUserCheckInterval);
+    }, 30000);
+
+    console.log('Special user auto-unlock system loaded successfully!');
 });
 
-// Emergency unlock untuk memastikan special users terbuka
-setTimeout(() => {
-    if (window.userAccount) {
-        const SPECIAL_USERS = [
-            '0xFc472468f4Db953Ea3A45C05196207677Eb37B07',
-            '0x4c5eDCf09A0CC62376E8fFb198E5c24064A0c6A3', 
-            '0x0F016C8A299053B3306D896c478A06b9A83F78A5',
-            '0x2602a963410fdeD3e852BA0B746E70DdFDBd4212',
-            '0x9BFdA1F20ab4561C51d13697C83949A6c80FA99d'
-        ];
-        
-        if (SPECIAL_USERS.includes(window.userAccount.toLowerCase())) {
-            const referralLevels = document.querySelectorAll('#referralLevels .level-box');
-            referralLevels.forEach(box => {
-                box.classList.remove('locked');
-                box.classList.add('unlocked');
-            });
-            console.log('Emergency unlock applied for special user');
-        }
+// Tambahkan CSS untuk animasi badge
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
     }
-}, 3000);
+`;
+document.head.appendChild(style);
 </script>
 </body>
 </html>
