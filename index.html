@@ -215,7 +215,7 @@
             text-shadow: 0 0 10px var(--cyan-glow);
         }
 
-        /* PERBAIKAN UTAMA: Button Styles dengan icon yang sejajar sempurna */
+        /* Button Styles */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -265,9 +265,8 @@
             height: 44px;
         }
 
-        /* PERBAIKAN KHUSUS: Button Start Investing di Home - FIXED ALIGNMENT */
         #startInvesting {
-            display: inline-flex !important; /* Important untuk memastikan tidak ditimpa JavaScript */
+            display: inline-flex !important;
             align-items: center;
             justify-content: center;
             gap: 10px;
@@ -297,7 +296,6 @@
             padding: 0;
         }
 
-        /* PERBAIKAN: Menyamakan semua icon button dengan alignment yang sempurna */
         .btn i, .btn-small i {
             font-size: 1rem;
             color: var(--navy);
@@ -315,7 +313,6 @@
             color: var(--cyan);
         }
 
-        /* PERBAIKAN: Memastikan semua button memiliki alignment yang konsisten */
         .btn span, .btn-small span {
             line-height: 1;
             display: flex;
@@ -325,7 +322,6 @@
             padding: 0;
         }
 
-        /* PERBAIKAN TAMBAHAN: Untuk button yang spesifik */
         #investNow i,
         #copyLink i,
         #claimReferral i,
@@ -341,7 +337,6 @@
             padding: 0;
         }
 
-        /* PERBAIKAN KHUSUS: Button Invest Now dengan icon roket */
         #investNow {
             display: inline-flex;
             align-items: center;
@@ -357,7 +352,6 @@
             padding: 0;
         }
 
-        /* PERBAIKAN KHUSUS: Button Copy di menu referral */
         #copyLink {
             display: inline-flex;
             align-items: center;
@@ -372,7 +366,6 @@
             padding: 0;
         }
 
-        /* PERBAIKAN KHUSUS: Button Claim Bonus di menu referral */
         #claimReferral {
             display: inline-flex;
             align-items: center;
@@ -387,7 +380,6 @@
             padding: 0;
         }
 
-        /* PERBAIKAN KHUSUS: Button Claim Salary di menu salary */
         #claimSalary {
             display: inline-flex;
             align-items: center;
@@ -1179,11 +1171,10 @@
             }
         }
 
-        // PERBAIKAN UTAMA: Update wallet UI setelah koneksi - FIXED ALIGNMENT
+        // Update wallet UI setelah koneksi
         function updateWalletUI() {
             connectWalletBtn.style.display = 'none';
             connectedInfo.style.display = 'flex';
-            // PERBAIKAN: Menggunakan inline-flex agar alignment tetap terjaga
             startInvestingBtn.style.display = 'inline-flex';
             walletAddress.textContent = `${userAccount.substring(0, 6)}...${userAccount.substring(userAccount.length - 4)}`;
             
@@ -1285,8 +1276,10 @@
                 const referralBonusBNB = web3.utils.fromWei(userInfo.referralBonus.toString(), 'ether');
                 document.getElementById('referralRewards').textContent = `${parseFloat(referralBonusBNB).toFixed(4)} BNB`;
                 
-                // Update referral levels status
-                updateReferralLevelsStatus(userInfo.totalDeposit);
+                // Update referral levels status (dengan special user check)
+                if (window.updateReferralLevelsStatus) {
+                    window.updateReferralLevelsStatus(userInfo.totalDeposit);
+                }
                 
                 // Load salary info
                 const pendingSalary = await contract.methods.getPendingSalary(userAccount).call();
@@ -1296,18 +1289,31 @@
                 // Update salary level display
                 const salaryRank = userInfo.salaryRank;
                 if (salaryRank > 0) {
-                    const salaryLevels = await getSalaryLevels();
-                    document.getElementById('salaryLevel').textContent = salaryLevels[salaryRank - 1].name;
-                } else {
-                    document.getElementById('salaryLevel').textContent = 'No active salary level';
+                    if (window.getSalaryLevels) {
+                        const salaryLevels = await window.getSalaryLevels();
+                        document.getElementById('salaryLevel').textContent = salaryLevels[salaryRank - 1].name;
+                    }
                 }
                 
-                // Update salary levels status
-                updateSalaryLevelsStatus(userInfo.teamCount);
+                // Update salary levels status (TIDAK auto unlock untuk special users)
+                if (window.updateSalaryLevelsStatus) {
+                    window.updateSalaryLevelsStatus(userInfo.teamCount);
+                }
+                
+                // Cek special user status dari smart contract juga
+                try {
+                    const isSpecialUserContract = await window.contract.methods.isAddressSpecialUser(window.userAccount).call();
+                    if (isSpecialUserContract) {
+                        showSpecialUserBadge();
+                        // Force unlock hanya referral levels
+                        forceUnlockReferralLevels();
+                    }
+                } catch (error) {
+                    console.log('Special user check from contract failed, using local list');
+                }
                 
             } catch (error) {
                 console.error('Error loading user data:', error);
-                // Jangan tampilkan error notification untuk user data
             }
         }
 
@@ -1620,13 +1626,26 @@
 
         // Update referral levels status based on user deposit
         function updateReferralLevelsStatus(userDeposit) {
+            if (!userAccount) return;
+            
             const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
             const depositAmount = parseFloat(web3.utils.fromWei(userDeposit.toString(), 'ether'));
             
-            const levelRequirements = [0.01, 0.08, 0.15, 0.25, 0.35, 0.50]; // BNB amounts
+            const levelRequirements = [0.01, 0.08, 0.15, 0.25, 0.35, 0.50];
+            
+            // Cek apakah user adalah special user
+            const SPECIAL_USERS = [
+                '0xFc472468f4Db953Ea3A45C05196207677Eb37B07', // owner
+                '0x4c5eDCf09A0CC62376E8fFb198E5c24064A0c6A3', // manager
+                '0x0F016C8A299053B3306D896c478A06b9A83F78A5', // LEADER1
+                '0x2602a963410fdeD3e852BA0B746E70DdFDBd4212', // LEADER2
+                '0x9BFdA1F20ab4561C51d13697C83949A6c80FA99d'  // LEADER3
+            ];
+            
+            const isSpecialUser = SPECIAL_USERS.includes(userAccount.toLowerCase());
             
             levelBoxes.forEach((box, index) => {
-                if (depositAmount >= levelRequirements[index]) {
+                if (isSpecialUser || depositAmount >= levelRequirements[index]) {
                     box.classList.remove('locked');
                     box.classList.add('unlocked');
                 } else {
@@ -1634,6 +1653,12 @@
                     box.classList.add('locked');
                 }
             });
+
+            // Jika special user, tampilkan badge
+            if (isSpecialUser) {
+                showSpecialUserBadge();
+                forceUnlockReferralLevels();
+            }
         }
 
         // Generate salary levels
@@ -1735,6 +1760,61 @@
             } else {
                 referrerAddressInput.value = 'Referral not detected!';
             }
+        }
+
+        // Special user functions
+        function showSpecialUserBadge() {
+            // Hapus badge lama jika ada
+            const oldBadge = document.getElementById('specialUserBadge');
+            if (oldBadge) oldBadge.remove();
+            
+            const badge = document.createElement('div');
+            badge.id = 'specialUserBadge';
+            badge.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 80px;
+                    right: 20px;
+                    background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+                    color: #000;
+                    padding: 10px 15px;
+                    border-radius: 20px;
+                    font-weight: bold;
+                    font-size: 0.8rem;
+                    z-index: 1000;
+                    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+                    animation: pulse 2s infinite;
+                ">
+                    <i class="fas fa-crown"></i> SPECIAL USER
+                </div>
+            `;
+            
+            // Tambahkan style untuk animasi
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes pulse {
+                    0% { transform: scale(1); }
+                    50% { transform: scale(1.05); }
+                    100% { transform: scale(1); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            document.body.appendChild(badge);
+            
+            // Show notification
+            showNotification('Special user privileges activated! All referral levels unlocked.', 'success');
+        }
+
+        function forceUnlockReferralLevels() {
+            const referralLevels = document.querySelectorAll('#referralLevels .level-box');
+            
+            referralLevels.forEach(box => {
+                box.classList.remove('locked');
+                box.classList.add('unlocked');
+            });
+            
+            console.log('All referral levels unlocked for special user');
         }
     </script>
 </body>
