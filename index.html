@@ -265,6 +265,114 @@
             height: 44px;
         }
 
+        /* Button Start Investing di Home */
+        #startInvesting {
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 180px;
+            padding: 12px 24px;
+            height: 44px;
+        }
+
+        #startInvesting i {
+            font-size: 1rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            margin: 0;
+            padding: 0;
+        }
+
+        #startInvesting span {
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Menyamakan semua icon button */
+        .btn i, .btn-small i {
+            font-size: 1rem;
+            color: var(--navy);
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            margin: 0;
+            padding: 0;
+        }
+
+        .btn-secondary i {
+            color: var(--cyan);
+        }
+
+        .btn span, .btn-small span {
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Untuk button yang spesifik */
+        #investNow i,
+        #copyLink i,
+        #claimReferral i,
+        #claimSalary i {
+            font-size: 1rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Button Invest Now dengan icon roket */
+        #investNow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        /* Button Copy di menu referral */
+        #copyLink {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Button Claim Bonus di menu referral */
+        #claimReferral {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Button Claim Salary di menu salary */
+        #claimSalary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
         /* Wallet Connection */
         .wallet-section {
             display: flex;
@@ -526,6 +634,37 @@
             border-top: 1px solid rgba(100, 255, 218, 0.1);
         }
 
+        /* PERBAIKAN: Styling untuk Total Team */
+        .team-box {
+            background: rgba(2, 12, 27, 0.7);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+            margin-bottom: 20px;
+        }
+
+        .team-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .team-count {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--cyan);
+            text-shadow: 0 0 10px var(--cyan-glow);
+        }
+
+        /* PERBAIKAN: Styling untuk referral count */
+        .referral-count {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hamburger {
@@ -552,6 +691,10 @@
                 min-width: 120px;
                 padding: 10px 20px;
                 font-size: 0.9rem;
+            }
+            
+            #startInvesting {
+                min-width: 160px;
             }
         }
     </style>
@@ -751,6 +894,13 @@
             <div class="section-title">
                 <h1>Referral Program</h1>
                 <p>Earn commissions from 6 levels of your referral network with our tier-based system</p>
+            </div>
+            
+            <!-- PERBAIKAN: Menambahkan Total Team Box -->
+            <div class="team-box">
+                <h3>Total Team</h3>
+                <div class="team-count" id="totalTeam">0</div>
+                <p>Total members in your referral network</p>
             </div>
             
             <div class="box" style="margin-bottom: 40px;">
@@ -1038,7 +1188,7 @@
             }
         }
 
-        // Update wallet UI after connection
+        // Update wallet UI setelah koneksi
         function updateWalletUI() {
             connectWalletBtn.style.display = 'none';
             connectedInfo.style.display = 'flex';
@@ -1047,36 +1197,9 @@
             
             // Update referral link
             document.getElementById('referralLink').value = `${window.location.origin}${window.location.pathname}?ref=${userAccount}`;
-            
-            // Check if user is special (owner, manager, leader)
-            checkSpecialUserStatus();
         }
 
-        // PERBAIKAN UTAMA: Check if user is special (owner, manager, leader)
-        async function checkSpecialUserStatus() {
-            if (!contract || !userAccount) return;
-            
-            try {
-                const isSpecial = await contract.methods.isAddressSpecialUser(userAccount).call();
-                if (isSpecial) {
-                    console.log('User is special (owner/manager/leader) - unlocking all referral levels');
-                    unlockAllReferralLevels();
-                }
-            } catch (error) {
-                console.error('Error checking special user status:', error);
-            }
-        }
-
-        // PERBAIKAN UTAMA: Unlock all referral levels for special users
-        function unlockAllReferralLevels() {
-            const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
-            levelBoxes.forEach(box => {
-                box.classList.remove('locked');
-                box.classList.add('unlocked');
-            });
-        }
-
-        // Load contract data - REAL-TIME DATA FROM SMART CONTRACT
+        // PERBAIKAN UTAMA: Load contract data dengan error handling yang lebih baik
         async function loadContractData() {
             if (!contract) return;
             
@@ -1095,40 +1218,61 @@
                 const totalDepositBNB = web3.utils.fromWei(contractInfo.totalDepositsAmount.toString(), 'ether');
                 document.getElementById('totalDeposit').textContent = `${parseFloat(totalDepositBNB).toFixed(2)} BNB`;
                 
-                // PERBAIKAN UTAMA: Calculate current ROI based on TVL
-                const currentROI = await calculateCurrentROI(parseFloat(tvlBNB));
+                // PERBAIKAN: Hitung ROI berdasarkan TVL sesuai dengan aturan
+                const currentROI = await calculateROIFromTVL(contractInfo.totalTVLAmount);
                 document.getElementById('currentROI').textContent = `${currentROI.toFixed(2)}%`;
                 
-                // Calculate total paid (approximate - you might need to track this separately)
+                // PERBAIKAN: Hitung total paid dengan cara yang lebih akurat
                 const contractBalance = web3.utils.fromWei(contractInfo.contractBalance.toString(), 'ether');
                 const totalPaid = parseFloat(totalDepositBNB) - parseFloat(contractBalance);
                 document.getElementById('totalPaid').textContent = `${totalPaid > 0 ? totalPaid.toFixed(2) : '0.00'} BNB`;
                 
             } catch (error) {
                 console.error('Error loading contract data:', error);
-                showNotification('Error loading contract data', 'error');
+                showNotification('Error loading contract data. Please try again.', 'error');
+                
+                // Fallback values
+                document.getElementById('tvl').textContent = '0 BNB';
+                document.getElementById('totalUsers').textContent = '0';
+                document.getElementById('totalDeposit').textContent = '0 BNB';
+                document.getElementById('totalPaid').textContent = '0 BNB';
+                document.getElementById('currentROI').textContent = '0.50%';
             }
         }
 
-        // PERBAIKAN UTAMA: Calculate current ROI based on TVL
-        async function calculateCurrentROI(tvlBNB) {
+        // PERBAIKAN UTAMA: Fungsi untuk menghitung ROI berdasarkan TVL
+        async function calculateROIFromTVL(tvlAmount) {
+            const tvlBNB = parseFloat(web3.utils.fromWei(tvlAmount.toString(), 'ether'));
+            
+            // Aturan ROI:
             // ROI awal 0.5% per hari
-            let roi = 0.5;
-            
             // Kenaikan +0.1% per kenaikan TVL sebesar 50 BNB
-            const tvlSteps = Math.floor(tvlBNB / 50);
-            roi += tvlSteps * 0.1;
-            
+            // Penurunan -0.1% per penurunan TVL sebesar 50 BNB
             // ROI maksimum 2.5% per hari (pada TVL ≥ 1000 BNB)
-            roi = Math.min(roi, 2.5);
-            
             // ROI minimum (batas bawah) 0.5% per hari
-            roi = Math.max(roi, 0.5);
             
-            return roi;
+            const baseROI = 0.5; // ROI minimum
+            const maxROI = 2.5; // ROI maksimum
+            const tvlStep = 50; // Setiap 50 BNB
+            const roiStep = 0.1; // Setiap step naik/turun 0.1%
+            
+            // Hitung berapa step dari TVL saat ini
+            const steps = Math.floor(tvlBNB / tvlStep);
+            
+            // Hitung ROI berdasarkan step
+            let calculatedROI = baseROI + (steps * roiStep);
+            
+            // Pastikan ROI tidak melebihi batas maksimum dan minimum
+            if (calculatedROI > maxROI) {
+                calculatedROI = maxROI;
+            } else if (calculatedROI < baseROI) {
+                calculatedROI = baseROI;
+            }
+            
+            return calculatedROI;
         }
 
-        // Load user data - REAL-TIME DATA FROM SMART CONTRACT
+        // PERBAIKAN UTAMA: Load user data dengan error handling yang lebih baik
         async function loadUserData() {
             if (!contract || !userAccount) return;
             
@@ -1139,8 +1283,15 @@
                 const userDepositBNB = web3.utils.fromWei(userInfo.totalDeposit.toString(), 'ether');
                 document.getElementById('userDeposit').textContent = `${parseFloat(userDepositBNB).toFixed(4)} BNB`;
                 
-                // Get pending ROI
-                const pendingROI = await contract.methods.getUserPendingROI(userAccount).call();
+                // PERBAIKAN: Get pending ROI dengan error handling
+                let pendingROI;
+                try {
+                    pendingROI = await contract.methods.getUserPendingROI(userAccount).call();
+                } catch (error) {
+                    console.warn('Error getting pending ROI, using fallback:', error);
+                    pendingROI = userInfo.pendingROI || '0';
+                }
+                
                 const pendingROIBNB = web3.utils.fromWei(pendingROI.toString(), 'ether');
                 document.getElementById('pendingROI').textContent = `${parseFloat(pendingROIBNB).toFixed(4)} BNB`;
                 
@@ -1148,8 +1299,12 @@
                 const referralBonusBNB = web3.utils.fromWei(userInfo.referralBonus.toString(), 'ether');
                 document.getElementById('referralRewards').textContent = `${parseFloat(referralBonusBNB).toFixed(4)} BNB`;
                 
-                // Update referral levels status
+                // PERBAIKAN: Update Total Team
+                document.getElementById('totalTeam').textContent = userInfo.teamCount.toString();
+                
+                // Update referral levels status dan jumlah referral per level
                 updateReferralLevelsStatus(userInfo.totalDeposit);
+                await updateReferralCounts();
                 
                 // Load salary info
                 const pendingSalary = await contract.methods.getPendingSalary(userAccount).call();
@@ -1170,7 +1325,45 @@
                 
             } catch (error) {
                 console.error('Error loading user data:', error);
-                showNotification('Error loading user data', 'error');
+                showNotification('Error loading user data. Please try again.', 'error');
+                
+                // Fallback values
+                document.getElementById('userDeposit').textContent = '0 BNB';
+                document.getElementById('pendingROI').textContent = '0 BNB';
+                document.getElementById('referralRewards').textContent = '0 BNB';
+                document.getElementById('totalTeam').textContent = '0';
+                document.getElementById('currentSalary').textContent = '0 BNB';
+                document.getElementById('salaryLevel').textContent = 'No active salary level';
+            }
+        }
+
+        // PERBAIKAN: Fungsi untuk mendapatkan jumlah referral per level
+        async function updateReferralCounts() {
+            if (!contract || !userAccount) return;
+            
+            try {
+                const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
+                
+                for (let i = 0; i < levelBoxes.length; i++) {
+                    try {
+                        const referralCount = await contract.methods.getReferralCount(userAccount, i + 1).call();
+                        const countElement = levelBoxes[i].querySelector('.referral-count');
+                        
+                        if (countElement) {
+                            countElement.textContent = `Referrals: ${referralCount}`;
+                        } else {
+                            // Buat elemen untuk menampilkan jumlah referral jika belum ada
+                            const countElement = document.createElement('div');
+                            countElement.className = 'referral-count';
+                            countElement.textContent = `Referrals: ${referralCount}`;
+                            levelBoxes[i].appendChild(countElement);
+                        }
+                    } catch (error) {
+                        console.warn(`Error getting referral count for level ${i + 1}:`, error);
+                    }
+                }
+            } catch (error) {
+                console.error('Error updating referral counts:', error);
             }
         }
 
@@ -1522,171 +1715,60 @@
                 referrerAddressInput.value = 'Referral not detected!';
             }
         }
-    <script>
-// PERBAIKAN KHUSUS: Fix untuk tingkat referral owner, manager, dan leader
+    </script>
+
+<script>
+// FIX TAMBAHAN UNTUK MEMASTIKAN SEMUA FUNGSI BERJALAN DENGAN BAIK
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Applying special user referral fix...');
+    console.log('Applying final fixes for contract interactions...');
     
-    // Override fungsi updateReferralLevelsStatus untuk special users
-    const originalUpdateReferralLevelsStatus = window.updateReferralLevelsStatus;
-    
-    window.updateReferralLevelsStatus = async function(userDeposit) {
-        if (!window.contract || !window.userAccount) return;
-        
-        try {
-            // Cek apakah user adalah special user (owner, manager, leader)
-            const isSpecial = await window.contract.methods.isAddressSpecialUser(window.userAccount).call();
-            
-            if (isSpecial) {
-                console.log('User is special - unlocking all referral levels');
-                // Unlock semua level untuk special users
-                const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
-                levelBoxes.forEach(box => {
-                    box.classList.remove('locked');
-                    box.classList.add('unlocked');
-                });
-                return;
-            }
-            
-            // Jika bukan special user, gunakan logika normal
-            if (originalUpdateReferralLevelsStatus) {
-                originalUpdateReferralLevelsStatus(userDeposit);
-            }
-            
-        } catch (error) {
-            console.error('Error in special user check:', error);
-            // Fallback ke logika normal jika ada error
-            if (originalUpdateReferralLevelsStatus) {
-                originalUpdateReferralLevelsStatus(userDeposit);
-            }
+    // Auto-refresh data setiap 30 detik
+    setInterval(() => {
+        if (window.userAccount && window.contract) {
+            console.log('Auto-refreshing contract data...');
+            if (window.loadContractData) window.loadContractData();
+            if (window.loadUserData) window.loadUserData();
         }
-    };
-
-    // Override fungsi generateReferralLevels untuk menambahkan info special user
-    const originalGenerateReferralLevels = window.generateReferralLevels;
-    
-    window.generateReferralLevels = function() {
-        if (originalGenerateReferralLevels) {
-            originalGenerateReferralLevels();
-        }
-        
-        // Tambahkan pengecekan special user setelah generate
-        setTimeout(async () => {
-            if (window.contract && window.userAccount) {
-                try {
-                    const isSpecial = await window.contract.methods.isAddressSpecialUser(window.userAccount).call();
-                    if (isSpecial) {
-                        console.log('Special user detected on page load - unlocking referral levels');
-                        const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
-                        levelBoxes.forEach(box => {
-                            box.classList.remove('locked');
-                            box.classList.add('unlocked');
-                        });
-                    }
-                } catch (error) {
-                    console.error('Error checking special user on page load:', error);
-                }
-            }
-        }, 1000);
-    };
-
-    // Fix untuk loadUserData - pastikan special user dicek
-    const originalLoadUserData = window.loadUserData;
-    
-    window.loadUserData = async function() {
-        if (originalLoadUserData) {
-            await originalLoadUserData();
-        }
-        
-        // Tambahkan pengecekan special user setelah load data user
-        if (window.contract && window.userAccount) {
-            try {
-                const isSpecial = await window.contract.methods.isAddressSpecialUser(window.userAccount).call();
-                if (isSpecial) {
-                    console.log('Special user detected in loadUserData - unlocking referral levels');
-                    const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
-                    levelBoxes.forEach(box => {
-                        box.classList.remove('locked');
-                        box.classList.add('unlocked');
-                    });
-                }
-            } catch (error) {
-                console.error('Error checking special user in loadUserData:', error);
-            }
-        }
-    };
-
-    // Fix untuk connectWallet - pastikan special user dicek setelah koneksi
-    const originalConnectWallet = window.connectWallet;
-    
-    window.connectWallet = async function() {
-        if (originalConnectWallet) {
-            await originalConnectWallet();
-        }
-        
-        // Tambahkan pengecekan special user setelah koneksi wallet
-        setTimeout(async () => {
-            if (window.contract && window.userAccount) {
-                try {
-                    const isSpecial = await window.contract.methods.isAddressSpecialUser(window.userAccount).call();
-                    if (isSpecial) {
-                        console.log('Special user detected after wallet connection - unlocking referral levels');
-                        const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
-                        levelBoxes.forEach(box => {
-                            box.classList.remove('locked');
-                            box.classList.add('unlocked');
-                        });
-                    }
-                } catch (error) {
-                    console.error('Error checking special user after wallet connection:', error);
-                }
-            }
-        }, 1500);
-    };
-
-    console.log('Special user referral fix applied successfully!');
-});
-
-// PERBAIKAN TAMBAHAN: Fungsi untuk memastikan tingkat referral terbuka untuk special users
-function ensureSpecialUserReferralLevels() {
-    if (!window.contract || !window.userAccount) return;
-    
-    // Cek setiap 3 detik apakah user adalah special user
-    const checkInterval = setInterval(async () => {
-        try {
-            const isSpecial = await window.contract.methods.isAddressSpecialUser(window.userAccount).call();
-            if (isSpecial) {
-                console.log('Special user verified - ensuring referral levels are unlocked');
-                const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
-                let allUnlocked = true;
-                
-                levelBoxes.forEach(box => {
-                    if (box.classList.contains('locked')) {
-                        allUnlocked = false;
-                        box.classList.remove('locked');
-                        box.classList.add('unlocked');
-                    }
-                });
-                
-                if (allUnlocked) {
-                    clearInterval(checkInterval);
-                    console.log('All referral levels unlocked for special user');
-                }
-            }
-        } catch (error) {
-            console.error('Error in special user verification:', error);
-        }
-    }, 3000);
-    
-    // Stop checking after 30 seconds
-    setTimeout(() => {
-        clearInterval(checkInterval);
     }, 30000);
-}
-
-// Jalankan fungsi tambahan setelah DOM loaded
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(ensureSpecialUserReferralLevels, 2000);
+    
+    // Emergency fallback untuk ROI calculation
+    window.calculateROIFromTVL = async function(tvlAmount) {
+        try {
+            const tvlBNB = parseFloat(web3.utils.fromWei(tvlAmount.toString(), 'ether'));
+            
+            // Aturan ROI sesuai permintaan:
+            // ROI awal 0.5% per hari
+            // Kenaikan +0.1% per kenaikan TVL sebesar 50 BNB
+            // Penurunan -0.1% per penurunan TVL sebesar 50 BNB
+            // ROI maksimum 2.5% per hari (pada TVL ≥ 1000 BNB)
+            // ROI minimum (batas bawah) 0.5% per hari
+            
+            const baseROI = 0.5; // ROI minimum
+            const maxROI = 2.5; // ROI maksimum
+            const tvlStep = 50; // Setiap 50 BNB
+            const roiStep = 0.1; // Setiap step naik/turun 0.1%
+            
+            // Hitung berapa step dari TVL saat ini
+            const steps = Math.floor(tvlBNB / tvlStep);
+            
+            // Hitung ROI berdasarkan step
+            let calculatedROI = baseROI + (steps * roiStep);
+            
+            // Pastikan ROI tidak melebihi batas maksimum dan minimum
+            if (calculatedROI > maxROI) {
+                calculatedROI = maxROI;
+            } else if (calculatedROI < baseROI) {
+                calculatedROI = baseROI;
+            }
+            
+            return calculatedROI;
+        } catch (error) {
+            console.error('Error calculating ROI from TVL:', error);
+            return 0.5; // Return ROI minimum sebagai fallback
+        }
+    };
+    
+    console.log('All fixes applied successfully!');
 });
 </script>
 </body>
