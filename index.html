@@ -667,6 +667,70 @@
             font-weight: bold;
         }
 
+        /* Horizontal Roadmap */
+        .horizontal-roadmap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 50px 0;
+            position: relative;
+        }
+
+        .horizontal-roadmap::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--cyan);
+            z-index: 1;
+        }
+
+        .roadmap-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            flex: 1;
+        }
+
+        .roadmap-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--navy);
+            border: 2px solid var(--cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: var(--cyan);
+            transition: var(--transition);
+        }
+
+        .roadmap-item.active .roadmap-icon {
+            background: var(--cyan);
+            color: var(--navy);
+            box-shadow: 0 0 20px var(--cyan-glow);
+            transform: scale(1.1);
+        }
+
+        .roadmap-label {
+            font-weight: bold;
+            color: var(--white);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .roadmap-item.active .roadmap-label {
+            color: var(--cyan);
+            text-shadow: 0 0 10px var(--cyan-glow);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hamburger {
@@ -697,6 +761,19 @@
             
             #startInvesting {
                 min-width: 160px;
+            }
+
+            .horizontal-roadmap {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .horizontal-roadmap::before {
+                display: none;
+            }
+
+            .roadmap-item {
+                flex: none;
             }
         }
     </style>
@@ -729,6 +806,7 @@
         <a href="#invest" class="nav-link">Invest</a>
         <a href="#referral" class="nav-link">Referral</a>
         <a href="#salary" class="nav-link">Salary</a>
+        <a href="#roadmap" class="nav-link">Roadmap</a>
         <a href="#faq" class="nav-link">FAQ</a>
         <a href="#security" class="nav-link">Security</a>
     </nav>
@@ -960,12 +1038,49 @@
         </div>
     </section>
 
+    <!-- Roadmap Section -->
+    <section id="roadmap">
+        <div class="container">
+            <div class="section-title">
+                <h1>Project Roadmap</h1>
+                <p>Our strategic plan for growth, sustainability, and long-term success</p>
+            </div>
+            
+            <div class="horizontal-roadmap">
+                <div class="roadmap-item active">
+                    <div class="roadmap-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="roadmap-label">Phase 1 → Pre-Launch Preparation</div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="roadmap-label">Phase 2 → Community Growth</div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="roadmap-label">Phase 3 → Sustainability</div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-icon">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <div class="roadmap-label">Phase 4 → Expansion & Integration</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FAQ Section -->
     <section id="faq">
         <div class="container">
             <div class="section-title">
                 <h1>Frequently Asked Questions</h1>
-                <p>Find answers to common questions about our investment platform</p>
+                <p>Find answers to common questions about our investment platform and smart contract</p>
             </div>
             
             <div class="faq-container" id="faqContainer">
@@ -1673,25 +1788,45 @@
             });
         }
 
-        // Generate FAQ
+        // PERBAIKAN: Generate FAQ dengan 9 pertanyaan (tanpa special user addresses)
         function generateFAQ() {
             const faqContainer = document.getElementById('faqContainer');
             const faqs = [
                 {
-                    question: "What is the minimum deposit?",
-                    answer: "The minimum deposit is 0.01 BNB to start earning with BNBVelion"
+                    question: "What is the minimum deposit amount?",
+                    answer: "The minimum deposit is 0.01 BNB to start earning with BNBVelion. This is hardcoded in the smart contract to ensure fair participation for all users."
                 },
                 {
-                    question: "How does the ROI system work?",
-                    answer: "ROI ranges from 0.5% to 2.5% daily based on the total TVL. The more TVL grows, the higher the ROI percentage"
+                    question: "How does the daily ROI system work?",
+                    answer: "ROI ranges from 0.5% to 2.5% daily based on total TVL growth. It starts at 0.5% and increases by 0.1% for every 50 BNB increase in TVL, up to a maximum of 2.5% when TVL reaches 1000 BNB or more."
                 },
                 {
-                    question: "How do referral commissions work?",
-                    answer: "You earn commissions from 6 levels of your referral network, with bonuses from 20% to 1%"
+                    question: "What are the referral commission levels?",
+                    answer: "There are 6 referral levels with commissions: Level 1: 20% (min 0.01 BNB), Level 2: 10% (min 0.08 BNB), Level 3: 5% (min 0.15 BNB), Level 4: 3% (min 0.25 BNB), Level 5: 1% (min 0.35 BNB), Level 6: 1% (min 0.50 BNB). Total potential commission is up to 40%."
                 },
                 {
-                    question: "How can I qualify for monthly salary?",
-                    answer: "Monthly salary levels require building teams of 350, 550, 850, or 1000 active members"
+                    question: "How do I qualify for monthly salary?",
+                    answer: "Monthly salary has 4 levels: Pionir (350 team members - 0.004 BNB), Visioner (550 team - 0.008 BNB), Arsitek (850 team - 0.015 BNB), Maverick (1000 team - 0.025 BNB). Salary can be claimed once per month."
+                },
+                {
+                    question: "What are the contract fees?",
+                    answer: "There is a 10% fee on deposits, which is distributed equally (5% each) to the owner and manager addresses. These addresses are immutable and cannot be changed after deployment."
+                },
+                {
+                    question: "Is there any admin withdrawal capability?",
+                    answer: "No, the contract has no admin withdrawal functions. The owner and manager can only receive their 5% fee share from deposits. They cannot withdraw user deposits or contract funds."
+                },
+                {
+                    question: "How often can I claim my ROI?",
+                    answer: "You can claim your accumulated ROI at any time. The ROI is calculated per second based on your deposit amount and current ROI percentage. There are no limits on how often you can claim."
+                },
+                {
+                    question: "What happens if I refer someone without a valid referrer?",
+                    answer: "If no valid referrer is provided or the referrer hasn't deposited, the system automatically assigns the owner address as the referrer to ensure proper referral structure."
+                },
+                {
+                    question: "Is the contract secured against reentrancy attacks?",
+                    answer: "Yes, the contract uses ReentrancyGuard from OpenZeppelin to prevent reentrancy attacks. All critical functions are protected with the nonReentrant modifier."
                 }
             ];
             
