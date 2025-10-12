@@ -1101,12 +1101,7 @@
                 if (window.ethereum.selectedAddress) {
                     userAccount = window.ethereum.selectedAddress;
                     updateWalletUI();
-                    loadContractData();
-                    
-                    // PERBAIKAN: Panggil force refresh untuk memastikan Pending ROI akurat
-                    setTimeout(() => {
-                        forceRefreshPendingROI();
-                    }, 2000);
+                    loadAllContractData();
                 }
             } else {
                 showNotification('Please install MetaMask!', 'error');
@@ -1162,8 +1157,7 @@
                         // User switched accounts
                         userAccount = accounts[0];
                         updateWalletUI();
-                        loadContractData();
-                        forceRefreshPendingROI();
+                        loadAllContractData();
                     }
                 });
             }
@@ -1181,8 +1175,7 @@
                     showNotification('Wallet connected successfully!', 'success');
                     
                     // Load contract and user data
-                    loadContractData();
-                    forceRefreshPendingROI();
+                    loadAllContractData();
                     
                 } catch (error) {
                     console.error('User denied account access', error);
@@ -1204,33 +1197,56 @@
             document.getElementById('referralLink').value = `${window.location.origin}${window.location.pathname}?ref=${userAccount}`;
         }
 
-        // PERBAIKAN UTAMA: Load contract data dengan error handling yang lebih baik
-        async function loadContractData() {
+        // PERBAIKAN UTAMA: Load semua data contract dengan real-time
+        async function loadAllContractData() {
             if (!contract) return;
             
             try {
                 // Get contract info
                 const contractInfo = await contract.methods.getContractInfo().call();
                 
-                // Update TVL
+                // PERBAIKAN: Update TVL dengan presisi tinggi
                 const tvlBNB = web3.utils.fromWei(contractInfo.totalTVLAmount.toString(), 'ether');
-                document.getElementById('tvl').textContent = `${parseFloat(tvlBNB).toFixed(2)} BNB`;
+                const tvlNumber = parseFloat(tvlBNB);
+                if (tvlNumber === 0) {
+                    document.getElementById('tvl').textContent = '0 BNB';
+                } else if (tvlNumber < 0.000001) {
+                    document.getElementById('tvl').textContent = `${tvlNumber.toExponential(6)} BNB`;
+                } else {
+                    document.getElementById('tvl').textContent = `${tvlNumber.toFixed(6)} BNB`;
+                }
                 
                 // Update total users
                 document.getElementById('totalUsers').textContent = contractInfo.totalUsersCount.toString();
                 
-                // Update total deposit
+                // PERBAIKAN: Update total deposit dengan presisi tinggi
                 const totalDepositBNB = web3.utils.fromWei(contractInfo.totalDepositsAmount.toString(), 'ether');
-                document.getElementById('totalDeposit').textContent = `${parseFloat(totalDepositBNB).toFixed(2)} BNB`;
+                const totalDepositNumber = parseFloat(totalDepositBNB);
+                if (totalDepositNumber === 0) {
+                    document.getElementById('totalDeposit').textContent = '0 BNB';
+                } else if (totalDepositNumber < 0.000001) {
+                    document.getElementById('totalDeposit').textContent = `${totalDepositNumber.toExponential(6)} BNB`;
+                } else {
+                    document.getElementById('totalDeposit').textContent = `${totalDepositNumber.toFixed(6)} BNB`;
+                }
                 
                 // PERBAIKAN: Hitung ROI berdasarkan TVL sesuai dengan aturan
                 const currentROI = await calculateROIFromTVL(contractInfo.totalTVLAmount);
                 document.getElementById('currentROI').textContent = `${currentROI.toFixed(2)}%`;
                 
-                // PERBAIKAN: Hitung total paid dengan cara yang lebih akurat
+                // PERBAIKAN: Hitung total paid dengan cara yang lebih akurat dan presisi tinggi
                 const contractBalance = web3.utils.fromWei(contractInfo.contractBalance.toString(), 'ether');
                 const totalPaid = parseFloat(totalDepositBNB) - parseFloat(contractBalance);
-                document.getElementById('totalPaid').textContent = `${totalPaid > 0 ? totalPaid.toFixed(2) : '0.00'} BNB`;
+                if (totalPaid <= 0) {
+                    document.getElementById('totalPaid').textContent = '0 BNB';
+                } else if (totalPaid < 0.000001) {
+                    document.getElementById('totalPaid').textContent = `${totalPaid.toExponential(6)} BNB`;
+                } else {
+                    document.getElementById('totalPaid').textContent = `${totalPaid.toFixed(6)} BNB`;
+                }
+                
+                // Load user data
+                await loadUserData();
                 
             } catch (error) {
                 console.error('Error loading contract data:', error);
@@ -1277,16 +1293,23 @@
             return calculatedROI;
         }
 
-        // PERBAIKAN UTAMA: Load user data dengan error handling yang lebih baik
+        // PERBAIKAN UTAMA: Load user data dengan semua data real-time
         async function loadUserData() {
             if (!contract || !userAccount) return;
             
             try {
                 const userInfo = await contract.methods.getUserInfo(userAccount).call();
                 
-                // Update user deposit
+                // PERBAIKAN: Update user deposit dengan presisi tinggi
                 const userDepositBNB = web3.utils.fromWei(userInfo.totalDeposit.toString(), 'ether');
-                document.getElementById('userDeposit').textContent = `${parseFloat(userDepositBNB).toFixed(4)} BNB`;
+                const userDepositNumber = parseFloat(userDepositBNB);
+                if (userDepositNumber === 0) {
+                    document.getElementById('userDeposit').textContent = '0 BNB';
+                } else if (userDepositNumber < 0.000001) {
+                    document.getElementById('userDeposit').textContent = `${userDepositNumber.toExponential(6)} BNB`;
+                } else {
+                    document.getElementById('userDeposit').textContent = `${userDepositNumber.toFixed(6)} BNB`;
+                }
                 
                 // PERBAIKAN: Ambil pending ROI dengan dua metode untuk memastikan data akurat
                 let pendingROI;
@@ -1321,7 +1344,7 @@
                     pendingROI = userInfo.accumulatedROI || userInfo.pendingROI || '0';
                 }
                 
-                // Format dan tampilkan Pending ROI - TAMPILKAN MESKIPUN SANGAT KECIL
+                // PERBAIKAN: Format dan tampilkan Pending ROI dengan presisi tinggi
                 const pendingROIBNB = web3.utils.fromWei(pendingROI.toString(), 'ether');
                 const pendingROINumber = parseFloat(pendingROIBNB);
                 
@@ -1329,15 +1352,21 @@
                 if (pendingROINumber === 0) {
                     document.getElementById('pendingROI').textContent = '0 BNB';
                 } else if (pendingROINumber < 0.000001) {
-                    // Untuk nilai yang sangat kecil, tampilkan dengan notasi ilmiah atau presisi tinggi
                     document.getElementById('pendingROI').textContent = `${pendingROINumber.toExponential(6)} BNB`;
                 } else {
                     document.getElementById('pendingROI').textContent = `${pendingROINumber.toFixed(8)} BNB`;
                 }
                 
-                // Update referral rewards
+                // PERBAIKAN: Update referral rewards dengan presisi tinggi
                 const referralBonusBNB = web3.utils.fromWei(userInfo.referralBonus.toString(), 'ether');
-                document.getElementById('referralRewards').textContent = `${parseFloat(referralBonusBNB).toFixed(4)} BNB`;
+                const referralBonusNumber = parseFloat(referralBonusBNB);
+                if (referralBonusNumber === 0) {
+                    document.getElementById('referralRewards').textContent = '0 BNB';
+                } else if (referralBonusNumber < 0.000001) {
+                    document.getElementById('referralRewards').textContent = `${referralBonusNumber.toExponential(6)} BNB`;
+                } else {
+                    document.getElementById('referralRewards').textContent = `${referralBonusNumber.toFixed(8)} BNB`;
+                }
                 
                 // PERBAIKAN: Update Total Team
                 document.getElementById('totalTeam').textContent = userInfo.teamCount.toString();
@@ -1374,22 +1403,6 @@
                 document.getElementById('totalTeam').textContent = '0';
                 document.getElementById('currentSalary').textContent = '0 BNB';
                 document.getElementById('salaryLevel').textContent = 'No active salary level';
-            }
-        }
-
-        // PERBAIKAN: Fungsi untuk memaksa refresh data Pending ROI
-        async function forceRefreshPendingROI() {
-            if (!contract || !userAccount) return;
-            
-            try {
-                console.log('Force refreshing Pending ROI...');
-                
-                // Muat ulang data user
-                await loadUserData();
-                
-                console.log('Pending ROI force refresh completed');
-            } catch (error) {
-                console.warn('Force refresh failed, continuing with normal load:', error);
             }
         }
 
@@ -1481,9 +1494,8 @@
                 investNowBtn.disabled = false;
                 investNowBtn.innerHTML = '<i class="fas fa-rocket"></i> Invest Now';
                 
-                // Reload user data
-                forceRefreshPendingROI();
-                loadContractData();
+                // Reload semua data
+                loadAllContractData();
                 
             } catch (error) {
                 console.error('Error investing:', error);
@@ -1524,8 +1536,8 @@
                 withdrawROIBtn.disabled = false;
                 withdrawROIBtn.innerHTML = '<i class="fas fa-download"></i> Withdraw ROI';
                 
-                // Reload user data
-                forceRefreshPendingROI();
+                // Reload semua data
+                loadAllContractData();
                 
             } catch (error) {
                 console.error('Error withdrawing ROI:', error);
@@ -1556,8 +1568,8 @@
                 claimReferralBtn.disabled = false;
                 claimReferralBtn.innerHTML = '<i class="fas fa-gift"></i> Claim Bonus';
                 
-                // Reload user data
-                forceRefreshPendingROI();
+                // Reload semua data
+                loadAllContractData();
                 
             } catch (error) {
                 console.error('Error claiming referral bonus:', error);
@@ -1588,8 +1600,8 @@
                 claimSalaryBtn.disabled = false;
                 claimSalaryBtn.innerHTML = '<i class="fas fa-calendar-check"></i> Claim Salary';
                 
-                // Reload user data
-                forceRefreshPendingROI();
+                // Reload semua data
+                loadAllContractData();
                 
             } catch (error) {
                 console.error('Error claiming salary:', error);
@@ -1776,16 +1788,15 @@
 <script>
 // FIX TAMBAHAN UNTUK MEMASTIKAN SEMUA FUNGSI BERJALAN DENGAN BAIK
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Applying final fixes for contract interactions...');
+    console.log('Applying final fixes for all contract data real-time...');
     
-    // Auto-refresh data setiap 15 detik (lebih sering)
+    // Auto-refresh semua data setiap 10 detik
     setInterval(() => {
         if (window.userAccount && window.contract) {
-            console.log('Auto-refreshing contract data...');
-            if (window.loadContractData) window.loadContractData();
-            if (window.forceRefreshPendingROI) window.forceRefreshPendingROI();
+            console.log('Auto-refreshing all contract data...');
+            if (window.loadAllContractData) window.loadAllContractData();
         }
-    }, 15000); // Diperpendek dari 30 detik menjadi 15 detik
+    }, 10000);
     
     // Emergency fallback untuk ROI calculation
     window.calculateROIFromTVL = async function(tvlAmount) {
@@ -1824,7 +1835,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
     
-    console.log('All fixes applied successfully!');
+    console.log('All real-time data fixes applied successfully!');
 });
 </script>
 </body>
