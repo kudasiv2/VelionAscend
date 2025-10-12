@@ -662,8 +662,9 @@
         /* PERBAIKAN: Styling untuk referral count */
         .referral-count {
             font-size: 0.9rem;
-            color: var(--gray);
+            color: var(--cyan);
             margin-top: 5px;
+            font-weight: bold;
         }
 
         /* Responsive */
@@ -1208,13 +1209,7 @@
                 // PERBAIKAN: Update TVL dengan presisi tinggi
                 const tvlBNB = web3.utils.fromWei(contractInfo.totalTVLAmount.toString(), 'ether');
                 const tvlNumber = parseFloat(tvlBNB);
-                if (tvlNumber === 0) {
-                    document.getElementById('tvl').textContent = '0 BNB';
-                } else if (tvlNumber < 0.000001) {
-                    document.getElementById('tvl').textContent = `${tvlNumber.toExponential(6)} BNB`;
-                } else {
-                    document.getElementById('tvl').textContent = `${tvlNumber.toFixed(6)} BNB`;
-                }
+                document.getElementById('tvl').textContent = `${tvlNumber.toFixed(6)} BNB`;
                 
                 // Update total users
                 document.getElementById('totalUsers').textContent = contractInfo.totalUsersCount.toString();
@@ -1222,13 +1217,7 @@
                 // PERBAIKAN: Update total deposit dengan presisi tinggi
                 const totalDepositBNB = web3.utils.fromWei(contractInfo.totalDepositsAmount.toString(), 'ether');
                 const totalDepositNumber = parseFloat(totalDepositBNB);
-                if (totalDepositNumber === 0) {
-                    document.getElementById('totalDeposit').textContent = '0 BNB';
-                } else if (totalDepositNumber < 0.000001) {
-                    document.getElementById('totalDeposit').textContent = `${totalDepositNumber.toExponential(6)} BNB`;
-                } else {
-                    document.getElementById('totalDeposit').textContent = `${totalDepositNumber.toFixed(6)} BNB`;
-                }
+                document.getElementById('totalDeposit').textContent = `${totalDepositNumber.toFixed(6)} BNB`;
                 
                 // PERBAIKAN: Hitung ROI berdasarkan TVL sesuai dengan aturan
                 const currentROI = await calculateROIFromTVL(contractInfo.totalTVLAmount);
@@ -1237,13 +1226,7 @@
                 // PERBAIKAN: Hitung total paid dengan cara yang lebih akurat dan presisi tinggi
                 const contractBalance = web3.utils.fromWei(contractInfo.contractBalance.toString(), 'ether');
                 const totalPaid = parseFloat(totalDepositBNB) - parseFloat(contractBalance);
-                if (totalPaid <= 0) {
-                    document.getElementById('totalPaid').textContent = '0 BNB';
-                } else if (totalPaid < 0.000001) {
-                    document.getElementById('totalPaid').textContent = `${totalPaid.toExponential(6)} BNB`;
-                } else {
-                    document.getElementById('totalPaid').textContent = `${totalPaid.toFixed(6)} BNB`;
-                }
+                document.getElementById('totalPaid').textContent = `${totalPaid > 0 ? totalPaid.toFixed(6) : '0.000000'} BNB`;
                 
                 // Load user data
                 await loadUserData();
@@ -1300,85 +1283,46 @@
             try {
                 const userInfo = await contract.methods.getUserInfo(userAccount).call();
                 
+                console.log('User Info from Contract:', userInfo);
+                
                 // PERBAIKAN: Update user deposit dengan presisi tinggi
                 const userDepositBNB = web3.utils.fromWei(userInfo.totalDeposit.toString(), 'ether');
                 const userDepositNumber = parseFloat(userDepositBNB);
-                if (userDepositNumber === 0) {
-                    document.getElementById('userDeposit').textContent = '0 BNB';
-                } else if (userDepositNumber < 0.000001) {
-                    document.getElementById('userDeposit').textContent = `${userDepositNumber.toExponential(6)} BNB`;
-                } else {
-                    document.getElementById('userDeposit').textContent = `${userDepositNumber.toFixed(6)} BNB`;
-                }
+                document.getElementById('userDeposit').textContent = `${userDepositNumber.toFixed(6)} BNB`;
                 
-                // PERBAIKAN: Ambil pending ROI dengan dua metode untuk memastikan data akurat
+                // PERBAIKAN: Ambil pending ROI langsung dari contract
                 let pendingROI;
                 try {
-                    // Coba metode pertama
                     pendingROI = await contract.methods.getUserPendingROI(userAccount).call();
-                    
-                    // Jika hasilnya 0, coba metode alternatif
-                    if (parseInt(pendingROI) === 0) {
-                        // Hitung manual berdasarkan waktu dan ROI
-                        const currentTime = Math.floor(Date.now() / 1000);
-                        const lastUpdate = parseInt(userInfo.lastROIUpdate);
-                        const accumulatedROI = parseInt(userInfo.accumulatedROI);
-                        
-                        if (lastUpdate > 0 && userInfo.totalDeposit > 0) {
-                            // Dapatkan ROI saat ini
-                            const contractInfo = await contract.methods.getContractInfo().call();
-                            const currentROIPercentage = await calculateROIFromTVL(contractInfo.totalTVLAmount);
-                            
-                            // Hitung ROI yang belum diklaim
-                            const daysPassed = (currentTime - lastUpdate) / 86400; // 86400 detik dalam sehari
-                            const dailyROI = (parseFloat(userDepositBNB) * currentROIPercentage) / 100;
-                            const unclaimedROI = daysPassed * dailyROI;
-                            
-                            // Konversi ke wei dan tambahkan dengan accumulated ROI
-                            const unclaimedROIWei = web3.utils.toWei(unclaimedROI.toString(), 'ether');
-                            pendingROI = (BigInt(accumulatedROI) + BigInt(unclaimedROIWei)).toString();
-                        }
-                    }
+                    console.log('Pending ROI from contract:', pendingROI);
                 } catch (error) {
-                    console.warn('Error getting pending ROI, using accumulated ROI:', error);
-                    pendingROI = userInfo.accumulatedROI || userInfo.pendingROI || '0';
+                    console.warn('Error getting pending ROI, using userInfo:', error);
+                    pendingROI = userInfo.pendingROI || '0';
                 }
                 
                 // PERBAIKAN: Format dan tampilkan Pending ROI dengan presisi tinggi
                 const pendingROIBNB = web3.utils.fromWei(pendingROI.toString(), 'ether');
                 const pendingROINumber = parseFloat(pendingROIBNB);
+                document.getElementById('pendingROI').textContent = `${pendingROINumber.toFixed(8)} BNB`;
                 
-                // Tampilkan dengan presisi tinggi meskipun nilainya kecil
-                if (pendingROINumber === 0) {
-                    document.getElementById('pendingROI').textContent = '0 BNB';
-                } else if (pendingROINumber < 0.000001) {
-                    document.getElementById('pendingROI').textContent = `${pendingROINumber.toExponential(6)} BNB`;
-                } else {
-                    document.getElementById('pendingROI').textContent = `${pendingROINumber.toFixed(8)} BNB`;
-                }
-                
-                // PERBAIKAN: Update referral rewards dengan presisi tinggi
+                // PERBAIKAN: Update referral rewards REAL-TIME dari contract
                 const referralBonusBNB = web3.utils.fromWei(userInfo.referralBonus.toString(), 'ether');
                 const referralBonusNumber = parseFloat(referralBonusBNB);
-                if (referralBonusNumber === 0) {
-                    document.getElementById('referralRewards').textContent = '0 BNB';
-                } else if (referralBonusNumber < 0.000001) {
-                    document.getElementById('referralRewards').textContent = `${referralBonusNumber.toExponential(6)} BNB`;
-                } else {
-                    document.getElementById('referralRewards').textContent = `${referralBonusNumber.toFixed(8)} BNB`;
-                }
+                document.getElementById('referralRewards').textContent = `${referralBonusNumber.toFixed(8)} BNB`;
+                console.log('Referral Rewards from contract:', userInfo.referralBonus.toString(), '=', referralBonusNumber);
                 
-                // PERBAIKAN: Update Total Team
+                // PERBAIKAN: Update Total Team REAL-TIME dari contract
                 document.getElementById('totalTeam').textContent = userInfo.teamCount.toString();
+                console.log('Total Team from contract:', userInfo.teamCount.toString());
                 
-                // Update referral levels status dan jumlah referral per level
+                // PERBAIKAN: Update referral levels status dan jumlah referral per level REAL-TIME
                 updateReferralLevelsStatus(userInfo.totalDeposit);
-                await updateReferralCounts();
+                await updateReferralCountsRealTime();
                 
                 // Load salary info
                 const pendingSalary = await contract.methods.getPendingSalary(userAccount).call();
                 const pendingSalaryBNB = web3.utils.fromWei(pendingSalary.toString(), 'ether');
-                document.getElementById('currentSalary').textContent = `${parseFloat(pendingSalaryBNB).toFixed(4)} BNB`;
+                document.getElementById('currentSalary').textContent = `${parseFloat(pendingSalaryBNB).toFixed(6)} BNB`;
                 
                 // Update salary level display
                 const salaryRank = userInfo.salaryRank;
@@ -1406,27 +1350,31 @@
             }
         }
 
-        // PERBAIKAN: Fungsi untuk mendapatkan jumlah referral per level
-        async function updateReferralCounts() {
+        // PERBAIKAN UTAMA: Fungsi untuk mendapatkan jumlah referral per level REAL-TIME dari contract
+        async function updateReferralCountsRealTime() {
             if (!contract || !userAccount) return;
             
             try {
                 const levelBoxes = document.querySelectorAll('#referralLevels .level-box');
+                console.log('Updating referral counts for', levelBoxes.length, 'levels');
                 
                 for (let i = 0; i < levelBoxes.length; i++) {
                     try {
-                        const referralCount = await contract.methods.getReferralCount(userAccount, i + 1).call();
-                        const countElement = levelBoxes[i].querySelector('.referral-count');
+                        const levelNumber = i + 1;
+                        const referralCount = await contract.methods.getReferralCount(userAccount, levelNumber).call();
+                        console.log(`Level ${levelNumber} referrals:`, referralCount);
                         
-                        if (countElement) {
-                            countElement.textContent = `Referrals: ${referralCount}`;
-                        } else {
+                        let countElement = levelBoxes[i].querySelector('.referral-count');
+                        
+                        if (!countElement) {
                             // Buat elemen untuk menampilkan jumlah referral jika belum ada
-                            const countElement = document.createElement('div');
+                            countElement = document.createElement('div');
                             countElement.className = 'referral-count';
-                            countElement.textContent = `Referrals: ${referralCount}`;
                             levelBoxes[i].appendChild(countElement);
                         }
+                        
+                        countElement.textContent = `Referrals: ${referralCount}`;
+                        
                     } catch (error) {
                         console.warn(`Error getting referral count for level ${i + 1}:`, error);
                     }
@@ -1788,54 +1736,17 @@
 <script>
 // FIX TAMBAHAN UNTUK MEMASTIKAN SEMUA FUNGSI BERJALAN DENGAN BAIK
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Applying final fixes for all contract data real-time...');
+    console.log('Applying final fixes for all REAL-TIME contract data...');
     
     // Auto-refresh semua data setiap 10 detik
     setInterval(() => {
         if (window.userAccount && window.contract) {
-            console.log('Auto-refreshing all contract data...');
+            console.log('Auto-refreshing ALL contract data in real-time...');
             if (window.loadAllContractData) window.loadAllContractData();
         }
     }, 10000);
     
-    // Emergency fallback untuk ROI calculation
-    window.calculateROIFromTVL = async function(tvlAmount) {
-        try {
-            const tvlBNB = parseFloat(web3.utils.fromWei(tvlAmount.toString(), 'ether'));
-            
-            // Aturan ROI sesuai permintaan:
-            // ROI awal 0.5% per hari
-            // Kenaikan +0.1% per kenaikan TVL sebesar 50 BNB
-            // Penurunan -0.1% per penurunan TVL sebesar 50 BNB
-            // ROI maksimum 2.5% per hari (pada TVL ≥ 1000 BNB)
-            // ROI minimum (batas bawah) 0.5% per hari
-            
-            const baseROI = 0.5; // ROI minimum
-            const maxROI = 2.5; // ROI maksimum
-            const tvlStep = 50; // Setiap 50 BNB
-            const roiStep = 0.1; // Setiap step naik/turun 0.1%
-            
-            // Hitung berapa step dari TVL saat ini
-            const steps = Math.floor(tvlBNB / tvlStep);
-            
-            // Hitung ROI berdasarkan step
-            let calculatedROI = baseROI + (steps * roiStep);
-            
-            // Pastikan ROI tidak melebihi batas maksimum dan minimum
-            if (calculatedROI > maxROI) {
-                calculatedROI = maxROI;
-            } else if (calculatedROI < baseROI) {
-                calculatedROI = baseROI;
-            }
-            
-            return calculatedROI;
-        } catch (error) {
-            console.error('Error calculating ROI from TVL:', error);
-            return 0.5; // Return ROI minimum sebagai fallback
-        }
-    };
-    
-    console.log('All real-time data fixes applied successfully!');
+    console.log('All REAL-TIME data fixes applied successfully!');
 });
 </script>
 </body>
