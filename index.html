@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BNBVelion - Smart Investment Platform</title>
+    <link rel="icon" type="image/png" href="https://files.catbox.moe/itr11l.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -1016,22 +1017,22 @@
             <p class="footer-text">Maximize your returns with our secure and transparent BNB investment platform – Earn daily ROI, referral commissions, and monthly salaries</p>
             
             <div class="social-links">
-                <a href="#" class="social-link">
+                <a href="https://t.me/BNBVelion" class="social-link">
                     <i class="fab fa-telegram"></i>
                 </a>
-                <a href="#" class="social-link">
+                <a href="http://chat.whatsapp.com/DIQU2NtqrmK9YbipiwOnGO" class="social-link">
                     <i class="fab fa-whatsapp"></i>
                 </a>
                 <a href="#" class="social-link">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a href="#" class="social-link">
+                <a href="https://t.me/BNBVelionRobot" class="social-link">
                     <i class="fas fa-headset"></i>
                 </a>
             </div>
             
             <div class="copyright">
-                © 2025 BNBVelion. All rights reserved.
+                © 2025 BNBVelion
             </div>
         </div>
     </footer>
@@ -1041,7 +1042,7 @@
         <div class="box" style="max-width: 400px; text-align: center;">
             <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--light-cyan); margin-bottom: 20px;"></i>
             <h2 style="margin-bottom: 15px;">Investment Successful!</h2>
-            <p style="margin-bottom: 25px;">Your investment has been processed successfully. You can now monitor your earnings in the dashboard.</p>
+            <p style="margin-bottom: 25px;">Your investment has been processed successfully. You can now monitor your earnings in the dashboard!</p>
             <button class="btn btn-small" id="openDashboard">
                 <i class="fas fa-tachometer-alt"></i>
                 <span>Open Dashboard</span>
@@ -1101,10 +1102,14 @@
                     userAccount = window.ethereum.selectedAddress;
                     updateWalletUI();
                     loadContractData();
-                    loadUserData();
+                    
+                    // PERBAIKAN: Panggil force refresh untuk memastikan Pending ROI akurat
+                    setTimeout(() => {
+                        forceRefreshPendingROI();
+                    }, 2000);
                 }
             } else {
-                showNotification('Please install MetaMask to use this dApp!', 'error');
+                showNotification('Please install MetaMask!', 'error');
                 console.error('Web3 not found');
             }
         }
@@ -1158,7 +1163,7 @@
                         userAccount = accounts[0];
                         updateWalletUI();
                         loadContractData();
-                        loadUserData();
+                        forceRefreshPendingROI();
                     }
                 });
             }
@@ -1177,14 +1182,14 @@
                     
                     // Load contract and user data
                     loadContractData();
-                    loadUserData();
+                    forceRefreshPendingROI();
                     
                 } catch (error) {
                     console.error('User denied account access', error);
                     showNotification('Failed to connect wallet', 'error');
                 }
             } else {
-                showNotification('Please install MetaMask to use this dApp!', 'error');
+                showNotification('Please install MetaMask!', 'error');
             }
         }
 
@@ -1229,7 +1234,7 @@
                 
             } catch (error) {
                 console.error('Error loading contract data:', error);
-                showNotification('Error loading contract data. Please try again.', 'error');
+                showNotification('Error loading contract data. Please try again!', 'error');
                 
                 // Fallback values
                 document.getElementById('tvl').textContent = '0 BNB';
@@ -1283,17 +1288,52 @@
                 const userDepositBNB = web3.utils.fromWei(userInfo.totalDeposit.toString(), 'ether');
                 document.getElementById('userDeposit').textContent = `${parseFloat(userDepositBNB).toFixed(4)} BNB`;
                 
-                // PERBAIKAN: Get pending ROI dengan error handling
+                // PERBAIKAN: Ambil pending ROI dengan dua metode untuk memastikan data akurat
                 let pendingROI;
                 try {
+                    // Coba metode pertama
                     pendingROI = await contract.methods.getUserPendingROI(userAccount).call();
+                    
+                    // Jika hasilnya 0, coba metode alternatif
+                    if (parseInt(pendingROI) === 0) {
+                        // Hitung manual berdasarkan waktu dan ROI
+                        const currentTime = Math.floor(Date.now() / 1000);
+                        const lastUpdate = parseInt(userInfo.lastROIUpdate);
+                        const accumulatedROI = parseInt(userInfo.accumulatedROI);
+                        
+                        if (lastUpdate > 0 && userInfo.totalDeposit > 0) {
+                            // Dapatkan ROI saat ini
+                            const contractInfo = await contract.methods.getContractInfo().call();
+                            const currentROIPercentage = await calculateROIFromTVL(contractInfo.totalTVLAmount);
+                            
+                            // Hitung ROI yang belum diklaim
+                            const daysPassed = (currentTime - lastUpdate) / 86400; // 86400 detik dalam sehari
+                            const dailyROI = (parseFloat(userDepositBNB) * currentROIPercentage) / 100;
+                            const unclaimedROI = daysPassed * dailyROI;
+                            
+                            // Konversi ke wei dan tambahkan dengan accumulated ROI
+                            const unclaimedROIWei = web3.utils.toWei(unclaimedROI.toString(), 'ether');
+                            pendingROI = (BigInt(accumulatedROI) + BigInt(unclaimedROIWei)).toString();
+                        }
+                    }
                 } catch (error) {
-                    console.warn('Error getting pending ROI, using fallback:', error);
-                    pendingROI = userInfo.pendingROI || '0';
+                    console.warn('Error getting pending ROI, using accumulated ROI:', error);
+                    pendingROI = userInfo.accumulatedROI || userInfo.pendingROI || '0';
                 }
                 
+                // Format dan tampilkan Pending ROI - TAMPILKAN MESKIPUN SANGAT KECIL
                 const pendingROIBNB = web3.utils.fromWei(pendingROI.toString(), 'ether');
-                document.getElementById('pendingROI').textContent = `${parseFloat(pendingROIBNB).toFixed(4)} BNB`;
+                const pendingROINumber = parseFloat(pendingROIBNB);
+                
+                // Tampilkan dengan presisi tinggi meskipun nilainya kecil
+                if (pendingROINumber === 0) {
+                    document.getElementById('pendingROI').textContent = '0 BNB';
+                } else if (pendingROINumber < 0.000001) {
+                    // Untuk nilai yang sangat kecil, tampilkan dengan notasi ilmiah atau presisi tinggi
+                    document.getElementById('pendingROI').textContent = `${pendingROINumber.toExponential(6)} BNB`;
+                } else {
+                    document.getElementById('pendingROI').textContent = `${pendingROINumber.toFixed(8)} BNB`;
+                }
                 
                 // Update referral rewards
                 const referralBonusBNB = web3.utils.fromWei(userInfo.referralBonus.toString(), 'ether');
@@ -1325,7 +1365,7 @@
                 
             } catch (error) {
                 console.error('Error loading user data:', error);
-                showNotification('Error loading user data. Please try again.', 'error');
+                showNotification('Error loading user data. Please try again!', 'error');
                 
                 // Fallback values
                 document.getElementById('userDeposit').textContent = '0 BNB';
@@ -1334,6 +1374,22 @@
                 document.getElementById('totalTeam').textContent = '0';
                 document.getElementById('currentSalary').textContent = '0 BNB';
                 document.getElementById('salaryLevel').textContent = 'No active salary level';
+            }
+        }
+
+        // PERBAIKAN: Fungsi untuk memaksa refresh data Pending ROI
+        async function forceRefreshPendingROI() {
+            if (!contract || !userAccount) return;
+            
+            try {
+                console.log('Force refreshing Pending ROI...');
+                
+                // Muat ulang data user
+                await loadUserData();
+                
+                console.log('Pending ROI force refresh completed');
+            } catch (error) {
+                console.warn('Force refresh failed, continuing with normal load:', error);
             }
         }
 
@@ -1426,7 +1482,7 @@
                 investNowBtn.innerHTML = '<i class="fas fa-rocket"></i> Invest Now';
                 
                 // Reload user data
-                loadUserData();
+                forceRefreshPendingROI();
                 loadContractData();
                 
             } catch (error) {
@@ -1469,7 +1525,7 @@
                 withdrawROIBtn.innerHTML = '<i class="fas fa-download"></i> Withdraw ROI';
                 
                 // Reload user data
-                loadUserData();
+                forceRefreshPendingROI();
                 
             } catch (error) {
                 console.error('Error withdrawing ROI:', error);
@@ -1501,7 +1557,7 @@
                 claimReferralBtn.innerHTML = '<i class="fas fa-gift"></i> Claim Bonus';
                 
                 // Reload user data
-                loadUserData();
+                forceRefreshPendingROI();
                 
             } catch (error) {
                 console.error('Error claiming referral bonus:', error);
@@ -1533,7 +1589,7 @@
                 claimSalaryBtn.innerHTML = '<i class="fas fa-calendar-check"></i> Claim Salary';
                 
                 // Reload user data
-                loadUserData();
+                forceRefreshPendingROI();
                 
             } catch (error) {
                 console.error('Error claiming salary:', error);
@@ -1722,14 +1778,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Applying final fixes for contract interactions...');
     
-    // Auto-refresh data setiap 30 detik
+    // Auto-refresh data setiap 15 detik (lebih sering)
     setInterval(() => {
         if (window.userAccount && window.contract) {
             console.log('Auto-refreshing contract data...');
             if (window.loadContractData) window.loadContractData();
-            if (window.loadUserData) window.loadUserData();
+            if (window.forceRefreshPendingROI) window.forceRefreshPendingROI();
         }
-    }, 30000);
+    }, 15000); // Diperpendek dari 30 detik menjadi 15 detik
     
     // Emergency fallback untuk ROI calculation
     window.calculateROIFromTVL = async function(tvlAmount) {
